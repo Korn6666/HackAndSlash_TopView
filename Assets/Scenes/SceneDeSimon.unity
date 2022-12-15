@@ -155,6 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  distanceSeuil: 3
 --- !u!54 &472712592
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -522,7 +523,7 @@ PrefabInstance:
     - target: {fileID: 1712829085075216473, guid: 8d55c1a62be454101a242d711e27430e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.62
+      value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: 1712829085075216473, guid: 8d55c1a62be454101a242d711e27430e,
         type: 3}
@@ -532,7 +533,7 @@ PrefabInstance:
     - target: {fileID: 1712829085075216473, guid: 8d55c1a62be454101a242d711e27430e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.4
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 1712829085075216473, guid: 8d55c1a62be454101a242d711e27430e,
         type: 3}
@@ -568,6 +569,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712829085075216476, guid: 8d55c1a62be454101a242d711e27430e,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 80
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d55c1a62be454101a242d711e27430e, type: 3}

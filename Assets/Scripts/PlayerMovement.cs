@@ -9,36 +9,49 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 10f;
     private Rigidbody Rbd;
     private float translationForce = 20;
+    private Camera cam;
+    [SerializeField] private Vector3 mouseInWorld;
+
+    
+    Vector3 pos = new Vector3(200, 200, 0);
+
+
 
     void Start()
     {
         Rbd = gameObject.GetComponent<Rigidbody>();
+        cam = Camera.main;
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*float translationX = Input.GetAxis("Horizontal") * speed;
-        float translationZ = Input.GetAxis("Vertical") * speed;
-        transform.Translate(translationX, 0, translationZ);*/ //   Système de Déplacement sans RigidBody
-
         //Système de déplacement avec le RigidBody
         float sensX = Input.GetAxis("Horizontal");
         float sensY = Input.GetAxis("Vertical");
         Vector3 directionInput = new Vector3(translationForce * sensX, 0, translationForce * sensY);
         Rbd.MovePosition(transform.position + directionInput * Time.deltaTime * speed);
 
-        // The player look to the mouse position
-        /*Vector3 newDirection = Vector3.RotateTowards(transform.position, Input.mousePosition, speed * Time.deltaTime, 0.0f);
-        Vector3 newDirection2D = new Vector3(newDirection.x, 0, newDirection.z);
-        Rbd.MoveRotation(Quaternion.LookRotation(newDirection2D));*/
-
-
-        /*Vector3 direction = Input.mousePosition - transform.position;
-        Vector3 direction2D = new Vector3(direction.x, 0, direction.z);
-        transform.forward = direction2D;*/
-
-        /*Vector3 direction = Input.mousePosition - transform.position;
-        transform.LookAt(new Vector3(Input.mousePosition.x, 0, Input.mousePosition.z));*/
+        //Direction du joueur vers la position de la souris
+        Vector3 mouseInFloor = GetMousePositionOnPlane();
+        Vector3 directionToLook =  mouseInFloor - transform.position;
+        Vector3 direction2DToLook = new Vector3(directionToLook.x, 0, directionToLook.z);
+        Quaternion rotation = Quaternion.LookRotation(direction2DToLook);
+        transform.rotation = rotation;
     }
+
+     public static Vector3 GetMousePositionOnPlane() 
+     {
+         RaycastHit  hit;
+         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+         if(Physics.Raycast (ray, out hit)) 
+         {
+             Vector3 hitPoint = hit.point;
+             hitPoint.y = 0;
+ 
+             return hitPoint;
+ 
+         }
+         return Vector3.zero;
+     }
 }

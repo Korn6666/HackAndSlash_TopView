@@ -16,6 +16,7 @@ public class CameraMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         Vector3 playerPosition = player.transform.position;
         transform.position = player.transform.position - positionFromPlayer; // Position caméra comme Diablo3
     }

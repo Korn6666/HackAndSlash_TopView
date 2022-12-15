@@ -12,13 +12,18 @@ public class EnnemyMovement : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindGameObjectsWithTag("Player")[0];
+        player = GameObject.FindGameObjectWithTag("Player");
         Rbd = gameObject.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!player)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+        }
+        if (!player) return;
         Vector3 direction = player.transform.position - transform.position;
         Vector3 direction2D = new Vector3(direction.x, 0, direction.z);
         if (direction.magnitude > distanceSeuil)
