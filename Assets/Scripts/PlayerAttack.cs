@@ -9,12 +9,6 @@ public class PlayerAttack : MonoBehaviour
     public Transform spell1AttackPoint;
     public float spell1AttackRange = 0.5f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     //Les conditions d'attaque : l'input pour attaquer, cooldown de l'attaque, vérifier que le personnage est en position pour attaquer (vérifier qu'un autre attaque n'est pas lancé)
     private bool attacking = false;
 

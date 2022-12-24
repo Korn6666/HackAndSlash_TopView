@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnnemyMovement : MonoBehaviour
+public class EnemyMovement : MonoBehaviour
 {
     // Start is called before the first frame update
     private GameObject player;
@@ -24,6 +24,16 @@ public class EnnemyMovement : MonoBehaviour
             player = GameObject.FindGameObjectWithTag("Player");
         }
         if (!player) return;
+
+        if ( GetComponent<EnemyAttack>().isAttacking == false)
+        {
+            Move();
+        }
+
+    }
+
+    void Move()
+    {
         Vector3 direction = player.transform.position - transform.position;
         Vector3 direction2D = new Vector3(direction.x, 0, direction.z);
         if (direction.magnitude > distanceSeuil)
