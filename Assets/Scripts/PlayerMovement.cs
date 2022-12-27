@@ -28,9 +28,10 @@ public class PlayerMovement : MonoBehaviour
     {
         //Système de déplacement avec le RigidBody
         float sensX = Input.GetAxis("Horizontal");
-        float sensY = Input.GetAxis("Vertical");
-        Vector3 directionInput = new Vector3(translationForce * sensX, 0, translationForce * sensY);
+        float sensZ = Input.GetAxis("Vertical");
+        Vector3 directionInput = new Vector3(translationForce * sensX, 0, translationForce * sensZ);
         Rbd.MovePosition(transform.position + directionInput * Time.deltaTime * speed);
+        
 
         //Direction du joueur vers la position de la souris
         Vector3 mouseInFloor = GetMousePositionOnPlane();

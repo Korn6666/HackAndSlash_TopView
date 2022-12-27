@@ -13,13 +13,22 @@ public class PlayerAttack : MonoBehaviour
     public float spell1AttackRange = 0.5f;
 
     //Les conditions d'attaque : l'input pour attaquer, cooldown de l'attaque, vérifier que le personnage est en position pour attaquer (vérifier qu'un autre attaque n'est pas lancé)
+<<<<<<< HEAD
     public float spell1AttackTime = 0.25f; //temps de l'animation de l'attaque 1 (spell 1) 
     private float spell1AttackTimeTimer = 0f;
     public float spell1CoolDown = 1f; //cooldown de l'attaque 1 (spell 1) 
+=======
+    private bool attacking = false;
+
+    public float spell1AttackTime = 0.25f; //temps de l'animation de l'attaque 1 (spell 1) 
+    private float spell1AttackTimeTimer = 0f;
+    public float spell1CoolDown = 3f; //cooldown de l'attaque 1 (spell 1) 
+>>>>>>> bfded789ed4197b6b77cb6ec14f3a76f8d502dad
     private float spell1CoolDownTimer = 0f;
 
 
 
+<<<<<<< HEAD
 
 
     //SPELL 3
@@ -42,6 +51,8 @@ public class PlayerAttack : MonoBehaviour
         
     }
 
+=======
+>>>>>>> bfded789ed4197b6b77cb6ec14f3a76f8d502dad
 
     // Update is called once per frame
     void Update()
