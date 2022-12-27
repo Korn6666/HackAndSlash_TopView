@@ -13,22 +13,13 @@ public class PlayerAttack : MonoBehaviour
     public float spell1AttackRange = 0.5f;
 
     //Les conditions d'attaque : l'input pour attaquer, cooldown de l'attaque, vérifier que le personnage est en position pour attaquer (vérifier qu'un autre attaque n'est pas lancé)
-<<<<<<< HEAD
     public float spell1AttackTime = 0.25f; //temps de l'animation de l'attaque 1 (spell 1) 
     private float spell1AttackTimeTimer = 0f;
     public float spell1CoolDown = 1f; //cooldown de l'attaque 1 (spell 1) 
-=======
-    private bool attacking = false;
-
-    public float spell1AttackTime = 0.25f; //temps de l'animation de l'attaque 1 (spell 1) 
-    private float spell1AttackTimeTimer = 0f;
-    public float spell1CoolDown = 3f; //cooldown de l'attaque 1 (spell 1) 
->>>>>>> bfded789ed4197b6b77cb6ec14f3a76f8d502dad
     private float spell1CoolDownTimer = 0f;
 
 
 
-<<<<<<< HEAD
 
 
     //SPELL 3
@@ -48,11 +39,9 @@ public class PlayerAttack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
-=======
->>>>>>> bfded789ed4197b6b77cb6ec14f3a76f8d502dad
 
     // Update is called once per frame
     void Update()
@@ -77,7 +66,7 @@ public class PlayerAttack : MonoBehaviour
 
 
         // COOLDOWN
-        if(spell1CoolDownTimer > 0) //gestion du CoolDown du spell 1
+        if (spell1CoolDownTimer > 0) //gestion du CoolDown du spell 1
         {
             spell1CoolDownTimer -= Time.deltaTime;
         }
@@ -91,7 +80,7 @@ public class PlayerAttack : MonoBehaviour
         //CASTTIME
         if (attacking)
         {
-            if(spell1AttackTimeTimer > 0)
+            if (spell1AttackTimeTimer > 0)
             {
                 spell1AttackTimeTimer -= Time.deltaTime;
             }
@@ -118,10 +107,10 @@ public class PlayerAttack : MonoBehaviour
         Collider[] hitEnemies = Physics.OverlapSphere(spell1AttackPoint.position, spell1AttackRange, enemyLayers);
 
         //infliger les degats aux ennemies
-        foreach(Collider enemy in hitEnemies)
+        foreach (Collider enemy in hitEnemies)
         {
             enemy.GetComponent<EnemyHealth>().TakeDamage(20); // 20 de degats est a titre de test, on appelera un fonction pour calculer les DD
-           // enemy.GetComponent<EnemyHealth>().TakeKnockBack(transform.position, -2); //Ajoute le knockback à la cible
+                                                              // enemy.GetComponent<EnemyHealth>().TakeKnockBack(transform.position, -2); //Ajoute le knockback à la cible
         }
     }
 
@@ -132,9 +121,9 @@ public class PlayerAttack : MonoBehaviour
         spell3CoolDownTimer = spell3CoolDown; //lancement du cooldown de l'attaque 
         spell3AttackTimeTimer = spell3AttackTime; //lancement de l'animation
         float timer = 1f;
-        while(attacking)
+        while (attacking)
         {
-            if(timer >= 1)
+            if (timer >= 1)
             {
                 Collider[] hitEnemies = Physics.OverlapSphere(spell3AttackPoint.position, spell3AttackRange, enemyLayers); //infliger les degats aux ennemies
 
