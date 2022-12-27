@@ -34,4 +34,10 @@ public class EnemyHealth : MonoBehaviour
 
         healthBar.SetHealth(enemyHealth);
     }
+
+    public void TakeKnockBack(Vector3 target, float knockbackPower)
+    {
+        Vector3 dir = target - transform.position;
+        transform.Translate(dir.normalized * knockbackPower); // !!!on utilisera un addforce des que les rigied body seront ready!!!
+    }
 }
