@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyAttack : MonoBehaviour
 {
     [SerializeField] private float swordAttackCoolDown = 1;
-    [SerializeField] private float swordAttackAnimationTime; //Temps d'animation    
+    [SerializeField] private float swordAttackAnimationTime = 5; //Temps d'animation    
     [SerializeField] private float swordAttackDamages = 5;    
 
     private float TimeBetweenAttacks;    
@@ -18,6 +18,12 @@ public class EnemyAttack : MonoBehaviour
     void Start()
     {
        StartCoroutine(WaitAndAttack(swordAttackCoolDown, swordAttackAnimationTime));
+               
+        // Ce if/else est une sécurité pour le temps d'animation, s'il est plus grand que le cool down.
+        if (swordAttackCoolDown > swordAttackAnimationTime)       
+        {
+            TimeBetweenAttacks = swordAttackCoolDown;
+        }else { TimeBetweenAttacks = swordAttackAnimationTime; }; 
     }
 
     void Update()
@@ -25,7 +31,7 @@ public class EnemyAttack : MonoBehaviour
 
     }
 
-    void OnCollisionStay(Collision collision)
+    void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player")
         {
@@ -33,16 +39,16 @@ public class EnemyAttack : MonoBehaviour
             canAttack = true;
         }
     }
+
+    void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            canAttack = false;
+        }
+    }
     public void SwordAttack()
     {
-        isAttacking = true; //nous attaquons
-
-        // Ce if/else est une sécurité pour le temps d'animation, s'il est plus grand que le cool down.
-        if (swordAttackCoolDown > swordAttackAnimationTime)       
-        {
-            TimeBetweenAttacks = swordAttackCoolDown;
-        }else { TimeBetweenAttacks = swordAttackAnimationTime; }; 
-
         player.GetComponent<PlayerHealth>().TakeDamage(swordAttackDamages);
     }
 
@@ -52,16 +58,12 @@ public class EnemyAttack : MonoBehaviour
         {
             if (canAttack)
             {
-                SwordAttack();
-                isAttacking = true;
-            }
-
-            if (isAttacking)
-            {
-                // oui en effet, canAttack et isAttacking ont les mêmes roles la. Mais dans la symbolique non donc on verra comment je peux améliorer ca. 
                 yield return new WaitForSeconds(TimeBetweenAttacks);
-                canAttack = false;    
-                isAttacking = false;
+            }
+            if (canAttack)
+            {
+                SwordAttack();
+                canAttack = false;
             }
             yield return null;
         }

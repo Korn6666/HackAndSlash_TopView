@@ -57,7 +57,7 @@ public class PlayerAttack : MonoBehaviour
 
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && spell3CoolDownTimer <= 0 && attacking == false) //deuxieme attaque(spell 3), sur espace
+        //if (Input.GetKeyDown(KeyCode.Space)) //deuxieme attaque(spell 3), sur espace
         {
             StartCoroutine(Spell3Attack());
             Debug.Log(attacking);
@@ -109,8 +109,7 @@ public class PlayerAttack : MonoBehaviour
         //infliger les degats aux ennemies
         foreach (Collider enemy in hitEnemies)
         {
-            enemy.GetComponent<EnemyHealth>().TakeDamage(20); // 20 de degats est a titre de test, on appelera un fonction pour calculer les DD
-                                                              // enemy.GetComponent<EnemyHealth>().TakeKnockBack(transform.position, -2); //Ajoute le knockback à la cible
+            enemy.GetComponent<EnemyHealth>().TakeDamage(20);
         }
     }
 
