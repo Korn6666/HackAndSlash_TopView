@@ -70,7 +70,7 @@ public class PlayerAttack : MonoBehaviour
             StartCoroutine(Spell2Attack());
         }
 
-        //if (Input.GetKeyDown(KeyCode.Space)) //deuxieme attaque(spell 3), sur espace
+        if (Input.GetKeyDown(KeyCode.Space)) //deuxieme attaque(spell 3), sur espace
         {
             StartCoroutine(Spell3Attack());
             Debug.Log(attacking);

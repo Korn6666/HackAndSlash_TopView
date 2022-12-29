@@ -30,8 +30,7 @@ public class PlayerMovement : MonoBehaviour
         float sensX = Input.GetAxis("Horizontal");
         float sensZ = Input.GetAxis("Vertical");
         Vector3 directionInput = new Vector3(translationForce * sensX, 0, translationForce * sensZ);
-        Rbd.MovePosition(transform.position + directionInput * Time.deltaTime * speed);
-        
+        Rbd.MovePosition(transform.position + directionInput * Time.deltaTime * speed);        
 
         //Direction du joueur vers la position de la souris
         Vector3 mouseInFloor = GetMousePositionOnPlane();

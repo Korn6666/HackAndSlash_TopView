@@ -7,6 +7,9 @@ public class CameraMovement : MonoBehaviour
     // Start is called before the first frame update
     private GameObject player;
     private Vector3 positionFromPlayer;
+    [SerializeField] private float speedZoom = 0.05f;
+    private Vector3 zoom = Vector3.zero;
+
     void Start()
     {
         player = GameObject.FindGameObjectsWithTag("Player")[0];
@@ -18,6 +21,8 @@ public class CameraMovement : MonoBehaviour
     {
 
         Vector3 playerPosition = player.transform.position;
-        transform.position = player.transform.position - positionFromPlayer; // Position caméra comme Diablo3
+        Vector3 zoomDelta = positionFromPlayer * Input.mouseScrollDelta.y * speedZoom;
+        zoom += zoomDelta;
+        transform.position = player.transform.position - positionFromPlayer + zoom; // Position caméra comme Diablo3
     }
 }

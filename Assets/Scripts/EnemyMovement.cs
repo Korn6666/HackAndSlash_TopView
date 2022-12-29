@@ -32,6 +32,7 @@ public class EnemyMovement : MonoBehaviour
 
         if ( GetComponent<EnemyAttack>().canAttack == false)
         {
+            Animator.SetBool("ForwardSpeed", true);
             Move();
         }else { Animator.SetBool("ForwardSpeed", false); }
 
@@ -47,6 +48,6 @@ public class EnemyMovement : MonoBehaviour
             direction2D = direction2D.normalized;
             Rbd.MovePosition(transform.position + direction2D * Time.deltaTime * speed);
         }
-        Animator.SetBool("ForwardSpeed", true);
+        
     }
 }
