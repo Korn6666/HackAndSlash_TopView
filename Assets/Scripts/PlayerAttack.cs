@@ -21,6 +21,19 @@ public class PlayerAttack : MonoBehaviour
 
 
 
+    //SPELL 2
+    // public Transform spell2AttackPoint; // on utilisera ici le spell3Attackpoint
+    public float spell2AttackRange = 10f;
+    private bool isOnFloor; //Variable qui nous dit si le player est sur le sol ou non
+
+    //Les conditions d'attaque : l'input pour attaquer, cooldown de l'attaque, vérifier que le personnage est en position pour attaquer (vérifier qu'un autre attaque n'est pas lancé)
+    public float spell2AttackTime = 2f; //temps de l'animation de l'attaque 2 (spell 2) 
+    private float spell2AttackTimeTimer = 0f;
+    public float spell2CoolDown = 5f; //cooldown de l'attaque 2 (spell 2) 
+    private float spell2CoolDownTimer = 0f;
+
+
+
 
     //SPELL 3
     public Transform spell3AttackPoint;
@@ -52,9 +65,9 @@ public class PlayerAttack : MonoBehaviour
             Spell1Attack();
         }
 
-        if (Input.GetMouseButtonDown(1)) //deuxieme attaque(spell 2), clique droit
+        if (Input.GetMouseButtonDown(1) && spell2CoolDownTimer <= 0 && !attacking) //deuxieme attaque(spell 2), clique droit
         {
-
+            StartCoroutine(Spell2Attack());
         }
 
         //if (Input.GetKeyDown(KeyCode.Space)) //deuxieme attaque(spell 3), sur espace
@@ -70,6 +83,10 @@ public class PlayerAttack : MonoBehaviour
         {
             spell1CoolDownTimer -= Time.deltaTime;
         }
+        if (spell2CoolDownTimer > 0) //gestion du CoolDown du spell 2
+        {
+            spell2CoolDownTimer -= Time.deltaTime;
+        }
         if (spell3CoolDownTimer > 0) //gestion du CoolDown du spell 3
         {
             spell3CoolDownTimer -= Time.deltaTime;
@@ -83,6 +100,10 @@ public class PlayerAttack : MonoBehaviour
             if (spell1AttackTimeTimer > 0)
             {
                 spell1AttackTimeTimer -= Time.deltaTime;
+            }
+            else if (spell2AttackTimeTimer > 0)
+            {
+                
             }
             else if (spell3AttackTimeTimer > 0)
             {
@@ -112,6 +133,48 @@ public class PlayerAttack : MonoBehaviour
             enemy.GetComponent<EnemyHealth>().TakeDamage(20);
         }
     }
+
+    IEnumerator Spell2Attack()
+    {
+        attacking = true; //nous attaquons
+        spell2CoolDownTimer = spell2CoolDown; //lancement du cooldown de l'attaque 
+        spell2AttackTimeTimer = spell2AttackTime; //lancement de l'animation
+
+        //lancer les animations A FAIRE!!!!!!
+
+        gameObject.GetComponent<PlayerMovement>().enabled = false; // On désactive le mouvement
+        GetComponent<Rigidbody>().AddForce(transform.forward * 4 , ForceMode.Impulse); // Fait sauter le joueur en avant
+        GetComponent<Rigidbody>().AddForce(transform.up * 6, ForceMode.Impulse);
+
+        isOnFloor = false;
+        while (isOnFloor == false) // On attend que le player touche de nouveau le sol
+        {
+            yield return null; 
+        }
+
+        gameObject.GetComponent<PlayerMovement>().enabled = true; // On redonne accès au mouvement
+        Collider[] hitEnemies = Physics.OverlapSphere(spell3AttackPoint.position, spell2AttackRange, enemyLayers); //infliger les degats aux ennemies
+
+        foreach (Collider enemy in hitEnemies) //infliger les degats aux ennemies
+        {
+            enemy.GetComponent<EnemyHealth>().TakeDamage(50); // 5 de degats est a titre de test, on appelera un fonction pour calculer les DD
+        }
+        spell2AttackTimeTimer = 0; // permet de reset attacking
+        GetComponent<Rigidbody>().velocity = Vector3.zero; // On annule l'impulsion du saut
+        yield return null;
+    }
+
+    void OnCollisionEnter(Collision collision) //Permet de savoir si le joueur a touché le sol 
+    {
+        if (collision.collider.name == "Floor") //Détecte une collision avec Floor
+        {
+            isOnFloor = true;
+        }
+    }
+
+
+
+
 
 
     IEnumerator Spell3Attack()
