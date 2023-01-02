@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    public LayerMask enemyLayers;
+    public LayerMask enemyLayers = 9;
     private bool attacking = false;
 
 

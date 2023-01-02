@@ -13,7 +13,7 @@ public class LootXp : MonoBehaviour
 
     void OnCollisionEnter(Collision collision) //Permet de savoir si le joueur a ramassé l'xp
     {
-        if (collision.collider.name == "Player") //Détecte une collision avec Player
+        if (collision.collider.tag == "Player") //Détecte une collision avec Player
         {
             GameObject.Find("XpBar").GetComponent<PlayerXp>().WinXp(1);
             Destroy(gameObject);
