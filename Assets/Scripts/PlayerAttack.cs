@@ -18,6 +18,8 @@ public class PlayerAttack : MonoBehaviour
     public float spell1CoolDown = 1f; //cooldown de l'attaque 1 (spell 1) 
     private float spell1CoolDownTimer = 0f;
 
+    private Animator playerAnimator;
+
 
 
 
@@ -44,6 +46,7 @@ public class PlayerAttack : MonoBehaviour
     private float spell3AttackTimeTimer = 0f;
     public float spell3CoolDown = 5f; //cooldown du spell 3 
     private float spell3CoolDownTimer = 0f;
+    [SerializeField] private float jumpForwardForce = 10;
 
 
 
@@ -52,7 +55,7 @@ public class PlayerAttack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        playerAnimator = gameObject.GetComponent<Animator>();
     }
 
 
@@ -62,7 +65,9 @@ public class PlayerAttack : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && spell1CoolDownTimer <= 0 && !attacking) //premiere attaque(spell 1), clic gauche
         {
             Debug.Log("trigger spell 1" + attacking);
-            Spell1Attack();
+            playerAnimator.SetTrigger("Trigger");
+            playerAnimator.SetFloat("Trigger Number", 2);
+            StartCoroutine(Spell1Attack());
         }
 
         if (Input.GetMouseButtonDown(1) && spell2CoolDownTimer <= 0 && !attacking) //deuxieme attaque(spell 2), clique droit
@@ -115,7 +120,7 @@ public class PlayerAttack : MonoBehaviour
 
     }
 
-    public void Spell1Attack()
+    public IEnumerator Spell1Attack()
     {
         attacking = true; //nous attaquons
         spell1CoolDownTimer = spell1CoolDown; //lancement du cooldown de l'attaque 
@@ -123,6 +128,7 @@ public class PlayerAttack : MonoBehaviour
 
         //lancer les animations A FAIRE!!!!!!
 
+        yield return new WaitForSeconds(spell1AttackTime);
 
         //detecter les enemy in range
         Collider[] hitEnemies = Physics.OverlapSphere(spell1AttackPoint.position, spell1AttackRange, enemyLayers);
@@ -132,6 +138,7 @@ public class PlayerAttack : MonoBehaviour
         {
             enemy.GetComponent<EnemyHealth>().TakeDamage(20);
         }
+        yield return null;
     }
 
     IEnumerator Spell2Attack()
@@ -142,9 +149,11 @@ public class PlayerAttack : MonoBehaviour
 
         //lancer les animations A FAIRE!!!!!!
 
+        playerAnimator.SetTrigger("Jump");
+
         gameObject.GetComponent<PlayerMovement>().enabled = false; // On désactive le mouvement
-        GetComponent<Rigidbody>().AddForce(transform.forward * 4 , ForceMode.Impulse); // Fait sauter le joueur en avant
         GetComponent<Rigidbody>().AddForce(transform.up * 6, ForceMode.Impulse);
+        GetComponent<Rigidbody>().AddForce(transform.forward * jumpForwardForce, ForceMode.Impulse); // Fait sauter le joueur en avant
 
         isOnFloor = false;
         while (isOnFloor == false) // On attend que le player touche de nouveau le sol

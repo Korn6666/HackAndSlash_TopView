@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private float translationForce = 20;
     private Camera cam;
     [SerializeField] private Vector3 mouseInWorld;
+    private Animator playerAnimator;
 
     
     Vector3 pos = new Vector3(200, 200, 0);
@@ -21,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Rbd = gameObject.GetComponent<Rigidbody>();
         cam = Camera.main;
+        playerAnimator = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -30,7 +32,14 @@ public class PlayerMovement : MonoBehaviour
         float sensX = Input.GetAxis("Horizontal");
         float sensZ = Input.GetAxis("Vertical");
         Vector3 directionInput = new Vector3(translationForce * sensX, 0, translationForce * sensZ);
-        Rbd.MovePosition(transform.position + directionInput * Time.deltaTime * speed);        
+
+        // Check si il bouge ou pas pour l'animation de mouvement
+        if (sensX != 0 || sensZ != 0)
+        {
+            Rbd.MovePosition(transform.position + directionInput * Time.deltaTime * speed);
+            playerAnimator.SetBool("Moving", true);
+        }else { playerAnimator.SetBool("Moving", false); }
+         
 
         //Direction du joueur vers la position de la souris
         Vector3 mouseInFloor = GetMousePositionOnPlane();
