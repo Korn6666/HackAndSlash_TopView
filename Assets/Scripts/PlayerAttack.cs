@@ -137,6 +137,7 @@ public class PlayerAttack : MonoBehaviour
         foreach (Collider enemy in hitEnemies)
         {
             enemy.GetComponent<EnemyHealth>().TakeDamage(20);
+            enemy.GetComponent<EnemyHealth>().TakeKnockBack(transform.position, -20);
         }
         yield return null;
     }
@@ -166,7 +167,8 @@ public class PlayerAttack : MonoBehaviour
 
         foreach (Collider enemy in hitEnemies) //infliger les degats aux ennemies
         {
-            enemy.GetComponent<EnemyHealth>().TakeDamage(50); // 5 de degats est a titre de test, on appelera un fonction pour calculer les DD
+            enemy.GetComponent<EnemyHealth>().TakeDamage(30); // 5 de degats est a titre de test, on appelera un fonction pour calculer les DD
+            enemy.GetComponent<EnemyHealth>().TakeKnockBack(transform.position, -50);
         }
         spell2AttackTimeTimer = 0; // permet de reset attacking
         GetComponent<Rigidbody>().velocity = Vector3.zero; // On annule l'impulsion du saut

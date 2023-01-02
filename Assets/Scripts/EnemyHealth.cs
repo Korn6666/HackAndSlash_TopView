@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
+    public GameObject lootXp; //Notre object pour donner 1 d'xp
+
     public float enemyMaxHealth = 100f;
     public float enemyHealth;
 
@@ -25,6 +27,12 @@ public class EnemyHealth : MonoBehaviour
     {
         enemyHealth -= damage;
         healthBar.SetHealth(enemyHealth);
+
+        if(enemyHealth <= 0)
+        {
+            Instantiate(lootXp, transform.position, transform.rotation); //fait spawn le loot xp
+            Destroy(gameObject); //Détruis l'ennemie
+        }
     }
 
     public void TakeHeal(float heal)
@@ -37,7 +45,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeKnockBack(Vector3 target, float knockbackPower)
     {
-        Vector3 dir = target - transform.position;
-        transform.Translate(dir.normalized * knockbackPower); // !!!on utilisera un addforce des que les rigied body seront ready!!!
+        Vector3 dir = Vector3.ProjectOnPlane(target - transform.position, new Vector3(0.0f, 1.0f, 0.0f));
+        GetComponent<Rigidbody>().AddForce(dir.normalized * knockbackPower, ForceMode.Impulse);
     }
 }
