@@ -162,6 +162,8 @@ public class PlayerAttack : MonoBehaviour
             yield return null; 
         }
 
+        playerAnimator.SetTrigger("OnFloor");
+
         gameObject.GetComponent<PlayerMovement>().enabled = true; // On redonne accès au mouvement
         Collider[] hitEnemies = Physics.OverlapSphere(spell3AttackPoint.position, spell2AttackRange, enemyLayers); //infliger les degats aux ennemies
 
