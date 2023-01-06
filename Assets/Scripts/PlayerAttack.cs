@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    public LayerMask enemyLayers;
+    public LayerMask enemyLayers = 9;
     private bool attacking = false;
 
 
@@ -17,6 +17,8 @@ public class PlayerAttack : MonoBehaviour
     private float spell1AttackTimeTimer = 0f;
     public float spell1CoolDown = 1f; //cooldown de l'attaque 1 (spell 1) 
     private float spell1CoolDownTimer = 0f;
+
+    private Animator playerAnimator;
 
 
 
@@ -44,6 +46,8 @@ public class PlayerAttack : MonoBehaviour
     private float spell3AttackTimeTimer = 0f;
     public float spell3CoolDown = 5f; //cooldown du spell 3 
     private float spell3CoolDownTimer = 0f;
+    [SerializeField] private float spell3WaitAnimationTime = 0.75f;
+    [SerializeField] private float jumpForwardForce = 10;
 
 
 
@@ -52,7 +56,7 @@ public class PlayerAttack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        playerAnimator = gameObject.GetComponent<Animator>();
     }
 
 
@@ -62,7 +66,8 @@ public class PlayerAttack : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && spell1CoolDownTimer <= 0 && !attacking) //premiere attaque(spell 1), clic gauche
         {
             Debug.Log("trigger spell 1" + attacking);
-            Spell1Attack();
+            playerAnimator.SetTrigger("BasicAttack");
+            StartCoroutine(Spell1Attack());
         }
 
         if (Input.GetMouseButtonDown(1) && spell2CoolDownTimer <= 0 && !attacking) //deuxieme attaque(spell 2), clique droit
@@ -115,7 +120,7 @@ public class PlayerAttack : MonoBehaviour
 
     }
 
-    public void Spell1Attack()
+    public IEnumerator Spell1Attack()
     {
         attacking = true; //nous attaquons
         spell1CoolDownTimer = spell1CoolDown; //lancement du cooldown de l'attaque 
@@ -123,6 +128,7 @@ public class PlayerAttack : MonoBehaviour
 
         //lancer les animations A FAIRE!!!!!!
 
+        yield return new WaitForSeconds(spell1AttackTime);
 
         //detecter les enemy in range
         Collider[] hitEnemies = Physics.OverlapSphere(spell1AttackPoint.position, spell1AttackRange, enemyLayers);
@@ -131,7 +137,9 @@ public class PlayerAttack : MonoBehaviour
         foreach (Collider enemy in hitEnemies)
         {
             enemy.GetComponent<EnemyHealth>().TakeDamage(20);
+            enemy.GetComponent<EnemyHealth>().TakeKnockBack(transform.position, -20);
         }
+        yield return null;
     }
 
     IEnumerator Spell2Attack()
@@ -142,9 +150,11 @@ public class PlayerAttack : MonoBehaviour
 
         //lancer les animations A FAIRE!!!!!!
 
+        playerAnimator.SetTrigger("JumpAttack");
+
         gameObject.GetComponent<PlayerMovement>().enabled = false; // On désactive le mouvement
-        GetComponent<Rigidbody>().AddForce(transform.forward * 4 , ForceMode.Impulse); // Fait sauter le joueur en avant
         GetComponent<Rigidbody>().AddForce(transform.up * 6, ForceMode.Impulse);
+        GetComponent<Rigidbody>().AddForce(transform.forward * jumpForwardForce, ForceMode.Impulse); // Fait sauter le joueur en avant
 
         isOnFloor = false;
         while (isOnFloor == false) // On attend que le player touche de nouveau le sol
@@ -152,12 +162,15 @@ public class PlayerAttack : MonoBehaviour
             yield return null; 
         }
 
+        //playerAnimator.SetTrigger("OnFloor");
+
         gameObject.GetComponent<PlayerMovement>().enabled = true; // On redonne accès au mouvement
         Collider[] hitEnemies = Physics.OverlapSphere(spell3AttackPoint.position, spell2AttackRange, enemyLayers); //infliger les degats aux ennemies
 
         foreach (Collider enemy in hitEnemies) //infliger les degats aux ennemies
         {
-            enemy.GetComponent<EnemyHealth>().TakeDamage(50); // 5 de degats est a titre de test, on appelera un fonction pour calculer les DD
+            enemy.GetComponent<EnemyHealth>().TakeDamage(30); // 5 de degats est a titre de test, on appelera un fonction pour calculer les DD
+            enemy.GetComponent<EnemyHealth>().TakeKnockBack(transform.position, -50);
         }
         spell2AttackTimeTimer = 0; // permet de reset attacking
         GetComponent<Rigidbody>().velocity = Vector3.zero; // On annule l'impulsion du saut
@@ -180,20 +193,23 @@ public class PlayerAttack : MonoBehaviour
     IEnumerator Spell3Attack()
     {
         attacking = true; //nous attaquons
-        spell3CoolDownTimer = spell3CoolDown; //lancement du cooldown de l'attaque 
+        spell3CoolDownTimer = spell3CoolDown; //lancement du cooldown de l'attaque
         spell3AttackTimeTimer = spell3AttackTime; //lancement de l'animation
+        playerAnimator.SetTrigger("360Attack");
+        yield return new WaitForSeconds(spell3WaitAnimationTime);
         float timer = 1f;
         while (attacking)
         {
             if (timer >= 1)
             {
+                Debug.Log("yaa");
                 Collider[] hitEnemies = Physics.OverlapSphere(spell3AttackPoint.position, spell3AttackRange, enemyLayers); //infliger les degats aux ennemies
 
                 foreach (Collider enemy in hitEnemies) //infliger les degats aux ennemies
                 {
                     enemy.GetComponent<EnemyHealth>().TakeDamage(5); // 5 de degats est a titre de test, on appelera un fonction pour calculer les DD
                 }
-
+                   
                 timer = 0f;
             }
             timer += Time.deltaTime;
