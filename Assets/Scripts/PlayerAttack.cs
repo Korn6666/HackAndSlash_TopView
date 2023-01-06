@@ -33,6 +33,7 @@ public class PlayerAttack : MonoBehaviour
     private float spell2AttackTimeTimer = 0f;
     public float spell2CoolDown = 5f; //cooldown de l'attaque 2 (spell 2) 
     private float spell2CoolDownTimer = 0f;
+    [SerializeField] private float animationJumpWait = 0.25f;
 
 
 
@@ -152,7 +153,11 @@ public class PlayerAttack : MonoBehaviour
 
         playerAnimator.SetTrigger("JumpAttack");
 
+
         gameObject.GetComponent<PlayerMovement>().enabled = false; // On désactive le mouvement
+
+        yield return new WaitForSeconds(animationJumpWait);
+
         GetComponent<Rigidbody>().AddForce(transform.up * 6, ForceMode.Impulse);
         GetComponent<Rigidbody>().AddForce(transform.forward * jumpForwardForce, ForceMode.Impulse); // Fait sauter le joueur en avant
 

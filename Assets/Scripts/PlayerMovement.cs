@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     private float translationForce = 20;
     private Camera cam;
     [SerializeField] private Vector3 mouseInWorld;
+    public LayerMask layerMaskRayCast;
+
     private Animator playerAnimator;
 
     
@@ -55,15 +57,15 @@ public class PlayerMovement : MonoBehaviour
         playerAnimator.SetFloat("Side", 0.2f*Side);
     }
 
-     public static Vector3 GetMousePositionOnPlane() 
+     private Vector3 GetMousePositionOnPlane() 
      {
          RaycastHit  hit;
          Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-         if(Physics.Raycast (ray, out hit)) 
+         if(Physics.Raycast (ray, out hit, 100,layerMaskRayCast)) 
          {
              Vector3 hitPoint = hit.point;
              hitPoint.y = 0;
- 
+            Debug.Log(hit.collider.name);
              return hitPoint;
  
          }
