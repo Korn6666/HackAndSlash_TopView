@@ -364,7 +364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15895fe8f2c7c8c41aa6057b8bbaf269, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnnemyTest: {fileID: 4287324209321267788, guid: 0c7b0ef2e1f71d24ea787d53d5f530cf,
+  EnnemyTest: {fileID: 5766972156923679058, guid: 66052d9d2d79845aeb324550a776af0c,
     type: 3}
 --- !u!4 &282872400
 Transform:
@@ -396,7 +396,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da30e93458f78584e956787c39dda63c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyTest: {fileID: 4287324209321267788, guid: 0c7b0ef2e1f71d24ea787d53d5f530cf,
+  EnemyTest: {fileID: 5766972156923679058, guid: 66052d9d2d79845aeb324550a776af0c,
     type: 3}
 --- !u!1001 &315187074
 PrefabInstance:
@@ -571,7 +571,7 @@ PrefabInstance:
     - target: {fileID: 1712829085075216473, guid: 8d55c1a62be454101a242d711e27430e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.21
+      value: 9.26
       objectReference: {fileID: 0}
     - target: {fileID: 1712829085075216473, guid: 8d55c1a62be454101a242d711e27430e,
         type: 3}
@@ -581,7 +581,7 @@ PrefabInstance:
     - target: {fileID: 1712829085075216473, guid: 8d55c1a62be454101a242d711e27430e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.2
+      value: 7.73
       objectReference: {fileID: 0}
     - target: {fileID: 1712829085075216473, guid: 8d55c1a62be454101a242d711e27430e,
         type: 3}
