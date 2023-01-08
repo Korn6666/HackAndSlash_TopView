@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2671199998619536273}
   - component: {fileID: 2685188112811088837}
   - component: {fileID: 2685188112811088833}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Loot Xp 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,8 +92,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.044794, y: 2.0544965, z: 3.1101043}
-  m_Center: {x: 0.0597046, y: 0.059428126, z: 0.16701028}
+  m_Size: {x: 3.2789705, y: 3.2945292, z: 4.9872704}
+  m_Center: {x: 0.0597046, y: 0.059428126, z: -0.44129762}
 --- !u!114 &2685188112811088833
 MonoBehaviour:
   m_ObjectHideFlags: 0

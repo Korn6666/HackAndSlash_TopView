@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
 
-    public float playerMaxHealth = 100f;
+    public static float playerMaxHealth = 100f;
     public float playerHealth;
 
     public HealthBar healthBar;
@@ -42,5 +42,11 @@ public class PlayerHealth : MonoBehaviour
         if(playerHealth > 100f) { playerHealth = 100f; }
 
         healthBar.SetHealth(playerHealth);
+    }
+
+    public void SetMaxHealthUpgrade() //Fonction à appeler lors d'une upgrade de point de vie
+    {
+        playerHealth = playerMaxHealth;
+        healthBar.SetMaxHealth(playerMaxHealth);
     }
 }

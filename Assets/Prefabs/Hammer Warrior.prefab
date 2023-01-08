@@ -1713,7 +1713,7 @@ GameObject:
   - component: {fileID: 7192180620936056845}
   - component: {fileID: 7192180620936056882}
   - component: {fileID: 7192180620936056881}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hammer Warrior
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1828,7 +1828,6 @@ MonoBehaviour:
   spell3AttackRange: 2
   spell3AttackTime: 3
   spell3CoolDown: 5
-  jumpForwardForce: 30
 --- !u!114 &7192180620936056881
 MonoBehaviour:
   m_ObjectHideFlags: 0

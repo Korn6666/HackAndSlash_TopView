@@ -7,6 +7,7 @@ public class PlayerXp : MonoBehaviour
 {
     public Slider slider; //Permet de modifier la bar d'xp
     [SerializeField] TMPro.TextMeshProUGUI textPlayerLevel;
+    [SerializeField] TMPro.TextMeshProUGUI xpText;
 
 
     public float currentXp;
@@ -38,6 +39,8 @@ public class PlayerXp : MonoBehaviour
     {
         currentXp += xpToAdd;
         SetXp(currentXp);
+        xpText.text = "Xp: "+currentXp.ToString()+"/"+levelUpXp.ToString(); // on change l'affichage de l'xp
+
         if (currentXp >= levelUpXp && playerLevel < 10)
         {
             LevelUp();
@@ -52,6 +55,7 @@ public class PlayerXp : MonoBehaviour
 
         currentXp = 0;
         SetXpToLevelUp(levelUpXp);
+        xpText.text = "Xp: " + currentXp.ToString() + "/" + levelUpXp.ToString(); // on change l'affichage de l'xp
     }
 
 

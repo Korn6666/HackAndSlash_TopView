@@ -6,7 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public float speed = 10f;
+    public static float speed = 2f;
+
     private Rigidbody Rbd;
     private float translationForce = 20;
     private Camera cam;
@@ -23,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
         Rbd = gameObject.GetComponent<Rigidbody>();
         cam = Camera.main;
         playerAnimator = gameObject.GetComponent<Animator>();
+        playerAnimator.applyRootMotion = false;
     }
 
     // Update is called once per frame
