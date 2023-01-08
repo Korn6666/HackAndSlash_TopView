@@ -29,7 +29,6 @@ public class PlayerAttack : MonoBehaviour
     public float spell2AttackRange = 10f;
     private bool isOnFloor; //Variable qui nous dit si le player est sur le sol ou non
     public static float spell2Damage = 2f; //Damages
-    public static float jumpForwardForce = 10;
 
     //Les conditions d'attaque : l'input pour attaquer, cooldown de l'attaque, vérifier que le personnage est en position pour attaquer (vérifier qu'un autre attaque n'est pas lancé)
     public float spell2AttackTime = 2f; //temps de l'animation de l'attaque 2 (spell 2) 
@@ -50,12 +49,12 @@ public class PlayerAttack : MonoBehaviour
     private float spell3AttackTimeTimer = 0f;
     public static float spell3CoolDown = 5f; //cooldown du spell 3 
     private float spell3CoolDownTimer = 0f;
-<<<<<<< HEAD
+
     public static float spell3Damage = 1f; //Damages
-=======
+
     [SerializeField] private float spell3WaitAnimationTime = 0.75f;
-    [SerializeField] private float jumpForwardForce = 10;
->>>>>>> ae0cfa18a0754babb875f0245ddab65f9f0d5dfd
+    [SerializeField] public static float jumpForwardForce = 10;
+
 
 
 
@@ -75,13 +74,13 @@ public class PlayerAttack : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && spell1CoolDownTimer <= 0 && !attacking) //premiere attaque(spell 1), clic gauche
         {
             Debug.Log("trigger spell 1" + attacking);
-<<<<<<< HEAD
+
             playerAnimator.SetTrigger("Trigger");
             playerAnimator.SetFloat("Trigger Number", 2);
             StartCoroutine(SkillsCooldown.Spell1Cooldown(spell1CoolDown));
-=======
+
             playerAnimator.SetTrigger("BasicAttack");
->>>>>>> ae0cfa18a0754babb875f0245ddab65f9f0d5dfd
+
             StartCoroutine(Spell1Attack());
         }
 
