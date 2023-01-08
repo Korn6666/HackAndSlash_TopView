@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     private float translationForce = 20;
     private Camera cam;
     [SerializeField] private Vector3 mouseInWorld;
+    public LayerMask layerMaskRayCast;
+
     private Animator playerAnimator;
 
     
@@ -49,17 +51,23 @@ public class PlayerMovement : MonoBehaviour
         Vector3 direction2DToLook = new Vector3(directionToLook.x, 0, directionToLook.z);
         Quaternion rotation = Quaternion.LookRotation(direction2DToLook);
         transform.rotation = rotation;
+
+        Vector3 NDTL = new Vector3(directionToLook.normalized.x, 0, directionToLook.normalized.z) ; // NDTL = NormalizeDirectionToLook. 
+        float Side = sensX * NDTL.z - sensZ * NDTL.x;
+        float Forward = sensZ * NDTL.z + sensX * NDTL.x;
+        playerAnimator.SetFloat("Forward", 0.2f*Forward);
+        playerAnimator.SetFloat("Side", 0.2f*Side);
     }
 
-     public static Vector3 GetMousePositionOnPlane() 
+     private Vector3 GetMousePositionOnPlane() 
      {
          RaycastHit  hit;
          Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-         if(Physics.Raycast (ray, out hit)) 
+         if(Physics.Raycast (ray, out hit, 100,layerMaskRayCast)) 
          {
              Vector3 hitPoint = hit.point;
              hitPoint.y = 0;
- 
+            Debug.Log(hit.collider.name);
              return hitPoint;
  
          }

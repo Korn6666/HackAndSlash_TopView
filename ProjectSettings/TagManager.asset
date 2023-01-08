@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Spawn
+  - Collide
   layers:
   - Default
   - TransparentFX
@@ -15,7 +17,11 @@ TagManager:
   - 
   - Player
   - Enemy
+<<<<<<< HEAD
   - XpLoot
+=======
+  - Floor
+>>>>>>> ae0cfa18a0754babb875f0245ddab65f9f0d5dfd
   - 
   - 
   - 
