@@ -12,6 +12,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private float speed = 5;
     [SerializeField] private float distanceSeuil = 3;
     private Animator Animator;
+    public bool canAttack;
 
 
     void Start()
@@ -30,11 +31,7 @@ public class EnemyMovement : MonoBehaviour
         }
         if (!player) return;
 
-        if ( GetComponent<EnemyAttack>().canAttack == false)
-        {
-            Animator.SetBool("ForwardSpeed", true);
-            Move();
-        }else { Animator.SetBool("ForwardSpeed", false); }
+        Move();
 
         transform.LookAt(player.transform);
     }
@@ -45,8 +42,21 @@ public class EnemyMovement : MonoBehaviour
         Vector3 direction2D = new Vector3(direction.x, 0, direction.z);
         if (direction2D.magnitude > distanceSeuil)
         {
-            direction2D = direction2D.normalized;
-            Rbd.MovePosition(transform.position + direction2D * Time.deltaTime * speed);
+            Vector3 Ndirection2D = direction2D.normalized;
+            Rbd.MovePosition(transform.position + Ndirection2D * Time.deltaTime * speed);
+
+            if (direction2D.magnitude > distanceSeuil + 1)
+            {
+                Animator.SetBool("ForwardSpeed", true);
+                Animator.SetBool("onPlayerContact", false);
+                canAttack = false;
+            }
+        } 
+        else 
+        {
+            Animator.SetBool("ForwardSpeed", false);
+            Animator.SetBool("onPlayerContact", true);
+            canAttack = true;
         }
         
     }

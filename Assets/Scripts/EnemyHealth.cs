@@ -45,7 +45,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeKnockBack(Vector3 target, float knockbackPower)
     {
-        Vector3 dir = Vector3.ProjectOnPlane(target - transform.position, new Vector3(0.0f, 1.0f, 0.0f));
+        Vector3 dir = Vector3.ProjectOnPlane(target - transform.position, new Vector3(0.0f, 5.0f, 0.0f));
         GetComponent<Rigidbody>().AddForce(dir.normalized * knockbackPower, ForceMode.Impulse);
     }
 }

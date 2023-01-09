@@ -67,7 +67,6 @@ public class PlayerMovement : MonoBehaviour
          {
              Vector3 hitPoint = hit.point;
              hitPoint.y = 0;
-            Debug.Log(hit.collider.name);
              return hitPoint;
  
          }

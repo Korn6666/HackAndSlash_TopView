@@ -73,10 +73,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && spell1CoolDownTimer <= 0 && !attacking) //premiere attaque(spell 1), clic gauche
         {
-            Debug.Log("trigger spell 1" + attacking);
 
-            playerAnimator.SetTrigger("Trigger");
-            playerAnimator.SetFloat("Trigger Number", 2);
             StartCoroutine(SkillsCooldown.Spell1Cooldown(spell1CoolDown));
 
             playerAnimator.SetTrigger("BasicAttack");
