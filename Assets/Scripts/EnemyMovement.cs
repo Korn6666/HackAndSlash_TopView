@@ -31,7 +31,10 @@ public class EnemyMovement : MonoBehaviour
         }
         if (!player) return;
 
+
         Move();
+       
+        
 
         transform.LookAt(player.transform);
     }

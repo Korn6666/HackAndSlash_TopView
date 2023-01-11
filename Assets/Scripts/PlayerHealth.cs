@@ -36,7 +36,7 @@ public class PlayerHealth : MonoBehaviour
         healthBar.SetHealth(playerHealth);
     }
 
-    void TakeHeal(float heal)
+    public void TakeHeal(float heal)
     {
         playerHealth += heal;
         if(playerHealth > 100f) { playerHealth = 100f; }
