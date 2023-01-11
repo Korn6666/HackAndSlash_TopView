@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2050,7 +2050,12 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f4997ed1570a9b543bc62ae1b98726ff,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f4997ed1570a9b543bc62ae1b98726ff,
+        type: 3}
+      propertyPath: m_TagString
+      value: Liche
       objectReference: {fileID: 0}
     - target: {fileID: 2563496969622287784, guid: f4997ed1570a9b543bc62ae1b98726ff,
         type: 3}
@@ -2310,7 +2315,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spellPoint: {fileID: 1158024045}
   isSpelling: 0
-  spellRange: 100
+  presence: 0
+  spellRange: 10
   spellDamage: 1
   spellHeal: 1
   Skeleton:
@@ -2705,6 +2711,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6583154367367009182, guid: 8823807650b8ab84cb709e8c03029838,
+        type: 3}
+      propertyPath: m_TagString
+      value: Skeleton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8823807650b8ab84cb709e8c03029838, type: 3}

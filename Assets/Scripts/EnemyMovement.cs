@@ -31,8 +31,14 @@ public class EnemyMovement : MonoBehaviour
         }
         if (!player) return;
 
-
-        Move();
+        if (gameObject.tag == "Liche")
+        {
+            if (!gameObject.GetComponent<LicheBehaviour>().isSpelling)
+            {
+                Move();
+            }
+        }else { Move(); }
+        
        
         
 
