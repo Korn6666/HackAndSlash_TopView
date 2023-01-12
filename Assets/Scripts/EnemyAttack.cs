@@ -8,9 +8,9 @@ public class EnemyAttack : MonoBehaviour
 {
     [SerializeField] private float swordAttackCoolDown = 1;
     [SerializeField] private float swordAttackAnimationTime = 0.03f; //Temps d'animation    
-    [SerializeField] private float swordAttackDamages = 5;    
+    [SerializeField] private float swordAttackDamages = 5;
 
-    public bool canAttack = false;
+    private bool canAttack;
     private GameObject player;
     private Animator Animator;
     private bool firstAttack = true;
@@ -20,16 +20,17 @@ public class EnemyAttack : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(WaitAndAttack()); 
+        StartCoroutine(WaitAndAttack());
+        player = GameObject.FindGameObjectWithTag("Player");
         Animator = gameObject.GetComponent<Animator>();
     }
 
     void Update()
     {
-
+        canAttack = gameObject.GetComponent<EnemyMovement>().canAttack;
     }
 
-    void OnCollisionEnter(Collision collision)
+    /*void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player")
         {
@@ -48,7 +49,8 @@ public class EnemyAttack : MonoBehaviour
             canAttack = false;
             Animator.SetBool("onPlayerContact", false);
         }
-    }
+    }*/ 
+
     public void SwordAttack()
     {
         player.GetComponent<PlayerHealth>().TakeDamage(swordAttackDamages);
@@ -58,15 +60,17 @@ public class EnemyAttack : MonoBehaviour
     {
         while (true)
         {
-            if (firstAttack) { yield return new WaitForSeconds(swordAttackCoolDown - swordAttackAnimationTime); }
+            //if (firstAttack) { yield return new WaitForSeconds(swordAttackCoolDown - swordAttackAnimationTime); }
 
             if (canAttack)
             {
-                Animator.SetBool("attack", true);
+                Animator.SetTrigger("Attack");
                 yield return new WaitForSeconds(swordAttackAnimationTime); //Histoire d'attendre de faire les degats quand l'épée touche le joueur
-                SwordAttack();
-                Animator.SetBool("attack", false);
-                yield return new WaitForSeconds(swordAttackCoolDown - swordAttackAnimationTime);
+                if (canAttack)
+                {
+                    SwordAttack();
+                    yield return new WaitForSeconds(swordAttackCoolDown - swordAttackAnimationTime);
+                }
             }
             yield return null;
         }

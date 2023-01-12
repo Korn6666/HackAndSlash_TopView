@@ -30,6 +30,22 @@ public class PlayerHealth : Health
         }
     }
 
+<<<<<<< HEAD
+=======
+    public void TakeDamage(float damage)
+    {
+        playerHealth -= damage;
+        healthBar.SetHealth(playerHealth);
+    }
+
+    public void TakeHeal(float heal)
+    {
+        playerHealth += heal;
+        if(playerHealth > 100f) { playerHealth = 100f; }
+
+        healthBar.SetHealth(playerHealth);
+    }
+>>>>>>> 57e9f8eb795dc406c4d893aa80d6cc369a2921c3
 
     public void SetMaxHealthUpgrade() //Fonction à appeler lors d'une upgrade de point de vie
     {

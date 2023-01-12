@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Spawn
+  - Liche
+  - Skeleton
   layers:
   - Default
   - TransparentFX
@@ -16,9 +19,15 @@ TagManager:
   - Player
   - Enemy
   - XpLoot
+<<<<<<< HEAD
   - 
   - Environment
   - Projectiles
+=======
+  - Floor
+  - 
+  - 
+>>>>>>> 57e9f8eb795dc406c4d893aa80d6cc369a2921c3
   - 
   - 
   - 
