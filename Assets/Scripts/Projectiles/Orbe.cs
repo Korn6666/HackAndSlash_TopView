@@ -7,7 +7,6 @@ public class Orbe : Projectiles
 {
     private GameObject playerPivot;
     private float orbeHitCount;
-    private float timer;
     private List<Collider> alreadyHit; //list pour stocker les enemy deja touché
 
     // Start is called before the first frame update
@@ -54,7 +53,7 @@ public class Orbe : Projectiles
 
     IEnumerator OrbeLifeTime() // temps de vie de 5 sec
     {
-        yield return new WaitForSeconds(25f);
+        yield return new WaitForSeconds(5f);
         OrbeDestroy();
     }
 

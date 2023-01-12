@@ -84,7 +84,7 @@ public class LicheBehaviour : MonoBehaviour
                         presence = true;
                     }else if (entity.tag == "Skeleton" || entity.tag == "TheOtherEnemy")
                     {
-                        entity.GetComponent<EnemyHealth>().TakeHeal(spellHeal);
+                        entity.GetComponent<EnemyHealth>().TakeDamage(-spellHeal);
                         presence = true;
                     }
                 }

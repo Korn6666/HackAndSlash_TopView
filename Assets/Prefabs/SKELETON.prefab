@@ -257,7 +257,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3027600075724379398}
   - component: {fileID: 3027600075724379393}
-  - component: {fileID: 3027600075724379392}
+  - component: {fileID: 32165353727308390}
   m_Layer: 0
   m_Name: HealthBar
   m_TagString: Untagged
@@ -283,8 +283,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.08001709, y: 1.1719971}
-  m_SizeDelta: {x: -1108.6975, y: -647.098}
+  m_AnchoredPosition: {x: 0.8334961, y: 1.0672913}
+  m_SizeDelta: {x: -1432.1387, y: -755.2993}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3027600075724379393
 MonoBehaviour:
@@ -336,7 +336,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &3027600075724379392
+--- !u!114 &32165353727308390
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -345,10 +345,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3027600075724379395}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1adb9f708a350704f9991da91dfd8876, type: 3}
+  m_Script: {fileID: 11500000, guid: 167c85ab9eac580408b5f4d10bc62734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 3027600075724379393}
+  enemyPosition: {fileID: 6583154367367009182}
 --- !u!1 &6582888559040594154
 GameObject:
   m_ObjectHideFlags: 0
@@ -968,10 +969,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41b74cf423185f845ad46df5416e2f16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lootXp: {fileID: 0}
-  enemyMaxHealth: 10
-  enemyHealth: 0
-  healthBar: {fileID: 3027600075724379392}
+  maxHealth: 10
+  health: 0
+  healthBar: {fileID: 32165353727308390}
+  lootXp: {fileID: 2684209001408372119, guid: 45caee186086e1e48aaca8237206d0b0, type: 3}
 --- !u!1 &6583157360025447396
 GameObject:
   m_ObjectHideFlags: 0

@@ -40,10 +40,6 @@ public class PlayerWarriorAttack : PlayerAttack
     {
         if (Input.GetMouseButtonDown(0) && spell1CoolDownTimer <= 0 && !attacking) //premiere attaque(spell 1), clic gauche
         {
-<<<<<<< HEAD:Assets/Scripts/Player/PlayerWarriorAttack.cs
-=======
-
->>>>>>> 57e9f8eb795dc406c4d893aa80d6cc369a2921c3:Assets/Scripts/PlayerAttack.cs
             StartCoroutine(SkillsCooldown.Spell1Cooldown(spell1CoolDown));
             StartCoroutine(Spell1Attack());
         }

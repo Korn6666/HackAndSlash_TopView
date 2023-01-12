@@ -4,9 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Spawn
-  - Liche
-  - Skeleton
+  - Player HealthBar
   layers:
   - Default
   - TransparentFX
@@ -19,15 +17,9 @@ TagManager:
   - Player
   - Enemy
   - XpLoot
-<<<<<<< HEAD
-  - 
+  - Floor
   - Environment
   - Projectiles
-=======
-  - Floor
-  - 
-  - 
->>>>>>> 57e9f8eb795dc406c4d893aa80d6cc369a2921c3
   - 
   - 
   - 

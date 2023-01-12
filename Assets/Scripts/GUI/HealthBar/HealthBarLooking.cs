@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class HealthBarLooking : HealthBar
 {
-    public Camera main_camera;
+    private GameObject main_camera;
     public GameObject enemyPosition;
 
+    private void Start()
+    {
+        main_camera = GameObject.Find("Main Camera").gameObject;
+    }
     // Update is called once per frame
     void Update()
     {

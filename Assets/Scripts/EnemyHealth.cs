@@ -22,16 +22,4 @@ public class EnemyHealth : Health
             health = maxHealth;
         }
     }
-
-
-
-<<<<<<< HEAD
-
-=======
-    public void TakeKnockBack(Vector3 target, float knockbackPower)
-    {
-        Vector3 dir = Vector3.ProjectOnPlane(target - transform.position, new Vector3(0.0f, 5.0f, 0.0f));
-        GetComponent<Rigidbody>().AddForce(dir.normalized * knockbackPower, ForceMode.Impulse);
-    }
->>>>>>> 57e9f8eb795dc406c4d893aa80d6cc369a2921c3
 }
