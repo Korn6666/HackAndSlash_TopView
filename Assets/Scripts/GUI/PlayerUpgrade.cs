@@ -7,7 +7,11 @@ using System.Linq;
 public class PlayerUpgrade : MonoBehaviour
 {
     private GameObject player;
-    public static string playerClasse;
+    private PlayerAttack playerAttack;
+    private PlayerMovement playerMovement;
+    private PlayerHealth playerHealth;
+    private PlayerWarriorAttack playerWarriorAttack;
+    private PlayerMageAttack playerMageAttack;
 
     [SerializeField] private GameObject canvasUpgrade;
     [SerializeField] private GameObject canvasBlackBackground;
@@ -22,39 +26,52 @@ public class PlayerUpgrade : MonoBehaviour
     private List<Upgrade> selectedUpgrades;
     private bool isPaused; //Permet de savoir si le jeu est en pause
 
-
+    //Ajouter des images ici //////////////////////////////////////
     //List des sprites à utiliser 
     [SerializeField] private Sprite speedUpgradeSprite;
-    [SerializeField] private Sprite spell1Sprite;
-    [SerializeField] private Sprite spell2Sprite;
-    [SerializeField] private Sprite spell3Sprite;
     [SerializeField] private Sprite healthPointUpgradeSprite;
 
     // Start is called before the first frame update
     void Start()
     {
-        playerClasse = "warrior"; // Pour tester
         canvasUpgrade.SetActive(false);
         canvasBlackBackground.SetActive(false);
         player = GameObject.FindGameObjectsWithTag("Player")[0];
+        playerAttack = player.GetComponent<PlayerAttack>();
+        //playerMovement = player.GetComponent<PlayerMovement>();
+        //playerHealth = player.GetComponent<PlayerHealth>();
 
         //Global upgrade
         allUpgrades.Add(new Upgrade("PLayerSpeedUpgrade", "Increase move speed by 20%", PlayerMovement.speed, 1f, 0.20f, speedUpgradeSprite));
-        allUpgrades.Add(new Upgrade("PLayerSpell1CoolDownUpgrade", "Reduce skill 1 cooldown", PlayerAttack.spell1CoolDown, 1f, -0.20f, spell1Sprite));
-        allUpgrades.Add(new Upgrade("PLayerSpell2CoolDownUpgrade", "Reduce skill 2 cooldown", PlayerAttack.spell2CoolDown, 1f, -0.20f, spell2Sprite));
-        allUpgrades.Add(new Upgrade("PLayerSpell3CoolDownUpgrade", "Reduce skill 3 cooldown", PlayerAttack.spell3CoolDown, 1f, -0.20f, spell3Sprite));
+        allUpgrades.Add(new Upgrade("PLayerSpell1CoolDownUpgrade", "Reduce skill 1 cooldown", playerAttack.spell1CoolDown, 1f, -0.20f, GameManager.instance.playerSpell1Sprite));
+        allUpgrades.Add(new Upgrade("PLayerSpell2CoolDownUpgrade", "Reduce skill 2 cooldown", playerAttack.spell2CoolDown, 1f, -0.20f, GameManager.instance.playerSpell2Sprite));
+        allUpgrades.Add(new Upgrade("PLayerSpell3CoolDownUpgrade", "Reduce skill 3 cooldown", playerAttack.spell3CoolDown, 1f, -0.20f, GameManager.instance.playerSpell3Sprite));
         allUpgrades.Add(new Upgrade("PLayerHealthPointUpgrade", "Increase your health by 20% and regen it", PlayerHealth.playerMaxHealth, 1f, 0.20f, healthPointUpgradeSprite));
 
 
         //warrior upgrade
-        if(playerClasse == "warrior")
+        if(GameManager.instance.playerClasse == "warrior")
         {
-            allUpgrades.Add(new Upgrade("WarriorSpell1Damage", "Increase basic attack damage by 20%", PlayerAttack.spell1Damage, 1f, 0.20f, spell1Sprite));
-            allUpgrades.Add(new Upgrade("WarriorSpell2Damage", "Increase jump attack damage by 30%", PlayerAttack.spell2Damage, 1f, 0.30f, spell2Sprite));
-            allUpgrades.Add(new Upgrade("WarriorSpell3Damage", "Increase spin attack damage by 25%", PlayerAttack.spell3Damage, 1f, 0.25f, spell3Sprite));
-            allUpgrades.Add(new Upgrade("WarriorSpell2Range", "Increase jump range by 10%", PlayerAttack.jumpForwardForce, 1f, 0.10f, spell2Sprite));
-            allUpgrades.Add(new Upgrade("WarriorSpell3Range", "Increase spin AOE range by 20%", PlayerAttack.spell3AttackRange, 1f, 0.20f, spell3Sprite));
-        } 
+            playerWarriorAttack = player.GetComponent<PlayerWarriorAttack>();
+
+            allUpgrades.Add(new Upgrade("WarriorSpell1Damage", "Increase basic attack damage by 20%", playerAttack.spell1Damage, 1f, 0.20f, GameManager.instance.playerSpell1Sprite));
+            allUpgrades.Add(new Upgrade("WarriorSpell2Damage", "Increase jump attack damage by 30%", playerAttack.spell2Damage, 1f, 0.30f, GameManager.instance.playerSpell2Sprite));
+            allUpgrades.Add(new Upgrade("WarriorSpell3Damage", "Increase spin attack damage by 25%", playerAttack.spell3Damage, 1f, 0.25f, GameManager.instance.playerSpell3Sprite));
+            allUpgrades.Add(new Upgrade("WarriorSpell2Range", "Increase jump range by 10%", playerWarriorAttack.jumpForwardForce, 1f, 0.10f, GameManager.instance.playerSpell2Sprite));
+            allUpgrades.Add(new Upgrade("WarriorSpell3Range", "Increase spin AOE range by 20%", playerWarriorAttack.spell3AttackRange, 1f, 0.20f, GameManager.instance.playerSpell3Sprite));
+        }
+
+        //mage upgrade
+        if (GameManager.instance.playerClasse == "mage")
+        {
+            playerMageAttack = player.GetComponent<PlayerMageAttack>();
+
+            allUpgrades.Add(new Upgrade("MageSpell1Damage", "Increase fire ball attack damage by 20%", playerAttack.spell1Damage, 1f, 0.20f, GameManager.instance.playerSpell1Sprite));
+            allUpgrades.Add(new Upgrade("MageSpell2Knockback", "Add knockback to the orb", playerMageAttack.spell2Knockback, 1f, 0.20f, GameManager.instance.playerSpell2Sprite));
+            allUpgrades.Add(new Upgrade("MageSpell2HitCount", "Increases the number of enemies hit by the orb", playerMageAttack.spell2HitCount, 1f, 2f, GameManager.instance.playerSpell2Sprite));
+            allUpgrades.Add(new Upgrade("MageSpell3Scale", "Increase ice wall size by 10%", playerMageAttack.spell3WallScale, 1f, 0.20f, GameManager.instance.playerSpell3Sprite));
+            allUpgrades.Add(new Upgrade("MageSpell3Damage", "Add damage to the ice wall", playerMageAttack.spell3Damage, 1f, 0.10f, GameManager.instance.playerSpell3Sprite));
+        }
     }
 
     private class Upgrade
@@ -157,19 +174,19 @@ public class PlayerUpgrade : MonoBehaviour
             case "PLayerSpell1CoolDownUpgrade":
                 up.level += 1;
                 up.upgrade += up.value;
-                PlayerAttack.spell1CoolDown = up.baseValue * up.upgrade;
+                playerAttack.spell1CoolDown = up.baseValue * up.upgrade;
                 break;
 
             case "PLayerSpell2CoolDownUpgrade":
                 up.level += 1;
                 up.upgrade += up.value;
-                PlayerAttack.spell2CoolDown = up.baseValue * up.upgrade;
+                playerAttack.spell2CoolDown = up.baseValue * up.upgrade;
                 break;
 
             case "PLayerSpell3CoolDownUpgrade":
                 up.level += 1;
                 up.upgrade += up.value;
-                PlayerAttack.spell3CoolDown = up.baseValue * up.upgrade;
+                playerAttack.spell3CoolDown = up.baseValue * up.upgrade;
                 break;
 
             case "PLayerHealthPointUpgrade":
@@ -182,31 +199,70 @@ public class PlayerUpgrade : MonoBehaviour
             case "WarriorSpell1Damage":
                 up.level += 1;
                 up.upgrade += up.value;
-                PlayerAttack.spell1Damage = up.baseValue * up.upgrade;
+                playerAttack.spell1Damage = up.baseValue * up.upgrade;
                 break;
 
             case "WarriorSpell2Damage":
                 up.level += 1;
                 up.upgrade += up.value;
-                PlayerAttack.spell2Damage = up.baseValue * up.upgrade;
+                playerAttack.spell2Damage = up.baseValue * up.upgrade;
                 break;
 
             case "WarriorSpell3Damage":
                 up.level += 1;
                 up.upgrade += up.value;
-                PlayerAttack.spell3Damage = up.baseValue * up.upgrade;
+                playerAttack.spell3Damage = up.baseValue * up.upgrade;
                 break;
 
             case "WarriorSpell2Range":
                 up.level += 1;
                 up.upgrade += up.value;
-                PlayerAttack.jumpForwardForce = up.baseValue * up.upgrade;
+                playerWarriorAttack.jumpForwardForce = up.baseValue * up.upgrade;
                 break;
 
             case "WarriorSpell3Range":
                 up.level += 1;
                 up.upgrade += up.value;
-                PlayerAttack.spell3AttackRange = up.baseValue * up.upgrade;
+                playerWarriorAttack.spell3AttackRange = up.baseValue * up.upgrade;
+                break;
+
+            case "MageSpell1Damage":
+                up.level += 1;
+                up.upgrade += up.value;
+                playerAttack.spell1Damage = up.baseValue * up.upgrade;
+                break;
+
+            case "MageSpell2Knockback":
+                if(up.level == 1)
+                {
+                    up.baseValue = -20f;
+                    up.description = "Increase orb knockback by 20%";
+                }
+                up.level += 1;
+                up.upgrade += up.value;
+                playerMageAttack.spell2Knockback = up.baseValue * up.upgrade;
+                break;
+
+            case "MageSpell2HitCount":
+                up.level += 1;
+                playerMageAttack.spell2HitCount += ((int)up.value);
+                break;
+
+            case "MageSpell3Scale":
+                up.level += 1;
+                up.upgrade += up.value;
+                playerMageAttack.spell3WallScale = up.baseValue * up.upgrade;
+                break;
+
+            case "MageSpell3Damage":
+                if (up.level == 1)
+                {
+                    up.baseValue = 10f;
+                    up.description = "Increase ice wall damage by 10%";
+                }
+                up.level += 1;
+                up.upgrade += up.value;
+                playerAttack.spell3Damage = up.baseValue * up.upgrade;
                 break;
 
         }

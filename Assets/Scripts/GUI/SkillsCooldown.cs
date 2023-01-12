@@ -19,19 +19,11 @@ public class SkillsCooldown : MonoBehaviour
     [SerializeField] public TMPro.TextMeshProUGUI spell2Timer;
     [SerializeField] public TMPro.TextMeshProUGUI spell3Timer;
 
-
-    //Warrior
-    [SerializeField] private Sprite warriorSpell1Sprite;
-    [SerializeField] private Sprite warriorSpell2Sprite;
-    [SerializeField] private Sprite warriorSpell3Sprite;
-
-
     // Start is called before the first frame update
     void Start()
     {
         instance = this;
 
-        string playerClasse = PlayerUpgrade.playerClasse; //Bug ici, il faut la mettre dans le player sans doute
         spell1ImageCooldown.fillAmount = 0f;
         spell2ImageCooldown.fillAmount = 0f;
         spell3ImageCooldown.fillAmount = 0f;
@@ -39,15 +31,10 @@ public class SkillsCooldown : MonoBehaviour
         spell1Timer.text = "";
         spell2Timer.text = "";
         spell3Timer.text = "";
-
-        playerClasse = "warrior"; //Pour le test
-        if (playerClasse == "warrior")
-        {
-            spell1Image.sprite = warriorSpell1Sprite;
-            spell2Image.sprite = warriorSpell2Sprite;
-            spell3Image.sprite = warriorSpell3Sprite;
-        }
-        
+        Debug.Log(GameManager.instance.playerSpell1Sprite);
+        spell1Image.sprite = GameManager.instance.playerSpell1Sprite; // on recup les sprites des images grace au game manager
+        spell2Image.sprite = GameManager.instance.playerSpell2Sprite;
+        spell3Image.sprite = GameManager.instance.playerSpell3Sprite;
     }
 
 

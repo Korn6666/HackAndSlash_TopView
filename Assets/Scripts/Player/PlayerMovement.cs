@@ -59,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
         playerAnimator.SetFloat("Side", 0.2f*Side);
     }
 
-     private Vector3 GetMousePositionOnPlane() 
+     public Vector3 GetMousePositionOnPlane() 
      {
          RaycastHit  hit;
          Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -67,7 +67,6 @@ public class PlayerMovement : MonoBehaviour
          {
              Vector3 hitPoint = hit.point;
              hitPoint.y = 0;
-            Debug.Log(hit.collider.name);
              return hitPoint;
  
          }

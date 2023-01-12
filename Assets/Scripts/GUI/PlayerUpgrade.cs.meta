@@ -1,14 +1,10 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Scripts/PlayerUpgrade.cs.meta
 guid: 77fe1e7d4a60cc347882d300478f90fc
-========
-guid: da30e93458f78584e956787c39dda63c
->>>>>>>> ae0cfa18a0754babb875f0245ddab65f9f0d5dfd:Assets/Scripts/SpawnEnemy.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences: []
-  executionOrder: 0
+  executionOrder: 300
   icon: {instanceID: 0}
   userData: 
   assetBundleName: 
