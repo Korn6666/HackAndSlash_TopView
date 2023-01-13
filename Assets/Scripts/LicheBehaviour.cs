@@ -19,35 +19,46 @@ public class LicheBehaviour : MonoBehaviour
     private float spellTimeTimer;
     [SerializeField] private float TimeBetweenAttackOrHeal = 1;
 
+    private Animator Animator;
+    [SerializeField] private float waitForAnimation = 1.2f;
+    [SerializeField] private float  waitForAnimationTimer;
+
 
 
     
     void Start()
     {
-       spellTimeTimer = spellTime;
-       isSpelling = false;
+        Animator = gameObject.GetComponent<Animator>();
+        spellTimeTimer = spellTime;
+        isSpelling = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        bool canAttack = gameObject.GetComponent<EnemyMovement>().canAttack;
+
         // Pour vérifier si il doit lancer le sort
         Collider[] hitEntities = Physics.OverlapSphere(spellPoint.position, spellRange);
         foreach (Collider entity in hitEntities)
         {
             if ( entity.tag == "Player" || entity.tag == "Skeleton" || entity.tag == "OtherEnemy")
             {
-                if (CoolDownTimer <= 0)
+                if (CoolDownTimer <= 0 && !canAttack)
                 {
                     StartCoroutine(Spell());
                 }
             }
         }
 
-        // CoolDown
+        // CoolDown & waitForAnimation
         if (CoolDownTimer > 0)
         {
             CoolDownTimer -= Time.deltaTime;
+        }
+        else if (waitForAnimation > 0)
+        {
+           //s waitForAnimationTimer -= Time.deltaTime;
         }
 
         //Casting
@@ -61,14 +72,20 @@ public class LicheBehaviour : MonoBehaviour
                 isSpelling = false; 
             }
         }
+
+        //Animation
+        Animator.SetBool("isSpelling", isSpelling);
+
     }
 
     private IEnumerator Spell()
     {
         isSpelling = true;
         spellTimeTimer = spellTime;
-        CoolDownTimer = CoolDown;
+        
 
+        //yield return new WaitForSeconds(waitForAnimation);
+        CoolDownTimer = CoolDown - waitForAnimation;
         float Timer = 1.1f;
         while (isSpelling)
         {

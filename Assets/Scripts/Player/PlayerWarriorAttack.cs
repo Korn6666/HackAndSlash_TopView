@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerWarriorAttack : PlayerAttack
 {
     private Animator playerAnimator;
+    private Rigidbody Rgbd;
 
 
     //SPELL 1
@@ -31,6 +32,7 @@ public class PlayerWarriorAttack : PlayerAttack
     // Start is called before the first frame update
     void Start()
     {
+        Rgbd = gameObject.GetComponent<Rigidbody>();
         playerAnimator = gameObject.GetComponent<Animator>();
         playerAnimator.applyRootMotion = false;
     }
