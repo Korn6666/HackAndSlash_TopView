@@ -56,15 +56,21 @@ public class EnemyMovement : MonoBehaviour
 
             if (direction2D.magnitude > distanceSeuil + 1)
             {
-                Animator.SetBool("ForwardSpeed", true);
-                Animator.SetBool("onPlayerContact", false);
+                if (gameObject.tag == "Skeleton")
+                {
+                    Animator.SetBool("ForwardSpeed", true);
+                    Animator.SetBool("onPlayerContact", false);
+                }
                 canAttack = false;
             }
         } 
         else 
         {
-            Animator.SetBool("ForwardSpeed", false);
-            Animator.SetBool("onPlayerContact", true);
+            if (gameObject.tag == "Skeleton")
+            {
+                Animator.SetBool("ForwardSpeed", false);
+                Animator.SetBool("onPlayerContact", true);
+            }
             canAttack = true;
         }
         

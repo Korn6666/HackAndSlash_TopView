@@ -11,7 +11,7 @@ public class LicheBehaviour : MonoBehaviour
     [SerializeField] float spellRange = 10;
     [SerializeField] float spellDamage = 1;
     [SerializeField] float spellHeal = 1;
-    [SerializeField] private LayerMask Skeleton;
+    //[SerializeField] private LayerMask Skeleton;
     [SerializeField] private float CoolDown = 10;
     private float CoolDownTimer;
 
@@ -89,7 +89,7 @@ public class LicheBehaviour : MonoBehaviour
         float Timer = 1.1f;
         while (isSpelling)
         {
-            if (Timer > 1)
+            if (Timer > TimeBetweenAttackOrHeal)
             {
                 Collider[] hitEntities = Physics.OverlapSphere(spellPoint.position, spellRange);
                 presence = false;
