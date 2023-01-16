@@ -13,7 +13,7 @@ public class EnemyAttack : MonoBehaviour
     private bool canAttack;
     private GameObject player;
     private Animator Animator;
-    private bool firstAttack = true;
+    //private bool firstAttack = true;
 
 
 

@@ -60,9 +60,8 @@ public class EnemyMovement : MonoBehaviour
                 {
                     Animator.SetBool("ForwardSpeed", true);
                     Animator.SetBool("onPlayerContact", false);
-                    canAttack = false;
                 }
-      
+                canAttack = false;
             }
         } 
         else 
@@ -71,8 +70,8 @@ public class EnemyMovement : MonoBehaviour
             {
                 Animator.SetBool("ForwardSpeed", false);
                 Animator.SetBool("onPlayerContact", true);
-                canAttack = true;
             }
+            canAttack = true;
         }
         
     }
