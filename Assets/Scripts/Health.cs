@@ -9,11 +9,13 @@ public class Health : MonoBehaviour
     public float health;
 
     public HealthBar healthBar;
+    public GameObject spawnEnemy;
     // Start is called before the first frame update
     void Start()
     {
         health = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+        spawnEnemy = GameObject.FindGameObjectWithTag("Spawn");
     }
 
     // Update is called once per frame

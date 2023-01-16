@@ -6,12 +6,17 @@ public class WaveManager : MonoBehaviour
 {
     // Start is called before the first frame update
     private float waitnextwave=5f;
-    private float waitnextspawn=1f;
+    private float waitnextspawn=0.5f;
     private int activeEnemyCount = 0;
-    public GameObject EnnemyTest;
+    public int currentWave; // Numéro de la vague
+
     void Start()
     {
-        StartCoroutine(StartWavesRoutine());
+        StartCoroutine(WavesRoutine());
+    }
+
+    private void Update()
+    {
     }
     public void DecrementEnemyCount()
     {
@@ -22,35 +27,37 @@ public class WaveManager : MonoBehaviour
     }
     public void OnDestroy()
     {
-        if (tag.Equals("Enemy"))
-        {
-            DecrementEnemyCount();
-        }
+
+        DecrementEnemyCount();
+        
     }
 
-    private IEnumerator StartWavesRoutine()
+    private IEnumerator WavesRoutine()
     {
-        int tempo = 0;
-        int Wavetampon = 0;
-        int currentWave = 1;
+        int tampo = 1;
+        int Wavetampon = 1;
+        int currentWaveNbEnemy = 1;
+        currentWave = 1;
         while (activeEnemyCount < 500)
         {
             yield return new WaitForSeconds(waitnextwave);
-            for (int i=0; i<=currentWave/2-1; i++)
+            for (int i=1; i<=currentWaveNbEnemy; i++)
             {
                 FindObjectOfType<SpawnEnemy>().StartSpawnEnemy();
-                FindObjectOfType<SpawnEnemy>().StartSpawnEnemy();
+                activeEnemyCount += 1;
                 yield return new WaitForSeconds(waitnextspawn);
             }
-            if (currentWave % 2 != 0)
+
+            tampo = currentWaveNbEnemy;
+            currentWaveNbEnemy = currentWaveNbEnemy + Wavetampon; 
+            Wavetampon = tampo;
+
+            while (activeEnemyCount > 0)
             {
-                FindObjectOfType<SpawnEnemy>().StartSpawnEnemy();
-                yield return new WaitForSeconds(waitnextspawn);
+                yield return null;
             }
-            tempo = currentWave;
-            currentWave = currentWave + Wavetampon;
-            Wavetampon = tempo;
-            
+
+            currentWave += 1;
         }
     }
 

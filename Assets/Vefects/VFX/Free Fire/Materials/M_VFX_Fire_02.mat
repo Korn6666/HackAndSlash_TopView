@@ -24,7 +24,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MaskMoveTexture:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: cd946dcaa5face64fb135a09e293d277, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMove_Texture:
@@ -52,7 +52,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Noise_02_Texture:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: f1b6b10620016be45b38159cac55e09b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture:
@@ -165,4 +165,3 @@ Material:
     - _Noise_01_Speed: {r: 0.5, g: 0.5, b: 0, a: 0}
     - _Noise_02_Scale: {r: 1, g: 1, b: 0, a: 0}
     - _Noise_02_Speed: {r: 0, g: 0, b: 0, a: 0}
-  m_BuildTextureStacks: []
