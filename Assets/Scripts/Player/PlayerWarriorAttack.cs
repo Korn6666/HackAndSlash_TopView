@@ -11,6 +11,7 @@ public class PlayerWarriorAttack : PlayerAttack
     //SPELL 1
     public Transform spell1AttackPoint;
     public float spell1AttackRange = 1.5f;
+    private float knockbackPower;
     //[SerializeField] private float spell1WaitAnimationTime = 2f;
 
 
@@ -35,6 +36,7 @@ public class PlayerWarriorAttack : PlayerAttack
         Rgbd = gameObject.GetComponent<Rigidbody>();
         playerAnimator = gameObject.GetComponent<Animator>();
         playerAnimator.applyRootMotion = false;
+        knockbackPower = -11;
     }
 
     // Update is called once per frame
@@ -92,8 +94,12 @@ public class PlayerWarriorAttack : PlayerAttack
         //infliger les degats aux ennemies
         foreach (Collider enemy in hitEnemies)
         {
-            enemy.GetComponent<EnemyHealth>().TakeDamage(spell1Damage);
-            enemy.GetComponent<EnemyHealth>().TakeKnockBack(transform.position, -11);
+            if (!enemy.isTrigger)
+            {
+                enemy.GetComponent<EnemyHealth>().TakeDamage(spell1Damage);
+                enemy.GetComponent<EnemyHealth>().TakeKnockBack(transform.position, knockbackPower);
+            }
+  
         }
         attacking = false;
         yield return null;

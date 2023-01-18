@@ -2475,6 +2475,7 @@ MonoBehaviour:
   maxHealth: 40
   health: 0
   healthBar: {fileID: 0}
+  spawnEnemy: {fileID: 0}
 --- !u!114 &7830707400683826778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2504,13 +2505,16 @@ MonoBehaviour:
   fireBall: {fileID: 5130948299074880304, guid: 3aab7fdf1f870c64dbda622a232828a0,
     type: 3}
   spell1Range: 2
+  waitForAnimationSpellAttack: 0.9
   orbe: {fileID: 90217176739647289, guid: 13720f5aa7a5ab346be9cfb88ba01cf9, type: 3}
   spell2Range: 1
   spell2Knockback: 0
   spell2HitCount: 5
+  waitForAnimationOrbeSpell: 1.8
   wall: {fileID: 4165491858310426640, guid: bf90fced0010b364fbebc5673d9f8ca2, type: 3}
   spell3Range: 3
   spell3WallScale: 1
+  waitForAnimationWallSpell: 1.2
 --- !u!1 &8553827711968160042
 GameObject:
   m_ObjectHideFlags: 0

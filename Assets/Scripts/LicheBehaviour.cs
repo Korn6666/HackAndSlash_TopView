@@ -20,7 +20,7 @@ public class LicheBehaviour : MonoBehaviour
     [SerializeField] private float TimeBetweenAttackOrHeal = 1;
 
     private Animator Animator;
-    [SerializeField] private float waitForAnimation = 1.2f;
+    public float waitForAnimation = 1.2f;
     [SerializeField] private float  waitForAnimationTimer;
 
 
@@ -75,7 +75,6 @@ public class LicheBehaviour : MonoBehaviour
 
         //Animation
         Animator.SetBool("isSpelling", isSpelling);
-
     }
 
     private IEnumerator Spell()
