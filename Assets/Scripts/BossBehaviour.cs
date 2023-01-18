@@ -58,7 +58,7 @@ public class BossBehaviour : EnemyAttack
     public LayerMask playerLayer;
 
 
-    private void Awake()
+    private void Start()
     {
         halfHealth = gameObject.GetComponent<EnemyHealth>().maxHealth / 2;
         quarterHealth = gameObject.GetComponent<EnemyHealth>().maxHealth / 4;
@@ -209,7 +209,7 @@ public class BossBehaviour : EnemyAttack
             swordAttackAnimationTime = 0.3f;
             Animator.SetBool("isCharging", true);
             Animator.SetFloat("SpeedRun", 1.5f);
-            gameObject.GetComponent<EnemyMovement>().speed = speedCharge;
+            gameObject.GetComponent<EnemyMovement>().standardSpeed = speedCharge;
             swordAttackDamages = chargeDamages;
 
         }
@@ -222,7 +222,7 @@ public class BossBehaviour : EnemyAttack
                 swordAttackAnimationTime = 1.3f;
                 Animator.SetBool("isCharging", false);
                 Animator.SetFloat("SpeedRun", 1);
-                gameObject.GetComponent<EnemyMovement>().speed = standardBossSpeed;
+                gameObject.GetComponent<EnemyMovement>().standardSpeed = standardBossSpeed;
                 swordAttackDamages = standardBossDamages;
             }
         }

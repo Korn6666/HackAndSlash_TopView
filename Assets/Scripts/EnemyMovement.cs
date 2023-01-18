@@ -15,10 +15,10 @@ public class EnemyMovement : MonoBehaviour
     public bool canAttack;
 
     public bool speedUpgrade;
-    [SerializeField] private float standardSpeed = 5;
+    public float standardSpeed = 5;
     [SerializeField] private float speedUpgradeValue;
 
-    void Start()
+    protected void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         Rbd = gameObject.GetComponent<Rigidbody>();
