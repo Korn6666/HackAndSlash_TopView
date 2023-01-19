@@ -9,11 +9,13 @@ public class Health : MonoBehaviour
     public float health;
 
     public HealthBar healthBar;
+    public GameObject spawnEnemy;
     // Start is called before the first frame update
     void Start()
     {
         health = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+        spawnEnemy = GameObject.FindGameObjectWithTag("Spawn");
     }
 
     // Update is called once per frame
@@ -40,5 +42,10 @@ public class Health : MonoBehaviour
     {
         Vector3 dir = Vector3.ProjectOnPlane(target - transform.position, new Vector3(0.0f, 1.0f, 0.0f));
         GetComponent<Rigidbody>().AddForce(dir.normalized * knockbackPower, ForceMode.Impulse);
+    }
+
+    public void TakeKnockUp(float knockupPower)
+    {
+        GetComponent<Rigidbody>().AddForce(Vector3.up * knockupPower, ForceMode.Impulse);
     }
 }

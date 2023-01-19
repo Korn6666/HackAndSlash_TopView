@@ -14,7 +14,6 @@ public class Orbe : Projectiles
     // Start is called before the first frame update
     void Start()
     {
-        //playerMageAttack = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerMageAttack>();
         playerPivot = playerMageAttack.gameObject;
         orbeHitCount = playerMageAttack.spell2HitCount;
         StartCoroutine(OrbeLifeTime());
@@ -22,7 +21,6 @@ public class Orbe : Projectiles
         orbeParticules.Play();
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         transform.RotateAround(playerPivot.transform.position, Vector3.up, speed * Time.deltaTime);

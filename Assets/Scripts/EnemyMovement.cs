@@ -9,17 +9,25 @@ public class EnemyMovement : MonoBehaviour
     // Start is called before the first frame update
     private GameObject player;
     private Rigidbody Rbd;
-    [SerializeField] private float speed = 5;
+    public float speed;
     [SerializeField] private float distanceSeuil = 3;
     private Animator Animator;
     public bool canAttack;
 
+    public bool speedUpgrade;
+    public float standardSpeed = 5;
+    private float speedUpgradeValue;
 
-    void Start()
+    public float distanceToPlayer2D;
+
+    public void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         Rbd = gameObject.GetComponent<Rigidbody>();
         Animator = gameObject.GetComponent<Animator>();
+        speed = standardSpeed;
+        speedUpgradeValue = standardSpeed * 1.5f; // Augmentation de 50% grace au crie du boss
+        speedUpgrade = false;
     }
 
     // Update is called once per frame
@@ -31,18 +39,37 @@ public class EnemyMovement : MonoBehaviour
         }
         if (!player) return;
 
+        Vector3 directionToPlayer = player.transform.position - transform.position;
+        Vector3 directionToPlayer2D = new Vector3(directionToPlayer.x, 0, directionToPlayer.z);
+        distanceToPlayer2D = directionToPlayer2D.magnitude;
+
+        if (speedUpgrade)
+        {
+            speed = speedUpgradeValue;
+        }else
+        {
+            speed = standardSpeed;
+        }
+
         if (gameObject.tag == "Liche")
         {
             if (!gameObject.GetComponent<LicheBehaviour>().isSpelling)
             {
                 Move();
             }
-        }else { Move(); }
+        }else if (gameObject.tag == "Skeleton")
+        {
+            Move(); 
+        }else if (gameObject.tag == "Boss")
+        {
+            if (gameObject.GetComponent<BossBehaviour>().isCharging)
+            {
+                Vector3 target = gameObject.GetComponent<BossBehaviour>().target;
+                Charge(target);
+            }
+            else { Move(); }
+        }
         
-       
-        
-
-        transform.LookAt(player.transform);
     }
 
     void Move()
@@ -56,17 +83,55 @@ public class EnemyMovement : MonoBehaviour
 
             if (direction2D.magnitude > distanceSeuil + 1)
             {
-                Animator.SetBool("ForwardSpeed", true);
-                Animator.SetBool("onPlayerContact", false);
+                if (gameObject.tag == "Skeleton" || gameObject.tag == "Boss")
+                {
+                    Animator.SetBool("ForwardSpeed", true);
+                    Animator.SetBool("onPlayerContact", false);
+                }
                 canAttack = false;
             }
         } 
         else 
         {
-            Animator.SetBool("ForwardSpeed", false);
-            Animator.SetBool("onPlayerContact", true);
+            if (gameObject.tag == "Skeleton" || gameObject.tag == "Boss")
+            {
+                Animator.SetBool("ForwardSpeed", false);
+                Animator.SetBool("onPlayerContact", true);
+            }
             canAttack = true;
         }
-        
+
+        transform.LookAt(player.transform);
+    }
+
+    void Charge(Vector3 target)
+    {
+        //Animator.ResetTrigger("Attack");
+        Vector3 direction = target - transform.position;
+        Vector3 direction2D = new Vector3(direction.x, 0, direction.z);
+
+        Vector3 Ndirection2D = direction2D.normalized;
+        Rbd.MovePosition(transform.position + Ndirection2D * Time.deltaTime * speed);
+
+        if (direction2D.magnitude > 1)
+        {
+            Animator.SetBool("isCharging", true);
+        }
+        else
+        {
+            Animator.SetBool("isCharging", false);
+            gameObject.GetComponent<BossBehaviour>().isCharging = false;
+        }
+
+
+        if (distanceToPlayer2D < 10 && gameObject.GetComponent<BossBehaviour>().isCharging)
+        {
+            Animator.SetTrigger("Attack");
+        }
+
+        transform.LookAt(target);
+
+
     }
 }
+

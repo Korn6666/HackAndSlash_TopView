@@ -9,6 +9,8 @@ public class PlayerMageAttack : PlayerAttack
     //SPELL 1
     [SerializeField] private GameObject  fireBall;
     public float spell1Range = 5f;
+    [SerializeField] private float waitForAnimationSpellAttack;
+
 
 
     //SPELL 2
@@ -16,14 +18,18 @@ public class PlayerMageAttack : PlayerAttack
     public float spell2Range = 1f;
     public float spell2Knockback = 0f;
     public float spell2HitCount = 5f;
+    [SerializeField] private float waitForAnimationOrbeSpell;
 
 
     //SPELL 3
     [SerializeField] private GameObject wall;
     public float spell3Range = 3f; // AOE area range
     public float spell3WallScale = 1f;
+    [SerializeField] private float waitForAnimationWallSpell;
+
 
     [SerializeField] public static float jumpForwardForce = 10;
+
 
 
     // Start is called before the first frame update
@@ -78,11 +84,9 @@ public class PlayerMageAttack : PlayerAttack
         attacking = true; //nous attaquons
         spell1CoolDownTimer = spell1CoolDown; //lancement du cooldown de l'attaque 
 
-        playerAnimator.SetTrigger("Trigger");
-        playerAnimator.SetFloat("Trigger Number", 2);
-        playerAnimator.SetTrigger("BasicAttack");
+        playerAnimator.SetTrigger("SpellAttack");
 
-        yield return new WaitForSeconds(0.6f); //temps d'animation
+        yield return new WaitForSeconds(waitForAnimationSpellAttack); //temps d'animation
         GameObject fireBallObject = Instantiate(fireBall, transform.position + Vector3.up, Quaternion.identity);
         fireBallObject.GetComponent<FireBall>().playerMageAttack = gameObject.GetComponent<PlayerMageAttack>();
 
@@ -95,9 +99,9 @@ public class PlayerMageAttack : PlayerAttack
         attacking = true; //nous attaquons
         spell2CoolDownTimer = spell2CoolDown; //lancement du cooldown de l'attaque 
 
-        playerAnimator.SetTrigger("JumpAttack");
+        playerAnimator.SetTrigger("OrbeSpell");
         // ajouter le cast time
-        yield return new WaitForSeconds(0.6f); //temps d'animation
+        yield return new WaitForSeconds(waitForAnimationOrbeSpell); //temps d'animation
 
         GameObject orbeObject = Instantiate(orbe, transform.position + new Vector3(0f, 0f, 4f) + Vector3.up, Quaternion.identity);
         orbeObject.GetComponent<Orbe>().playerMageAttack = gameObject.GetComponent<PlayerMageAttack>();
@@ -110,7 +114,9 @@ public class PlayerMageAttack : PlayerAttack
     {
         attacking = true; //nous attaquons
         spell3CoolDownTimer = spell3CoolDown; //lancement du cooldown de l'attaque
-        playerAnimator.SetTrigger("360Attack");
+        playerAnimator.SetTrigger("WallSpell");
+
+        yield return new WaitForSeconds(waitForAnimationWallSpell); //temps d'animation
 
         Vector3 wallSpawnPosition = playerMovement.GetMousePositionOnPlane();
 
@@ -118,7 +124,6 @@ public class PlayerMageAttack : PlayerAttack
         wallObject.GetComponent<Wall>().playerMageAttack = gameObject.GetComponent<PlayerMageAttack>();
 
 
-        yield return new WaitForSeconds(0.6f); //temps d'animation
         attacking = false;
         yield return null;
 

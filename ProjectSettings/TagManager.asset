@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Player HealthBar
+  - Skeleton
+  - Liche
+  - Spawn
+  - Boss
   layers:
   - Default
   - TransparentFX

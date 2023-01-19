@@ -5,11 +5,13 @@ using UnityEngine;
 public class PlayerWarriorAttack : PlayerAttack
 {
     private Animator playerAnimator;
+    private Rigidbody Rgbd;
 
 
     //SPELL 1
     public Transform spell1AttackPoint;
     public float spell1AttackRange = 1.5f;
+    private float knockbackPower;
     //[SerializeField] private float spell1WaitAnimationTime = 2f;
 
 
@@ -31,8 +33,10 @@ public class PlayerWarriorAttack : PlayerAttack
     // Start is called before the first frame update
     void Start()
     {
+        Rgbd = gameObject.GetComponent<Rigidbody>();
         playerAnimator = gameObject.GetComponent<Animator>();
         playerAnimator.applyRootMotion = false;
+        knockbackPower = -11;
     }
 
     // Update is called once per frame
@@ -79,8 +83,7 @@ public class PlayerWarriorAttack : PlayerAttack
         attacking = true; //nous attaquons
         spell1CoolDownTimer = spell1CoolDown; //lancement du cooldown de l'attaque 
 
-        playerAnimator.SetTrigger("Trigger");
-        playerAnimator.SetFloat("Trigger Number", 2);
+
         playerAnimator.SetTrigger("BasicAttack");
 
         yield return new WaitForSeconds(0.6f); 
@@ -91,8 +94,12 @@ public class PlayerWarriorAttack : PlayerAttack
         //infliger les degats aux ennemies
         foreach (Collider enemy in hitEnemies)
         {
-            enemy.GetComponent<EnemyHealth>().TakeDamage(spell1Damage);
-            enemy.GetComponent<EnemyHealth>().TakeKnockBack(transform.position, -11);
+            if (!enemy.isTrigger)
+            {
+                enemy.GetComponent<EnemyHealth>().TakeDamage(spell1Damage);
+                enemy.GetComponent<EnemyHealth>().TakeKnockBack(transform.position, knockbackPower);
+            }
+  
         }
         attacking = false;
         yield return null;

@@ -8,7 +8,11 @@ public class EnemyHealth : Health
     public GameObject lootXp; //Notre object pour donner 1 d'xp
     [SerializeField] private GameObject damageText;
 
-     new public void TakeDamage(float damage)
+    //private void Start()
+    //{
+    //    spawnEnemy = GameObject.FindGameObjectWithTag("Spawn");
+    //}
+    new public void TakeDamage(float damage)
     {
         health -= damage;
         healthBar.SetHealth(health);
@@ -22,6 +26,7 @@ public class EnemyHealth : Health
         {
             Instantiate(lootXp, transform.position + Vector3.up, transform.rotation); //fait spawn le loot xp
             Destroy(gameObject); //Détruis l'ennemie
+            spawnEnemy.GetComponentInParent<WaveManager>().OnDestroy();
         }
 
         if (health > maxHealth) //Empêcher 
