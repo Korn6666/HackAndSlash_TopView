@@ -5,6 +5,8 @@ using System.Linq;
 
 public class Orbe : Projectiles
 {
+
+    [SerializeField] private ParticleSystem orbeParticules;
     private GameObject playerPivot;
     private float orbeHitCount;
     private List<Collider> alreadyHit; //list pour stocker les enemy deja touché
@@ -17,13 +19,14 @@ public class Orbe : Projectiles
         orbeHitCount = playerMageAttack.spell2HitCount;
         StartCoroutine(OrbeLifeTime());
         alreadyHit = new List<Collider>(); //list pour stocker les enemy deja touché
+        orbeParticules.Play();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         transform.RotateAround(playerPivot.transform.position, Vector3.up, speed * Time.deltaTime);
-        transform.position = playerPivot.transform.position + (transform.position - playerPivot.transform.position).normalized * 2;
+        transform.position = playerPivot.transform.position + (transform.position - playerPivot.transform.position).normalized * 4;
         //transform.position = playerPivot.transform.TransformPoint(playerPivot.transform.position);
 
 

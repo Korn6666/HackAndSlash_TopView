@@ -99,7 +99,7 @@ public class PlayerMageAttack : PlayerAttack
         // ajouter le cast time
         yield return new WaitForSeconds(0.6f); //temps d'animation
 
-        GameObject orbeObject = Instantiate(orbe, transform.position + new Vector3(0f, 0f, 2f) + Vector3.up, Quaternion.identity);
+        GameObject orbeObject = Instantiate(orbe, transform.position + new Vector3(0f, 0f, 4f) + Vector3.up, Quaternion.identity);
         orbeObject.GetComponent<Orbe>().playerMageAttack = gameObject.GetComponent<PlayerMageAttack>();
 
         attacking = false;
@@ -114,7 +114,7 @@ public class PlayerMageAttack : PlayerAttack
 
         Vector3 wallSpawnPosition = playerMovement.GetMousePositionOnPlane();
 
-        GameObject wallObject = Instantiate(wall, wallSpawnPosition + Vector3.up, gameObject.transform.rotation);
+        GameObject wallObject = Instantiate(wall, wallSpawnPosition, gameObject.transform.rotation);
         wallObject.GetComponent<Wall>().playerMageAttack = gameObject.GetComponent<PlayerMageAttack>();
 
 

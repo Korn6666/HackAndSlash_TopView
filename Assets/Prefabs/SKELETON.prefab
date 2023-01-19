@@ -973,6 +973,8 @@ MonoBehaviour:
   health: 0
   healthBar: {fileID: 32165353727308390}
   lootXp: {fileID: 2684209001408372119, guid: 45caee186086e1e48aaca8237206d0b0, type: 3}
+  damageText: {fileID: 3687878118319336951, guid: ef7ebfc9e4e47514f8dc787bf162c5ab,
+    type: 3}
 --- !u!1 &6583157360025447396
 GameObject:
   m_ObjectHideFlags: 0

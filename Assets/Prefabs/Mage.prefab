@@ -2508,7 +2508,7 @@ MonoBehaviour:
   spell2Range: 1
   spell2Knockback: 0
   spell2HitCount: 5
-  wall: {fileID: 4165491858310426640, guid: bf90fced0010b364fbebc5673d9f8ca2, type: 3}
+  wall: {fileID: 5334157364384301705, guid: 358f4df1f5b75374eb05d206e7568c66, type: 3}
   spell3Range: 3
   spell3WallScale: 1
 --- !u!1 &8553827711968160042
