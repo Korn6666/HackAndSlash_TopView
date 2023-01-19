@@ -6,8 +6,8 @@ public class WaveManager : MonoBehaviour
 {
     // Start is called before the first frame update
     private float waitnextwave=5f;
-    private float waitnextspawn=0.5f;
-    private int activeEnemyCount = 0;
+    private float waitnextspawn = 0.7f;
+    public int activeEnemyCount = 0;
     public int currentWave; // Numéro de la vague
 
     void Start()
@@ -37,13 +37,15 @@ public class WaveManager : MonoBehaviour
         int tampo = 1;
         int Wavetampon = 1;
         int currentWaveNbEnemy = 1;
-        currentWave = 1;
+        currentWave = 0;
         while (activeEnemyCount < 500)
         {
+            currentWave += 1;
+
             yield return new WaitForSeconds(waitnextwave);
             for (int i=1; i<=currentWaveNbEnemy; i++)
             {
-                FindObjectOfType<SpawnEnemy>().StartSpawnEnemy();
+                FindObjectOfType<SpawnEnemy>().StartSpawnEnemy(false);  // false == on ne fait pas spawn le boss
                 activeEnemyCount += 1;
                 yield return new WaitForSeconds(waitnextspawn);
             }
@@ -52,12 +54,18 @@ public class WaveManager : MonoBehaviour
             currentWaveNbEnemy = currentWaveNbEnemy + Wavetampon; 
             Wavetampon = tampo;
 
+            // Pour le boss
+
+            if (currentWave == 5)
+            {
+                FindObjectOfType<SpawnEnemy>().StartSpawnEnemy(true); // true = on fait spawn le boss
+            }
+
+
             while (activeEnemyCount > 0)
             {
                 yield return null;
             }
-
-            currentWave += 1;
         }
     }
 

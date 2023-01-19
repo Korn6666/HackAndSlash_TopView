@@ -4,24 +4,28 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
     private GameObject player;
     [SerializeField] private float speedZoom = 0.05f;
     private Vector3 zoom = Vector3.zero;
-    private Vector3 positionFromPlayer = new Vector3(3.8f, -11.1f, 5.3f); 
+    private Vector3 positionFromPlayer; 
 
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        transform.position = player.transform.position + positionFromPlayer;
+
+        // L'un ou l'autre:
+        positionFromPlayer = new Vector3(-0.5f, -13.7f, 7.2f); // Met directe la bonne position
         //positionFromPlayer = player.transform.position - transform.position; // Enregistre la position de la caméra comparé à celle de player pour la conserver ensuite. 
-        //Debug.Log(positionFromPlayer);
+
+        transform.position = player.transform.position + positionFromPlayer;
+        
     }
 
-    // Update is called once per frame
     void Update()
     {
+        //Vector3 forDebug = player.transform.position - transform.position;
+        //Debug.Log(forDebug);
 
         Vector3 playerPosition = player.transform.position;
         Vector3 zoomDelta = positionFromPlayer * Input.mouseScrollDelta.y * speedZoom;

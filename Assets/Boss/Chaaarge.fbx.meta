@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: e517d54f4b6895f408b4ead73d236fab
+guid: e0eced3171a24f74eb44abcf595c90ec
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: Mutan Attack
+    second: Charge
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -35,18 +35,18 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Mutan Attack
+      name: Charge
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 64
+      lastFrame: 16
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0

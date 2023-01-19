@@ -11,7 +11,7 @@ public class EnemyAttack : MonoBehaviour
     public float swordAttackDamages = 5;
 
     public bool canAttack;
-    private GameObject player;
+    public GameObject player;
     public Animator Animator;
     public float knockbackPower = 0;
 
@@ -20,7 +20,7 @@ public class EnemyAttack : MonoBehaviour
 
 
 
-    void Start()
+    protected void Start()
     {
         StartCoroutine(WaitAndAttack());
         player = GameObject.FindGameObjectWithTag("Player");

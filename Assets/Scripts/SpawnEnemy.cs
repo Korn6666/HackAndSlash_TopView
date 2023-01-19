@@ -9,6 +9,8 @@ public class SpawnEnemy: MonoBehaviour
     public GameObject Liche;
     private GameObject[] EnemyList;
 
+    [SerializeField] GameObject Boss;
+
     private Vector3 EnemySpawn;
     void Start()
     {
@@ -24,13 +26,27 @@ public class SpawnEnemy: MonoBehaviour
         Instantiate(EnemyToSpawn, EnemySpawn, Quaternion.identity);
     }
 
-    public void StartSpawnEnemy()
+    public void StartSpawnEnemy(bool Boss)
     {
         GameObject[] spawnpoints = GameObject.FindGameObjectsWithTag("Spawn");
         int index = Random.Range(0, spawnpoints.Length);
         GameObject currentPoint = spawnpoints[index];
         if (!currentPoint) return;
         EnemySpawn = currentPoint.transform.position;
-        StartCoroutine(SpawnanEnemy());
+
+        if (Boss)
+        {
+            StartCoroutine(SpawnTheBoss());
+        }
+        else
+        {
+            StartCoroutine(SpawnanEnemy());
+        }
+    }
+
+    public IEnumerator SpawnTheBoss()
+    {
+        yield return new WaitForSeconds(0f);
+        Instantiate(Boss, EnemySpawn, Quaternion.identity);
     }
 }
