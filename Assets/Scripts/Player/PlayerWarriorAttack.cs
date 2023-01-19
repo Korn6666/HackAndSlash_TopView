@@ -9,6 +9,7 @@ public class PlayerWarriorAttack : PlayerAttack
 
 
     //SPELL 1
+    [SerializeField] private AudioSource spell1Audio;
     public Transform spell1AttackPoint;
     public float spell1AttackRange = 1.5f;
     private float knockbackPower;
@@ -83,7 +84,7 @@ public class PlayerWarriorAttack : PlayerAttack
         attacking = true; //nous attaquons
         spell1CoolDownTimer = spell1CoolDown; //lancement du cooldown de l'attaque 
 
-
+        spell1Audio.Play();
         playerAnimator.SetTrigger("BasicAttack");
 
         yield return new WaitForSeconds(0.6f); 
