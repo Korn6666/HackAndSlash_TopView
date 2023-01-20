@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+
 
 public class BossBehaviour : EnemyAttack
 {
@@ -29,7 +31,7 @@ public class BossBehaviour : EnemyAttack
     private bool isCrying;
 
     //Charge
-    private float chargeAttackTimer;
+    [SerializeField]  private float chargeAttackTimer;
     public bool isCharging;
     public Vector3 target;
     [SerializeField] private float speedCharge = 20;
@@ -59,6 +61,7 @@ public class BossBehaviour : EnemyAttack
 
     public LayerMask playerLayer;
 
+
     private void Awake()
     {
         halfHealth = gameObject.GetComponent<EnemyHealth>().maxHealth / 2;
@@ -70,7 +73,7 @@ public class BossBehaviour : EnemyAttack
     {
         health = gameObject.GetComponent<EnemyHealth>().health;
         distanceToPlayer = (player.transform.position - transform.position).magnitude;
-
+        
         //comportement 1
         if (health > halfHealth)
         {
@@ -87,8 +90,8 @@ public class BossBehaviour : EnemyAttack
             ThirdBehaviour();
         }
 
-        FirstBehaviour();
-        SecondBehaviour();
+        //FirstBehaviour();
+        //SecondBehaviour();
         //ThirdBehaviour();
 
         if (isCharging)
@@ -106,7 +109,7 @@ public class BossBehaviour : EnemyAttack
                 knockbackPower = 0;
                 swordAttackAnimationTime = 1.3f;
                 Animator.SetBool("isCharging", false);
-                Animator.SetFloat("SpeedRun", 1);
+                //Animator.SetFloat("SpeedRun", 1);
                 gameObject.GetComponent<EnemyMovement>().standardSpeed = standardBossSpeed;
                 swordAttackDamages = standardBossDamages;
             }
@@ -142,6 +145,7 @@ public class BossBehaviour : EnemyAttack
     {
         if (!isCrying && collision.gameObject.layer != layerEnemy)
         {
+            Debug.Log("Collision mgl");
             chargeAttackTimer = 0.2f;
             isCharging = false;
         }
@@ -154,9 +158,14 @@ public class BossBehaviour : EnemyAttack
         groundAttackTimeTimer = groundAttackTime;
 
         Animator.SetTrigger(groundAttackAnimationName);
+        Animator.ResetTrigger("Attack");
 
-        // On désactive le mouvement et on s'assure qu'il n'attaque pas
+        // On désactive le mouvement et on s'assure qu'il n'attaque pas ni qu'il ne court pas dans le vide
+        
         gameObject.GetComponent<EnemyMovement>().canAttack = false;
+        Animator.SetBool("ForwardSpeed", false);
+        //gameObject.GetComponent<Nav>().enabled = false;
+        gameObject.GetComponent<NavMeshAgent>().enabled = false;
         gameObject.GetComponent<EnemyMovement>().enabled = false; 
 
         yield return new WaitForSeconds(waitForGroundAttackAnimation);
@@ -175,6 +184,7 @@ public class BossBehaviour : EnemyAttack
         yield return new WaitForSeconds(waitForEarthQuakeAnimation);
         EarthQuake.SetActive(false);
         gameObject.GetComponent<EnemyMovement>().enabled = true; // On redonne accès au mouvement
+        gameObject.GetComponent<NavMeshAgent>().enabled = true;
         GetComponent<Rigidbody>().velocity = Vector3.zero; // On annule l'impulsion du saut
         groundAttacking = false;
         yield return null;
@@ -186,12 +196,16 @@ public class BossBehaviour : EnemyAttack
         BattleCryCoolDownTimer = BattleCryCoolDown; //lancement du cooldown de l'attaque 
         Animator.SetTrigger("BattleCry");
         isCharging = true;
-
+        // On désactive le mouvement et on s'assure qu'il n'attaque pas ni qu'il ne court pas dans le vide
+        gameObject.GetComponent<EnemyMovement>().canAttack = false;
+        Animator.SetBool("ForwardSpeed", false);
+        gameObject.GetComponent<NavMeshAgent>().enabled = false;
         gameObject.GetComponent<EnemyMovement>().enabled = false; // On désactive le mouvement
 
         yield return new WaitForSeconds(waitForBattleCryAnimation);
         Animator.SetBool("isCharging", true);
         target = player.transform.position;
+        gameObject.GetComponent<NavMeshAgent>().enabled = true;
         gameObject.GetComponent<EnemyMovement>().enabled = true; // On redonne accès au mouvement
         isCrying = false;
        
@@ -204,10 +218,15 @@ public class BossBehaviour : EnemyAttack
         speedUpgradeTimer = speedUpgradeCryTime;
 
         Animator.SetTrigger("SpeedCry");
+        // On désactive le mouvement et on s'assure qu'il n'attaque pas ni qu'il ne court pas dans le vide
+        gameObject.GetComponent<EnemyMovement>().canAttack = false;
+        Animator.SetBool("ForwardSpeed", false);
+        gameObject.GetComponent<NavMeshAgent>().enabled = false;
         gameObject.GetComponent<EnemyMovement>().enabled = false; // On désactive le mouvement
         
         yield return new WaitForSeconds(waitForSpeedCryAnimation);
 
+        gameObject.GetComponent<NavMeshAgent>().enabled = true;
         gameObject.GetComponent<EnemyMovement>().enabled = true; // On redonne accès au mouvement
 
         GameObject[] gameObjects = FindObjectsOfType<GameObject>();
@@ -243,11 +262,10 @@ public class BossBehaviour : EnemyAttack
         {
             StartCoroutine(BattleCry());
         }
-        else if (groundAttackTimeTimer <= 0 && !isCharging && chargeAttackTimer <= 0 && distanceToPlayer < 10)
+        else if (groundAttackTimeTimer <= 0 && !isCharging && !isCrying && chargeAttackTimer <= 0 && distanceToPlayer < 10)
         {
             StartCoroutine(groundAttack());
         }
-
 
     }
 

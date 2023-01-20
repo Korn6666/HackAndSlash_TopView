@@ -12,7 +12,7 @@ public class PlayerWarriorAttack : PlayerAttack
     [SerializeField] private AudioSource spell1Audio;
     public Transform spell1AttackPoint;
     public float spell1AttackRange = 1.5f;
-    private float knockbackPower;
+    [SerializeField] private float knockbackPower;
     //[SerializeField] private float spell1WaitAnimationTime = 2f;
 
 
@@ -118,7 +118,7 @@ public class PlayerWarriorAttack : PlayerAttack
 
         gameObject.GetComponent<PlayerMovement>().enabled = false; // On désactive le mouvement
 
-        yield return new WaitForSeconds(animationJumpWait);
+        //yield return new WaitForSeconds(animationJumpWait);
 
         GetComponent<Rigidbody>().AddForce(transform.up * 6, ForceMode.Impulse);
         GetComponent<Rigidbody>().AddForce(transform.forward * jumpForwardForce, ForceMode.Impulse); // Fait sauter le joueur en avant
@@ -128,7 +128,7 @@ public class PlayerWarriorAttack : PlayerAttack
         {
             yield return null; 
         }
-
+        
         //playerAnimator.SetTrigger("OnFloor");
 
         gameObject.GetComponent<PlayerMovement>().enabled = true; // On redonne accès au mouvement
@@ -146,10 +146,11 @@ public class PlayerWarriorAttack : PlayerAttack
 
     void OnCollisionEnter(Collision collision) //Permet de savoir si le joueur a touché le sol 
     {
-        if (collision.collider.name == "Floor") //Détecte une collision avec Floor
-        {
-            isOnFloor = true;
-        }
+        //if (collision.collider.name == "Floor" || collision.gameObject.layer == enemyLayers) //Détecte une collision avec Floor
+        //{
+        //    isOnFloor = true;
+        //}
+        isOnFloor = true;
     }
 
 
