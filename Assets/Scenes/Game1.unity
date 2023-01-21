@@ -2057,6 +2057,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   warrior: {fileID: 5352201940264825016, guid: c17fe36d248deb84cb0cd5907b3bd164, type: 3}
   mage: {fileID: 8462586641601579633, guid: 6017f6b396793ba46a7bf7e5724e5dad, type: 3}
+  inge: {fileID: 5073968989174406750, guid: 4be27e91770fda74d867640231f8cdb1, type: 3}
 --- !u!1 &342525651
 GameObject:
   m_ObjectHideFlags: 0

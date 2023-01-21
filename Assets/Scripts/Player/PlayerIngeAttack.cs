@@ -10,21 +10,17 @@ public class PlayerIngeAttack : PlayerAttack
     [SerializeField] private GameObject  electrode;
     private GameObject electrode1;
     private GameObject electrode2;
+    IEnumerator linkCoroutine;
 
 
     //SPELL 2
-    [SerializeField] private GameObject orbe;
-    public float spell2Range = 1f;
-    public float spell2Knockback = 0f;
-    public float spell2HitCount = 5f;
+    public float spell2Range = 5f;
+    public float spell2StunTime = 1.5f;
 
 
     //SPELL 3
-    [SerializeField] private GameObject wall;
-    public float spell3Range = 3f; // AOE area range
-    public float spell3WallScale = 1f;
-
-    [SerializeField] public static float jumpForwardForce = 10;
+    public float spell3MoveSpeed;
+    public float spell3BuffDuration;
 
 
     // Start is called before the first frame update
@@ -33,6 +29,7 @@ public class PlayerIngeAttack : PlayerAttack
         playerMovement = gameObject.GetComponent<PlayerMovement>();
         playerAnimator = gameObject.GetComponent<Animator>();
         playerAnimator.applyRootMotion = false;
+        linkCoroutine = ElectrodeLink();
     }
 
     // Update is called once per frame
@@ -83,20 +80,42 @@ public class PlayerIngeAttack : PlayerAttack
         playerAnimator.SetFloat("Trigger Number", 2);
         playerAnimator.SetTrigger("BasicAttack");
 
+        StopCoroutine(linkCoroutine);
+
         Destroy(electrode2);
         electrode2 = electrode1;
-        electrode1  = Instantiate(electrode, transform.position, Quaternion.identity);
+        electrode1  = Instantiate(electrode, transform.position + Vector3.up, Quaternion.identity);
 
-
-
+        if(electrode2 != null) { StartCoroutine(linkCoroutine); }
+        
         attacking = false;
         yield return null;
     }
 
     IEnumerator ElectrodeLink()
+
     {
-        //Ray 
-        yield return null;
+        while (true)
+        {
+            RaycastHit[] hitEnemy;
+
+            Vector3 linkDirection = electrode2.transform.position - electrode1.transform.position;
+            Ray link = new Ray(electrode1.transform.position, linkDirection);
+            Debug.DrawRay(electrode1.transform.position, linkDirection);
+            hitEnemy = Physics.RaycastAll(link, Mathf.Infinity);
+
+
+            foreach (RaycastHit hit in hitEnemy)
+            {
+                if (hit.collider.gameObject.layer  == 9)
+                {
+                    hit.collider.gameObject.GetComponent<EnemyHealth>().TakeDamage(spell1Damage);
+                }
+            }
+
+            yield return new WaitForSeconds(0.5f);
+            yield return null;
+        }
     }
 
     IEnumerator Spell2Attack()
@@ -104,16 +123,32 @@ public class PlayerIngeAttack : PlayerAttack
         attacking = true; //nous attaquons
         spell2CoolDownTimer = spell2CoolDown; //lancement du cooldown de l'attaque 
 
-        playerAnimator.SetTrigger("JumpAttack");
+        playerAnimator.SetTrigger("WallSpell");
 
-        //detecter les enemy in range
-        Collider[] hitEnemies = Physics.OverlapSphere(electrode1.transform.position, 2, enemyLayers);
-
-        //infliger les degats aux ennemies
-        foreach (Collider enemy in hitEnemies)
+        if(electrode1 != null)
         {
-            enemy.GetComponent<EnemyHealth>().TakeDamage(spell1Damage);
-            //stun
+            //detecter les enemy in range
+            Collider[] hitEnemies = Physics.OverlapSphere(electrode1.transform.position, spell2Range, enemyLayers);
+
+            //infliger les degats aux ennemies
+            foreach (Collider enemy in hitEnemies)
+            {
+                enemy.GetComponent<EnemyHealth>().TakeDamage(spell2Damage);
+                enemy.GetComponent<EnemyHealth>().TakeStun(spell2StunTime);
+            }
+        }
+
+        if (electrode2 != null)
+        {
+            //detecter les enemy in range
+            Collider[] hitEnemies = Physics.OverlapSphere(electrode2.transform.position, spell2Range, enemyLayers);
+
+            //infliger les degats aux ennemies
+            foreach (Collider enemy in hitEnemies)
+            {
+                enemy.GetComponent<EnemyHealth>().TakeDamage(spell2Damage);
+                enemy.GetComponent<EnemyHealth>().TakeStun(spell2StunTime);
+            }
         }
 
         attacking = false;
@@ -122,18 +157,16 @@ public class PlayerIngeAttack : PlayerAttack
 
     IEnumerator Spell3Attack()
     {
-        attacking = true; //nous attaquons
         spell3CoolDownTimer = spell3CoolDown; //lancement du cooldown de l'attaque
-        playerAnimator.SetTrigger("360Attack");
+        playerAnimator.SetTrigger("WallSpell");
+        float bonusSpeed = spell3MoveSpeed;
+        PlayerMovement.speed += bonusSpeed;
 
-        Vector3 wallSpawnPosition = playerMovement.GetMousePositionOnPlane();
+        yield return new WaitForSeconds(spell3BuffDuration); //temps du buff
 
-        GameObject wallObject = Instantiate(wall, wallSpawnPosition, gameObject.transform.rotation);
-        wallObject.GetComponent<Wall>().playerMageAttack = gameObject.GetComponent<PlayerMageAttack>();
+        PlayerMovement.speed -= bonusSpeed;
 
 
-        yield return new WaitForSeconds(0.6f); //temps d'animation
-        attacking = false;
         yield return null;
 
     }

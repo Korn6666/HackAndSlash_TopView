@@ -12,6 +12,7 @@ public class PlayerUpgrade : MonoBehaviour
     private PlayerHealth playerHealth;
     private PlayerWarriorAttack playerWarriorAttack;
     private PlayerMageAttack playerMageAttack;
+    private PlayerIngeAttack playerIngeAttack;
 
     [SerializeField] private GameObject canvasUpgrade;
     [SerializeField] private GameObject canvasBlackBackground;
@@ -36,17 +37,17 @@ public class PlayerUpgrade : MonoBehaviour
     {
         canvasUpgrade.SetActive(false);
         canvasBlackBackground.SetActive(false);
-        player = GameObject.FindGameObjectsWithTag("Player")[0];
+        player = GameObject.FindGameObjectWithTag("Player");
         playerAttack = player.GetComponent<PlayerAttack>();
         //playerMovement = player.GetComponent<PlayerMovement>();
-        //playerHealth = player.GetComponent<PlayerHealth>();
+        playerHealth = player.GetComponent<PlayerHealth>();
 
         //Global upgrade
         allUpgrades.Add(new Upgrade("PLayerSpeedUpgrade", "Increase move speed by 20%", PlayerMovement.speed, 1f, 0.20f, speedUpgradeSprite));
         allUpgrades.Add(new Upgrade("PLayerSpell1CoolDownUpgrade", "Reduce skill 1 cooldown", playerAttack.spell1CoolDown, 1f, -0.20f, GameManager.instance.playerSpell1Sprite));
         allUpgrades.Add(new Upgrade("PLayerSpell2CoolDownUpgrade", "Reduce skill 2 cooldown", playerAttack.spell2CoolDown, 1f, -0.20f, GameManager.instance.playerSpell2Sprite));
         allUpgrades.Add(new Upgrade("PLayerSpell3CoolDownUpgrade", "Reduce skill 3 cooldown", playerAttack.spell3CoolDown, 1f, -0.20f, GameManager.instance.playerSpell3Sprite));
-        allUpgrades.Add(new Upgrade("PLayerHealthPointUpgrade", "Increase your health by 20% and regen it", PlayerHealth.playerMaxHealth, 1f, 0.20f, healthPointUpgradeSprite));
+        allUpgrades.Add(new Upgrade("PLayerHealthPointUpgrade", "Increase your health by 20% and regen it", playerHealth.playerMaxHealth, 1f, 0.20f, healthPointUpgradeSprite));
 
 
         //warrior upgrade
@@ -71,6 +72,18 @@ public class PlayerUpgrade : MonoBehaviour
             allUpgrades.Add(new Upgrade("MageSpell2HitCount", "Increases the number of enemies hit by the orb", playerMageAttack.spell2HitCount, 1f, 2f, GameManager.instance.playerSpell2Sprite));
             allUpgrades.Add(new Upgrade("MageSpell3Scale", "Increase ice wall size by 10%", playerMageAttack.spell3WallScale, 1f, 0.20f, GameManager.instance.playerSpell3Sprite));
             allUpgrades.Add(new Upgrade("MageSpell3Damage", "Add damage to the ice wall", playerMageAttack.spell3Damage, 1f, 0.10f, GameManager.instance.playerSpell3Sprite));
+        }
+
+        //inge upgrade
+        if (GameManager.instance.playerClasse == "inge")
+        {
+            playerIngeAttack = player.GetComponent<PlayerIngeAttack>();
+
+            allUpgrades.Add(new Upgrade("IngeSpell1Damage", "Increase electric attack damage by 10%", playerAttack.spell1Damage, 1f, 0.10f, GameManager.instance.playerSpell1Sprite));
+            allUpgrades.Add(new Upgrade("IngeSpell2StunDuration", "Increase stun duration by 5%", playerIngeAttack.spell2StunTime, 1f, 0.05f, GameManager.instance.playerSpell2Sprite));
+            allUpgrades.Add(new Upgrade("IngeSpell2Damage", "Increase blast attack damage by 20%", playerAttack.spell2Damage, 1f, 0.20f, GameManager.instance.playerSpell2Sprite));
+            allUpgrades.Add(new Upgrade("IngeSpell3BuffSpeed", "Increase your speed bonus by 10%", playerIngeAttack.spell3MoveSpeed, 1f, 0.10f, GameManager.instance.playerSpell3Sprite));
+            allUpgrades.Add(new Upgrade("IngeSpell3BuffDuration", "Increase buff duration by 10%", playerIngeAttack.spell3BuffDuration, 1f, 0.10f, GameManager.instance.playerSpell3Sprite));
         }
     }
 
@@ -192,7 +205,7 @@ public class PlayerUpgrade : MonoBehaviour
             case "PLayerHealthPointUpgrade":
                 up.level += 1;
                 up.upgrade += up.value;
-                PlayerHealth.playerMaxHealth = up.baseValue * up.upgrade;
+                playerHealth.playerMaxHealth = up.baseValue * up.upgrade;
                 player.GetComponent<PlayerHealth>().SetMaxHealthUpgrade();
                 break;
 
@@ -263,6 +276,36 @@ public class PlayerUpgrade : MonoBehaviour
                 up.level += 1;
                 up.upgrade += up.value;
                 playerAttack.spell3Damage = up.baseValue * up.upgrade;
+                break;
+
+            case "IngeSpell1Damage":
+                up.level += 1;
+                up.upgrade += up.value;
+                playerAttack.spell1Damage = up.baseValue * up.upgrade;
+                break;
+
+            case "IngeSpell2StunDuration":
+                up.level += 1;
+                up.upgrade += up.value;
+                playerIngeAttack.spell2StunTime = up.baseValue * up.upgrade;
+                break;
+
+            case "IngeSpell2Damage":
+                up.level += 1;
+                up.upgrade += up.value;
+                playerAttack.spell2Damage = up.baseValue * up.upgrade;
+                break;
+
+            case "IngeSpell3BuffSpeed":
+                up.level += 1;
+                up.upgrade += up.value;
+                playerIngeAttack.spell3MoveSpeed = up.baseValue * up.upgrade;
+                break;
+
+            case "IngeSpell3BuffDuration":
+                up.level += 1;
+                up.upgrade += up.value;
+                playerIngeAttack.spell3BuffDuration = up.baseValue * up.upgrade;
                 break;
 
         }

@@ -30,13 +30,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Sprite mageSpell1Sprite; //image du skill de la classe
     [SerializeField] private Sprite mageSpell2Sprite; //image du skill de la classe
     [SerializeField] private Sprite mageSpell3Sprite; //image du skill de la classe
-    /*
-    //last
-    [SerializeField] private Sprite mageSpell1Sprite; //image du skill de la classe
-    [SerializeField] private Sprite mageSpell2Sprite; //image du skill de la classe
-    [SerializeField] private Sprite mageSpell3Sprite; //image du skill de la classe
-    */
-
+  
+    //Inge
+    [SerializeField] private Sprite ingeSpell1Sprite; //image du skill de la classe
+    [SerializeField] private Sprite ingeSpell2Sprite; //image du skill de la classe
+    [SerializeField] private Sprite ingeSpell3Sprite; //image du skill de la classe
+    
+    // ne pas toucher dans inspector
     public Sprite playerSpell1Sprite;
     public Sprite playerSpell2Sprite;
     public Sprite playerSpell3Sprite;
@@ -55,6 +55,13 @@ public class GameManager : MonoBehaviour
             playerSpell1Sprite = mageSpell1Sprite;
             playerSpell2Sprite = mageSpell2Sprite;
             playerSpell3Sprite = mageSpell3Sprite;
+        }
+
+        if (playerClasse == "inge")
+        {
+            playerSpell1Sprite = ingeSpell1Sprite;
+            playerSpell2Sprite = ingeSpell2Sprite;
+            playerSpell3Sprite = ingeSpell3Sprite;
         }
     }
 
