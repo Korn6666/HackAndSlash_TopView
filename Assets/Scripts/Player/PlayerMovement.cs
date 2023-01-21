@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public static float speed = 2f;
 
     private Rigidbody Rbd;
-    private float translationForce = 20;
+    private float translationForce = 5;
     private Camera cam;
     [SerializeField] private Vector3 mouseInWorld;
     public LayerMask layerMaskRayCast;
@@ -27,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
         cam = Camera.main;
         playerAnimator = gameObject.GetComponent<Animator>();
         playerAnimator.applyRootMotion = false;
+        translationForce = 5;
     }
 
     // Update is called once per frame
@@ -40,7 +41,8 @@ public class PlayerMovement : MonoBehaviour
         // Check si il bouge ou pas pour l'animation de mouvement
         if (sensX != 0 || sensZ != 0)
         {
-            Rbd.MovePosition(transform.position + directionInput * Time.deltaTime * speed);
+            //Rbd.MovePosition(transform.position + directionInput * Time.deltaTime * speed);
+            transform.position = transform.position + directionInput * Time.deltaTime * speed;
             playerAnimator.SetBool("Moving", true);
         }else { playerAnimator.SetBool("Moving", false); }
          
@@ -68,7 +70,6 @@ public class PlayerMovement : MonoBehaviour
              Vector3 hitPoint = hit.point;
              hitPoint.y = 0;
              return hitPoint;
- 
          }
          return Vector3.zero;
      }
