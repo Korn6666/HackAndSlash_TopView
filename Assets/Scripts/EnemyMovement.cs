@@ -20,6 +20,8 @@ public class EnemyMovement : MonoBehaviour
 
     public float distanceToPlayer2D;
 
+    private NavMeshAgent EnemyAgent;
+
     public void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -28,11 +30,13 @@ public class EnemyMovement : MonoBehaviour
         speed = standardSpeed;
         speedUpgradeValue = standardSpeed * 1.5f; // Augmentation de 50% grace au crie du boss
         speedUpgrade = false;
+        EnemyAgent = gameObject.GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        EnemyAgent.speed = speed;
         if (!player)
         {
             player = GameObject.FindGameObjectWithTag("Player");
@@ -55,7 +59,11 @@ public class EnemyMovement : MonoBehaviour
         {
             if (!gameObject.GetComponent<LicheBehaviour>().isSpelling)
             {
+                gameObject.GetComponent<NavMeshAgent>().enabled = true;
                 Move();
+            }else
+            {
+                gameObject.GetComponent<NavMeshAgent>().enabled = false;
             }
         }else if (gameObject.tag == "Skeleton")
         {
@@ -71,27 +79,21 @@ public class EnemyMovement : MonoBehaviour
         }
         
     }
-
     void Move()
     {
-        Vector3 direction = player.transform.position - transform.position;
-        Vector3 direction2D = new Vector3(direction.x, 0, direction.z);
-        if (direction2D.magnitude > distanceSeuil)
+        Vector3 distance = player.transform.position - transform.position;
+        Vector3 distance2D = new Vector3(distance.x, 0, distance.z);
+        EnemyAgent.SetDestination(player.transform.position);
+        if (distance2D.magnitude > distanceSeuil + 1)
         {
-            Vector3 Ndirection2D = direction2D.normalized;
-            Rbd.MovePosition(transform.position + Ndirection2D * Time.deltaTime * speed);
-
-            if (direction2D.magnitude > distanceSeuil + 1)
+            if (gameObject.tag == "Skeleton" || gameObject.tag == "Boss")
             {
-                if (gameObject.tag == "Skeleton" || gameObject.tag == "Boss")
-                {
-                    Animator.SetBool("ForwardSpeed", true);
-                    Animator.SetBool("onPlayerContact", false);
-                }
-                canAttack = false;
+                Animator.SetBool("ForwardSpeed", true);
+                Animator.SetBool("onPlayerContact", false);
             }
-        } 
-        else 
+            canAttack = false;
+        }
+        else
         {
             if (gameObject.tag == "Skeleton" || gameObject.tag == "Boss")
             {
@@ -100,8 +102,6 @@ public class EnemyMovement : MonoBehaviour
             }
             canAttack = true;
         }
-
-        transform.LookAt(player.transform);
     }
 
     void Charge(Vector3 target)
@@ -111,7 +111,10 @@ public class EnemyMovement : MonoBehaviour
         Vector3 direction2D = new Vector3(direction.x, 0, direction.z);
 
         Vector3 Ndirection2D = direction2D.normalized;
-        Rbd.MovePosition(transform.position + Ndirection2D * Time.deltaTime * speed);
+
+        //Rbd.MovePosition(transform.position + Ndirection2D * Time.deltaTime * speed);
+
+        transform.position = transform.position + Ndirection2D * Time.deltaTime * speed;
 
         if (direction2D.magnitude > 1)
         {
@@ -133,5 +136,42 @@ public class EnemyMovement : MonoBehaviour
 
 
     }
+
+
+
+
+    void OldMove()
+    {
+        Vector3 direction = player.transform.position - transform.position;
+        Vector3 direction2D = new Vector3(direction.x, 0, direction.z);
+        EnemyAgent.SetDestination(player.transform.position);
+        if (direction2D.magnitude > distanceSeuil)
+        {
+            Vector3 Ndirection2D = direction2D.normalized;
+            Rbd.MovePosition(transform.position + Ndirection2D * Time.deltaTime * speed);
+            //transform.position = transform.position + Ndirection2D * Time.deltaTime* speed;
+
+
+            if (direction2D.magnitude > distanceSeuil + 1)
+            {
+                if (gameObject.tag == "Skeleton" || gameObject.tag == "Boss")
+                {
+                    Animator.SetBool("ForwardSpeed", true);
+                    Animator.SetBool("onPlayerContact", false);
+                }
+                canAttack = false;
+            }
+        }
+        else
+        {
+            if (gameObject.tag == "Skeleton" || gameObject.tag == "Boss")
+            {
+                Animator.SetBool("ForwardSpeed", false);
+                Animator.SetBool("onPlayerContact", true);
+            }
+            canAttack = true;
+        }
+    }
+
 }
 

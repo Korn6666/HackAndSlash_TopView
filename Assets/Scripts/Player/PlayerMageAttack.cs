@@ -10,7 +10,7 @@ public class PlayerMageAttack : PlayerAttack
     [SerializeField] private GameObject  fireBall;
     [SerializeField] private GameObject fireBallSpawnPoint;
     public float spell1Range = 5f;
-    [SerializeField] private float waitForAnimationSpellAttack;
+    private float waitForAnimationSpellAttack = 0.9f;
 
 
 
@@ -19,14 +19,14 @@ public class PlayerMageAttack : PlayerAttack
     public float spell2Range = 1f;
     public float spell2Knockback = 0f;
     public float spell2HitCount = 5f;
-    [SerializeField] private float waitForAnimationOrbeSpell;
+    private float waitForAnimationOrbeSpell = 1.8f;
 
 
     //SPELL 3
     [SerializeField] private GameObject wall;
     public float spell3Range = 3f; // AOE area range
     public float spell3WallScale = 1f;
-    [SerializeField] private float waitForAnimationWallSpell;
+    private float waitForAnimationWallSpell = 1.2f ;
 
 
     [SerializeField] public static float jumpForwardForce = 10;
