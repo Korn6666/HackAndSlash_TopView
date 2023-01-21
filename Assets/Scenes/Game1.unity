@@ -2057,6 +2057,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   warrior: {fileID: 5352201940264825016, guid: c17fe36d248deb84cb0cd5907b3bd164, type: 3}
   mage: {fileID: 8462586641601579633, guid: 6017f6b396793ba46a7bf7e5724e5dad, type: 3}
+  inge: {fileID: 5073968989174406750, guid: 4be27e91770fda74d867640231f8cdb1, type: 3}
 --- !u!1 &342525651
 GameObject:
   m_ObjectHideFlags: 0
@@ -2713,12 +2714,12 @@ PrefabInstance:
     - target: {fileID: 3027600075641621494, guid: 8823807650b8ab84cb709e8c03029838,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.785
       objectReference: {fileID: 0}
     - target: {fileID: 3027600075641621494, guid: 8823807650b8ab84cb709e8c03029838,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6577598361271050786, guid: 8823807650b8ab84cb709e8c03029838,
         type: 3}
@@ -2779,6 +2780,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SKELETON
+      objectReference: {fileID: 0}
+    - target: {fileID: 6583154367367009182, guid: 8823807650b8ab84cb709e8c03029838,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8823807650b8ab84cb709e8c03029838, type: 3}

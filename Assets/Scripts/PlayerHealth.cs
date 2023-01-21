@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerHealth : Health
 {
 
-    public static float playerMaxHealth;
+    public float playerMaxHealth;
 
     private void Start()
     {

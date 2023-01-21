@@ -7,11 +7,9 @@ public class EnemyHealth : Health
 {
     public GameObject lootXp; //Notre object pour donner 1 d'xp
     [SerializeField] private GameObject damageText;
+    private Animator enemyAnimator;
 
-    //private void Start()
-    //{
-    //    spawnEnemy = GameObject.FindGameObjectWithTag("Spawn");
-    //}
+
     new public void TakeDamage(float damage)
     {
         health -= damage;
@@ -33,5 +31,24 @@ public class EnemyHealth : Health
         {
             health = maxHealth;
         }
+    }
+
+    public void TakeStun(float timer)
+    {
+        StartCoroutine(TakeStunCoroutine(timer));
+    }
+
+    IEnumerator TakeStunCoroutine(float timer)
+    {
+        enemyAnimator = gameObject.GetComponent<Animator>();
+        enemyAnimator.enabled = false;
+        gameObject.GetComponent<EnemyAttack>().enabled = false;
+        gameObject.GetComponent<EnemyMovement>().enabled = false;
+
+        yield return new WaitForSeconds(timer);
+
+        enemyAnimator.enabled = true;
+        gameObject.GetComponent<EnemyAttack>().enabled = true;
+        gameObject.GetComponent<EnemyMovement>().enabled = true;
     }
 }

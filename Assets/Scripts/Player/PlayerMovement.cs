@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public static float speed = 2f;
 
     private Rigidbody Rbd;
-    private float translationForce = 5;
+    private float translationForce = 20;
     private Camera cam;
     [SerializeField] private Vector3 mouseInWorld;
     public LayerMask layerMaskRayCast;

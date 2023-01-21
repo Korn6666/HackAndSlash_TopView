@@ -59,6 +59,7 @@ public class WaveManager : MonoBehaviour
             if (currentWave == 5)
             {
                 FindObjectOfType<SpawnEnemy>().StartSpawnEnemy(true); // true = on fait spawn le boss
+                activeEnemyCount += 1;
             }
 
 
