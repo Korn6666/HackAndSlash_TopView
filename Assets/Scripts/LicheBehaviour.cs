@@ -11,6 +11,8 @@ public class LicheBehaviour : MonoBehaviour
     [SerializeField] float spellRange = 10;
     [SerializeField] float spellDamage = 1;
     [SerializeField] float spellHeal = 1;
+    [SerializeField] GameObject spellZone;
+
     //[SerializeField] private LayerMask Skeleton;
     [SerializeField] private float CoolDown = 10;
     private float CoolDownTimer;
@@ -80,15 +82,17 @@ public class LicheBehaviour : MonoBehaviour
     private IEnumerator Spell()
     {
         isSpelling = true;
-        spellTimeTimer = spellTime;
+        spellTimeTimer = spellTime + waitForAnimation;
         
+        CoolDownTimer = CoolDown;
+        yield return new WaitForSeconds(waitForAnimation);
 
-        //yield return new WaitForSeconds(waitForAnimation);
-        CoolDownTimer = CoolDown - waitForAnimation;
-        float Timer = 1.1f;
+        spellZone.SetActive(true);
+
+        float Timer = 1;
         while (isSpelling)
         {
-            if (Timer > TimeBetweenAttackOrHeal)
+            if (Timer >= TimeBetweenAttackOrHeal)
             {
                 Collider[] hitEntities = Physics.OverlapSphere(spellPoint.position, spellRange);
                 presence = false;
@@ -113,6 +117,9 @@ public class LicheBehaviour : MonoBehaviour
             Timer += Time.deltaTime;
             yield return null;
         }
+
+        spellZone.SetActive(false);
+
         yield return null;
     }
 }

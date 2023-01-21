@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class FireBall : Projectiles
 {
+    [SerializeField] private ParticleSystem fireParticules;
+    [SerializeField] private ParticleSystem fireTail;
+    [SerializeField] private ParticleSystem explosion;
 
     // Start is called before the first frame update
     void Start()
     {
         RB = GetComponent<Rigidbody>();
         RB.velocity = playerMageAttack.transform.forward * speed * Time.deltaTime; // use translate for bugs
+        fireParticules.Play();
+        fireTail.Play();
     }
 
     void OnCollisionEnter(Collision collision) //Permet de savoir si le joueur a ramassé l'xp
@@ -24,6 +29,9 @@ public class FireBall : Projectiles
                 enemy.GetComponent<EnemyHealth>().TakeDamage(playerMageAttack.spell1Damage);
                 enemy.GetComponent<EnemyHealth>().TakeKnockBack(transform.position, -15f);
             }
+            fireParticules.Stop();
+            fireTail.Stop();
+            Instantiate(explosion, transform.position, Quaternion.identity);
             Destroy(gameObject); //Détruis l'objet
         }
     }

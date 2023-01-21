@@ -9,7 +9,7 @@ public class PlayerMageAttack : PlayerAttack
     //SPELL 1
     [SerializeField] private GameObject  fireBall;
     public float spell1Range = 5f;
-    [SerializeField] private float waitForAnimationSpellAttack;
+    private float waitForAnimationSpellAttack = 0.9f;
 
 
 
@@ -18,14 +18,14 @@ public class PlayerMageAttack : PlayerAttack
     public float spell2Range = 1f;
     public float spell2Knockback = 0f;
     public float spell2HitCount = 5f;
-    [SerializeField] private float waitForAnimationOrbeSpell;
+    private float waitForAnimationOrbeSpell = 1.8f;
 
 
     //SPELL 3
     [SerializeField] private GameObject wall;
     public float spell3Range = 3f; // AOE area range
     public float spell3WallScale = 1f;
-    [SerializeField] private float waitForAnimationWallSpell;
+    private float waitForAnimationWallSpell = 1.2f ;
 
 
     [SerializeField] public static float jumpForwardForce = 10;
@@ -103,7 +103,7 @@ public class PlayerMageAttack : PlayerAttack
         // ajouter le cast time
         yield return new WaitForSeconds(waitForAnimationOrbeSpell); //temps d'animation
 
-        GameObject orbeObject = Instantiate(orbe, transform.position + new Vector3(0f, 0f, 2f) + Vector3.up, Quaternion.identity);
+        GameObject orbeObject = Instantiate(orbe, transform.position + new Vector3(0f, 0f, 4f) + Vector3.up, Quaternion.identity);
         orbeObject.GetComponent<Orbe>().playerMageAttack = gameObject.GetComponent<PlayerMageAttack>();
 
         attacking = false;
@@ -120,7 +120,7 @@ public class PlayerMageAttack : PlayerAttack
 
         Vector3 wallSpawnPosition = playerMovement.GetMousePositionOnPlane();
 
-        GameObject wallObject = Instantiate(wall, wallSpawnPosition + Vector3.up, gameObject.transform.rotation);
+        GameObject wallObject = Instantiate(wall, wallSpawnPosition, gameObject.transform.rotation);
         wallObject.GetComponent<Wall>().playerMageAttack = gameObject.GetComponent<PlayerMageAttack>();
 
 

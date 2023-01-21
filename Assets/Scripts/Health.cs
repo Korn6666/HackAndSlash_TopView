@@ -43,4 +43,9 @@ public class Health : MonoBehaviour
         Vector3 dir = Vector3.ProjectOnPlane(target - transform.position, new Vector3(0.0f, 1.0f, 0.0f));
         GetComponent<Rigidbody>().AddForce(dir.normalized * knockbackPower, ForceMode.Impulse);
     }
+
+    public void TakeKnockUp(float knockupPower)
+    {
+        GetComponent<Rigidbody>().AddForce(Vector3.up * knockupPower, ForceMode.Impulse);
+    }
 }

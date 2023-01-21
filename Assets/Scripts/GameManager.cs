@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    //mettre dans la scene parrallele de unity au start pour pouvoir l'appeler quand je veux
     public static GameManager instance;
     public static GameManager Instance { get { return instance; } }
     private void Awake()
@@ -40,8 +41,7 @@ public class GameManager : MonoBehaviour
     public Sprite playerSpell2Sprite;
     public Sprite playerSpell3Sprite;
 
-    // Start is called before the first frame update
-    void Start()
+    public void GetSprite() //met à jour les sprites au lancement du jeu
     {
         if (playerClasse == "warrior")
         {
