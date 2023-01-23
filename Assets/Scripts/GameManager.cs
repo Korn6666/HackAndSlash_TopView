@@ -41,6 +41,13 @@ public class GameManager : MonoBehaviour
     public Sprite playerSpell2Sprite;
     public Sprite playerSpell3Sprite;
 
+
+    // pour les settings
+    public float volumeValue;
+    public float effectValue;
+    public float musicValue;
+    public int qualityIndex;
+
     public void GetSprite() //met à jour les sprites au lancement du jeu
     {
         if (playerClasse == "warrior")

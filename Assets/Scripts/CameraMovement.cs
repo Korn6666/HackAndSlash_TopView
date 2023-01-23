@@ -26,10 +26,13 @@ public class CameraMovement : MonoBehaviour
     {
         //Vector3 forDebug = player.transform.position - transform.position;
         //Debug.Log(forDebug);
+        if(player != null)
+        {
+            Vector3 playerPosition = player.transform.position;
+            Vector3 zoomDelta = positionFromPlayer * Input.mouseScrollDelta.y * speedZoom;
+            zoom += zoomDelta;
+            transform.position = player.transform.position - positionFromPlayer + zoom; // Position caméra comme Diablo3
+        }
 
-        Vector3 playerPosition = player.transform.position;
-        Vector3 zoomDelta = positionFromPlayer * Input.mouseScrollDelta.y * speedZoom;
-        zoom += zoomDelta;
-        transform.position = player.transform.position - positionFromPlayer + zoom; // Position caméra comme Diablo3
     }
 }

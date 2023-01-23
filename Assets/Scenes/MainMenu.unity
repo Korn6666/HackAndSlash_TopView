@@ -457,6 +457,10 @@ MonoBehaviour:
   playerSpell1Sprite: {fileID: 0}
   playerSpell2Sprite: {fileID: 0}
   playerSpell3Sprite: {fileID: 0}
+  volumeValue: 0
+  effectValue: 0
+  musicValue: 0
+  qualityIndex: 0
 --- !u!4 &84890920
 Transform:
   m_ObjectHideFlags: 0
@@ -9074,6 +9078,10 @@ MonoBehaviour:
   volumeText: {fileID: 597907510}
   musicText: {fileID: 1855406059}
   effectText: {fileID: 405133716}
+  volumeSlider: {fileID: 495677291}
+  musicSlider: {fileID: 1067074798}
+  effectSlider: {fileID: 1256181529}
+  qualityDropdown: {fileID: 139223216}
 --- !u!114 &1377086453
 MonoBehaviour:
   m_ObjectHideFlags: 0

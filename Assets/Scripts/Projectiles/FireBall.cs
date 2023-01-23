@@ -12,9 +12,14 @@ public class FireBall : Projectiles
     void Start()
     {
         RB = GetComponent<Rigidbody>();
-        RB.velocity = playerMageAttack.transform.forward * speed * Time.deltaTime; // use translate for bugs
+        //RB.velocity = playerMageAttack.transform.forward * speed * Time.deltaTime; // use translate for bugs
         fireParticules.Play();
         fireTail.Play();
+    }
+
+    private void Update()
+    {
+        transform.position += speed * Time.deltaTime * playerMageAttack.transform.forward;
     }
 
     void OnCollisionEnter(Collision collision) //Permet de savoir si le joueur a ramassé l'xp

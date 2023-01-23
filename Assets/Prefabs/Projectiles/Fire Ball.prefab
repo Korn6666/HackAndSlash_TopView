@@ -4793,7 +4793,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RB: {fileID: 0}
   playerMageAttack: {fileID: 0}
-  speed: 5000
+  speed: 10
   enemyLayers:
     serializedVersion: 2
     m_Bits: 512
@@ -4831,7 +4831,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 7147366649061825797, guid: 79ff0105172ef264faf14922ee3979e5,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 1baa4756b9a789b40b09ee8cc4bb722f, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 3e13786b7eb03d747ba54e73ee156cde, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

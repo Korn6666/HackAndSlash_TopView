@@ -9,22 +9,29 @@ public class PlayerFalling : MonoBehaviour
     public float FallingSeuil;
     public bool Falling = false;
 
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
     private void Update()
     {
+        if(player != null)
+        {
+            if (player.transform.position.y < FallingSeuil)
+            {
+                Falling = true;
+            }
+            else
+            {
+                Falling = false;
+            }
 
-        if (player.transform.position.y < FallingSeuil)
-        {
-            Falling = true;
-        }
-        else
-        {
-            Falling = false;
+            if (Falling)
+            {
+                ThePlayerFalls();
+            }
         }
 
-        if (Falling)
-        {
-            ThePlayerFalls();
-        }
 
     }
 

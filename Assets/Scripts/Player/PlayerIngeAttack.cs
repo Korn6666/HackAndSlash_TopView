@@ -14,11 +14,14 @@ public class PlayerIngeAttack : PlayerAttack
 
 
     //SPELL 2
+    [SerializeField] private AudioSource spell2Audio;
     public float spell2Range = 5f;
     public float spell2StunTime = 1.5f;
 
 
     //SPELL 3
+    [SerializeField] private AudioSource spell3AudioBuff;
+    [SerializeField] private AudioSource spell3AudioDebuff;
     public float spell3MoveSpeed;
     public float spell3BuffDuration;
 
@@ -124,8 +127,9 @@ public class PlayerIngeAttack : PlayerAttack
         spell2CoolDownTimer = spell2CoolDown; //lancement du cooldown de l'attaque 
 
         playerAnimator.SetTrigger("WallSpell");
+        spell2Audio.Play();
 
-        if(electrode1 != null)
+        if (electrode1 != null)
         {
             //detecter les enemy in range
             Collider[] hitEnemies = Physics.OverlapSphere(electrode1.transform.position, spell2Range, enemyLayers);
@@ -162,10 +166,13 @@ public class PlayerIngeAttack : PlayerAttack
         float bonusSpeed = spell3MoveSpeed;
         PlayerMovement.speed += bonusSpeed;
 
+        spell3AudioBuff.Play();
+
         yield return new WaitForSeconds(spell3BuffDuration); //temps du buff
 
         PlayerMovement.speed -= bonusSpeed;
 
+        spell3AudioDebuff.Play();
 
         yield return null;
 
