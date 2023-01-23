@@ -1491,7 +1491,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b2cb9597b6c7489ab623672731af65a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  translationForce: 5
   mouseInWorld: {x: 0, y: 0, z: 0}
   layerMaskRayCast:
     serializedVersion: 2
@@ -1512,7 +1511,6 @@ MonoBehaviour:
   health: 0
   healthBar: {fileID: 0}
   spawnEnemy: {fileID: 0}
-  playerMaxHealth: 0
 --- !u!114 &3682676067141397704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1541,6 +1539,7 @@ MonoBehaviour:
   spell3CoolDownTimer: 0
   electrode: {fileID: 7703996280174005644, guid: 0ee5aec72c72bb74da607105d2957875,
     type: 3}
+  waitForSpell1Animation: 0.5
   spell2Audio: {fileID: 1836690437537207843}
   spell2Range: 5
   spell2StunTime: 2

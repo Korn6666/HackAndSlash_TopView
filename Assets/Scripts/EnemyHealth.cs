@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.AI;
 
 public class EnemyHealth : Health
 {
@@ -44,11 +45,13 @@ public class EnemyHealth : Health
         enemyAnimator.enabled = false;
         gameObject.GetComponent<EnemyAttack>().enabled = false;
         gameObject.GetComponent<EnemyMovement>().enabled = false;
+        gameObject.GetComponent<NavMeshAgent>().enabled = false;
 
         yield return new WaitForSeconds(timer);
 
         enemyAnimator.enabled = true;
         gameObject.GetComponent<EnemyAttack>().enabled = true;
         gameObject.GetComponent<EnemyMovement>().enabled = true;
+        gameObject.GetComponent<NavMeshAgent>().enabled = true;
     }
 }

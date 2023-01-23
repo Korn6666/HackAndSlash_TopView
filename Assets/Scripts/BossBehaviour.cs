@@ -73,7 +73,7 @@ public class BossBehaviour : EnemyAttack
     void Update()
     {
         health = gameObject.GetComponent<EnemyHealth>().health;
-        distanceToPlayer = (player.transform.position - transform.position).magnitude;
+        if(player != null) {distanceToPlayer = (player.transform.position - transform.position).magnitude;}      
         
         //Gestion des comportements
         if (health > halfHealth)

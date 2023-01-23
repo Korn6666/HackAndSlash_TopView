@@ -7,6 +7,7 @@ public class SelectMenu : MonoBehaviour
 {
     [SerializeField] GameObject warrior;
     [SerializeField] GameObject mage;
+    [SerializeField] GameObject inge;
 
     private int arenaIndex;
 
@@ -27,12 +28,21 @@ public class SelectMenu : MonoBehaviour
         {
             warrior.SetActive(true);
             mage.SetActive(false);
+            inge.SetActive(false);
         }
 
         if (name == "mage")
         {
             warrior.SetActive(false);
             mage.SetActive(true);
+            inge.SetActive(false);
+        }
+
+        if (name == "inge")
+        {
+            warrior.SetActive(false);
+            mage.SetActive(false);
+            inge.SetActive(true);
         }
     }
 

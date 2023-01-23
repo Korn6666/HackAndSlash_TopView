@@ -2490,7 +2490,7 @@ MonoBehaviour:
   mouseInWorld: {x: 0, y: 0, z: 0}
   layerMaskRayCast:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 2049
 --- !u!114 &1337396777872176429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2537,16 +2537,13 @@ MonoBehaviour:
     type: 3}
   fireBallSpawnPoint: {fileID: 3813653706361894074}
   spell1Range: 2
-  waitForAnimationSpellAttack: 0
   orbe: {fileID: 90217176739647289, guid: 13720f5aa7a5ab346be9cfb88ba01cf9, type: 3}
   spell2Range: 1
   spell2Knockback: 0
   spell2HitCount: 5
-  waitForAnimationOrbeSpell: 0
   wall: {fileID: 5334157364384301705, guid: 358f4df1f5b75374eb05d206e7568c66, type: 3}
   spell3Range: 3
   spell3WallScale: 1
-  waitForAnimationWallSpell: 1
 --- !u!1 &8553827711968160042
 GameObject:
   m_ObjectHideFlags: 0
