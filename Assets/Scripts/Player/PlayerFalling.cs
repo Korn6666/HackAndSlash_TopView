@@ -5,26 +5,33 @@ using UnityEngine;
 public class PlayerFalling : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject player;
-    public float FallingSeuil;
-    public bool Falling = false;
+    [SerializeField] private GameObject player;
+    [SerializeField] private float FallingSeuil;
+    [SerializeField] private bool Falling = false;
 
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
     private void Update()
     {
+        if(player != null)
+        {
+            if (player.transform.position.y < FallingSeuil)
+            {
+                Falling = true;
+            }
+            else
+            {
+                Falling = false;
+            }
 
-        if (player.transform.position.y < FallingSeuil)
-        {
-            Falling = true;
-        }
-        else
-        {
-            Falling = false;
+            if (Falling)
+            {
+                ThePlayerFalls();
+            }
         }
 
-        if (Falling)
-        {
-            ThePlayerFalls();
-        }
 
     }
 

@@ -277,7 +277,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9095851890101489867}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &9087795642456048196
 SkinnedMeshRenderer:
@@ -483,7 +483,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9095851890101489867}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &1441712187887539039
 SkinnedMeshRenderer:
@@ -736,7 +736,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9095851890101489867}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &1081220037636739278
 SkinnedMeshRenderer:
@@ -897,7 +897,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9095851890101489867}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &3199462560769182255
 SkinnedMeshRenderer:
@@ -1105,6 +1105,36 @@ Transform:
   - {fileID: 746043555363459005}
   m_Father: {fileID: 6919183436440013032}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3813653706361894074
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8873203996411937886}
+  m_Layer: 0
+  m_Name: spell1SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8873203996411937886
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3813653706361894074}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.00037, y: 0.00899, z: 0.00949}
+  m_LocalScale: {x: 0.00873373, y: 0.00873373, z: 0.00873373}
+  m_Children: []
+  m_Father: {fileID: 9095851890101489867}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3894435600759607458
 GameObject:
@@ -1443,7 +1473,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9095851890101489867}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &485853968602608646
 SkinnedMeshRenderer:
@@ -2386,6 +2416,7 @@ Transform:
   m_LocalPosition: {x: -3.16, y: 0.541, z: -2.73}
   m_LocalScale: {x: 114.49862, y: 114.49862, z: 114.49862}
   m_Children:
+  - {fileID: 8873203996411937886}
   - {fileID: 695484164622964532}
   - {fileID: 7302581373941522908}
   - {fileID: 2665051872957097893}
@@ -2475,6 +2506,7 @@ MonoBehaviour:
   maxHealth: 40
   health: 0
   healthBar: {fileID: 0}
+  spawnEnemy: {fileID: 0}
 --- !u!114 &7830707400683826778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2503,14 +2535,18 @@ MonoBehaviour:
   spell3CoolDownTimer: 0
   fireBall: {fileID: 5130948299074880304, guid: 3aab7fdf1f870c64dbda622a232828a0,
     type: 3}
+  fireBallSpawnPoint: {fileID: 3813653706361894074}
   spell1Range: 2
+  waitForAnimationSpellAttack: 0
   orbe: {fileID: 90217176739647289, guid: 13720f5aa7a5ab346be9cfb88ba01cf9, type: 3}
   spell2Range: 1
   spell2Knockback: 0
   spell2HitCount: 5
+  waitForAnimationOrbeSpell: 0
   wall: {fileID: 5334157364384301705, guid: 358f4df1f5b75374eb05d206e7568c66, type: 3}
   spell3Range: 3
   spell3WallScale: 1
+  waitForAnimationWallSpell: 1
 --- !u!1 &8553827711968160042
 GameObject:
   m_ObjectHideFlags: 0
@@ -2542,7 +2578,7 @@ Transform:
   - {fileID: 643792683092756320}
   - {fileID: 3891776388626416588}
   m_Father: {fileID: 9095851890101489867}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8637379201434246741
 GameObject:

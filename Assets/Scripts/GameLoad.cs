@@ -6,7 +6,7 @@ public class GameLoad : MonoBehaviour
 {
     [SerializeField] private GameObject warrior;
     [SerializeField] private GameObject mage;
-    //[SerializeField] private GameObject ?;  AUSI ajouter le IF !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    [SerializeField] private GameObject inge;
 
     private Vector3 spawnPosition;
     // Start is called before the first frame update
@@ -21,6 +21,10 @@ public class GameLoad : MonoBehaviour
         else if(GameManager.instance.playerClasse == "mage")
         {
             Instantiate(mage, spawnPosition, Quaternion.identity);
+        }
+        else if (GameManager.instance.playerClasse == "inge")
+        {
+            Instantiate(inge, spawnPosition, Quaternion.identity);
         }
     }
 }

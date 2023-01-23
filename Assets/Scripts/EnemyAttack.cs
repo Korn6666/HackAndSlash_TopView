@@ -6,8 +6,8 @@ using UnityEngine.AI;
 
 public class EnemyAttack : MonoBehaviour
 {
-    [SerializeField] private float swordAttackCoolDown = 1;
-    public float swordAttackAnimationTime = 1.3f; //Temps d'animation    
+    [SerializeField] protected float swordAttackCoolDown = 1;
+    public float attackAnimationTime = 1.3f; //Temps d'animation    
     public float swordAttackDamages = 5;
 
     public bool canAttack;
@@ -57,17 +57,17 @@ public class EnemyAttack : MonoBehaviour
     {
         while (true)
         {
-            //if (firstAttack) { yield return new WaitForSeconds(swordAttackCoolDown - swordAttackAnimationTime); }
+            //if (firstAttack) { yield return new WaitForSeconds(swordAttackCoolDown - attackAnimationTime); }
             canAttack = gameObject.GetComponent<EnemyMovement>().canAttack;
             if (canAttack)
             {
                 Animator.SetTrigger("Attack");
-                yield return new WaitForSeconds(swordAttackAnimationTime); //Histoire d'attendre de faire les degats quand l'épée touche le joueur
+                yield return new WaitForSeconds(attackAnimationTime); //Histoire d'attendre de faire les degats quand l'épée touche le joueur
                 canAttack = gameObject.GetComponent<EnemyMovement>().canAttack;
                 if (canAttack)
                 {
                     SwordAttack();
-                    yield return new WaitForSeconds(swordAttackCoolDown - swordAttackAnimationTime);
+                    yield return new WaitForSeconds(swordAttackCoolDown - attackAnimationTime);
                 }
             }
             yield return null;

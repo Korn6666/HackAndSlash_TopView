@@ -83,7 +83,11 @@ public class EnemyMovement : MonoBehaviour
     {
         Vector3 distance = player.transform.position - transform.position;
         Vector3 distance2D = new Vector3(distance.x, 0, distance.z);
-        EnemyAgent.SetDestination(player.transform.position);
+        if (gameObject.GetComponent<NavMeshAgent>().enabled == true)
+        {
+            EnemyAgent.SetDestination(player.transform.position);
+
+        }
         if (distance2D.magnitude > distanceSeuil + 1)
         {
             if (gameObject.tag == "Skeleton" || gameObject.tag == "Boss")

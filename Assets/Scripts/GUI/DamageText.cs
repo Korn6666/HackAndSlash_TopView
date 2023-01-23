@@ -11,7 +11,7 @@ public class DamageText : MonoBehaviour
     void Start()
     {
         main_camera = GameObject.Find("Main Camera").gameObject;
-        Destroy(gameObject, 0.7f); // ce detruit apres 0.7 sec
+        Destroy(transform.parent.gameObject, 0.7f); // ce detruit apres 0.7 sec
     }
 
     private void Update()

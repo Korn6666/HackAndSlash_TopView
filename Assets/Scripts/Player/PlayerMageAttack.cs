@@ -8,6 +8,7 @@ public class PlayerMageAttack : PlayerAttack
 
     //SPELL 1
     [SerializeField] private GameObject  fireBall;
+    [SerializeField] private GameObject fireBallSpawnPoint;
     public float spell1Range = 5f;
     private float waitForAnimationSpellAttack = 0.9f;
 
@@ -87,7 +88,7 @@ public class PlayerMageAttack : PlayerAttack
         playerAnimator.SetTrigger("SpellAttack");
 
         yield return new WaitForSeconds(waitForAnimationSpellAttack); //temps d'animation
-        GameObject fireBallObject = Instantiate(fireBall, transform.position + Vector3.up, Quaternion.identity);
+        GameObject fireBallObject = Instantiate(fireBall, fireBallSpawnPoint.transform.position, Quaternion.identity);
         fireBallObject.GetComponent<FireBall>().playerMageAttack = gameObject.GetComponent<PlayerMageAttack>();
 
         attacking = false;
