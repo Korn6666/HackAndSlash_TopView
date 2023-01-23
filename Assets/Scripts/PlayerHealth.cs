@@ -6,13 +6,26 @@ public class PlayerHealth : Health
 {
 
     //public float playerMaxHealth;
+    [SerializeField] private AudioSource CoupRecu;
+    public bool hitByLich;
 
     private void Start()
     {
         healthBar = GameObject.FindGameObjectWithTag("Player HealthBar").GetComponent<HealthBar>();
         health = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+        hitByLich = false;
     }
+
+    //new public void TakeDamage(float damage)
+    //{
+    //    if (!hitByLich)
+    //    {
+    //        CoupRecu.Play();
+    //    }
+    //    hitByLich = false;
+        
+    //}
 
     // Update is called once per frame
     void Update()

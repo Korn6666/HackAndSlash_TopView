@@ -61,6 +61,13 @@ public class BossBehaviour : EnemyAttack
 
     public LayerMask playerLayer;
 
+    private AudioSource battleCry;
+    [SerializeField] private AudioSource battleCry2sec;
+    [SerializeField] private AudioSource battleCry1sec;
+    [SerializeField] private AudioSource battleCry05sec;
+    [SerializeField] private AudioSource earthQuake;
+
+
 
     private void Awake()
     {
@@ -171,6 +178,8 @@ public class BossBehaviour : EnemyAttack
 
         yield return new WaitForSeconds(waitForGroundAttackAnimation);
 
+        earthQuake.Play();
+
         Collider[] hitEntities = Physics.OverlapSphere(transform.position, groundAttackRange, playerLayer); //infliger les degats aux ennemies
 
         foreach (Collider entity in hitEntities) //infliger les degats aux ennemies
@@ -196,6 +205,7 @@ public class BossBehaviour : EnemyAttack
         isCrying = true;
         BattleCryCoolDownTimer = BattleCryCoolDown; //lancement du cooldown de l'attaque 
         Animator.SetTrigger("BattleCry");
+        battleCry.Play();
         isCharging = true;
         // On désactive le mouvement et on s'assure qu'il n'attaque pas ni qu'il ne court pas dans le vide
         gameObject.GetComponent<EnemyMovement>().canAttack = false;
@@ -254,6 +264,7 @@ public class BossBehaviour : EnemyAttack
 
     private void FirstBehaviour()
     {
+        battleCry = battleCry2sec;
         waitForBattleCryAnimation = 1.5f;
         waitForGroundAttackAnimation = 2;
         groundAttackAnimationName = "groundAttack";
@@ -272,6 +283,7 @@ public class BossBehaviour : EnemyAttack
 
     private void SecondBehaviour()
     {
+        battleCry = battleCry1sec;
         waitForBattleCryAnimation = 1;
         chargeDamages = 25;
         BattleCryCoolDown = 5; 
@@ -289,6 +301,7 @@ public class BossBehaviour : EnemyAttack
 
     private void ThirdBehaviour()
     {
+        battleCry = battleCry05sec;
         waitForBattleCryAnimation = 0.5f;
         chargeDamages = 30;
         groundAttackDamage = 50;

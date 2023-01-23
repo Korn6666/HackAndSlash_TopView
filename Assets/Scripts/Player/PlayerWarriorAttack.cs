@@ -23,7 +23,7 @@ public class PlayerWarriorAttack : PlayerAttack
     public float spell2AttackRange = 5f;
     private bool isOnFloor; //Variable qui nous dit si le player est sur le sol ou non
     [SerializeField] private float animationJumpWait = 0.25f;
-
+    [SerializeField] private AudioSource groundJump;
 
 
     //SPELL 3
@@ -86,10 +86,16 @@ public class PlayerWarriorAttack : PlayerAttack
         attacking = true; //nous attaquons
         spell1CoolDownTimer = spell1CoolDown; //lancement du cooldown de l'attaque 
 
-        spell1Audio.Play();
+        
         playerAnimator.SetTrigger("BasicAttack");
 
-        yield return new WaitForSeconds(0.6f); 
+        yield return new WaitForSeconds(0.4f);
+
+        spell1Audio.Play();
+
+        yield return new WaitForSeconds(0.2f);
+
+        //yield return new WaitForSeconds(0.3f);
 
         //detecter les enemy in range
         Collider[] hitEnemies = Physics.OverlapSphere(spell1AttackPoint.position, spell1AttackRange, enemyLayers);
@@ -130,9 +136,9 @@ public class PlayerWarriorAttack : PlayerAttack
         {
             yield return null; 
         }
-        
-        //playerAnimator.SetTrigger("OnFloor");
 
+        //playerAnimator.SetTrigger("OnFloor");
+        groundJump.Play();
         gameObject.GetComponent<PlayerMovement>().enabled = true; // On redonne accès au mouvement
         Collider[] hitEnemies = Physics.OverlapSphere(spell3AttackPoint.position, spell2AttackRange, enemyLayers); //infliger les degats aux ennemies
 
@@ -160,7 +166,9 @@ public class PlayerWarriorAttack : PlayerAttack
     {
         attacking = true; //nous attaquons
         spell3CoolDownTimer = spell3CoolDown; //lancement du cooldown de l'attaque
-        playerAnimator.SetTrigger("360Attack");
+        playerAnimator.SetTrigger("360AttackTrigger");
+        playerAnimator.SetBool("360Attack", true);
+
         spell3Audio.Play();
         float global_timer = 0f;
         float timer = 1f;
@@ -168,7 +176,6 @@ public class PlayerWarriorAttack : PlayerAttack
         {
             if (timer >= 0.5)
             {
-                Debug.Log("yaa");
                 Collider[] hitEnemies = Physics.OverlapSphere(spell3AttackPoint.position, spell3AttackRange, enemyLayers); //infliger les degats aux ennemies
 
                 foreach (Collider enemy in hitEnemies) //infliger les degats aux ennemies
@@ -182,6 +189,8 @@ public class PlayerWarriorAttack : PlayerAttack
             timer += Time.deltaTime;
             yield return null;
         }
+        playerAnimator.SetBool("360Attack", false);
+
         attacking = false;
         yield return null;
 

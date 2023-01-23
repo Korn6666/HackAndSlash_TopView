@@ -25,6 +25,8 @@ public class LicheBehaviour : MonoBehaviour
     public float waitForAnimation = 1.2f;
     [SerializeField] private float  waitForAnimationTimer;
 
+    [SerializeField] private AudioSource Incantation;
+
 
 
     
@@ -88,7 +90,7 @@ public class LicheBehaviour : MonoBehaviour
         yield return new WaitForSeconds(waitForAnimation);
 
         spellZone.SetActive(true);
-
+        Incantation.Play();
         float Timer = 1;
         while (isSpelling)
         {
@@ -100,11 +102,15 @@ public class LicheBehaviour : MonoBehaviour
                 {                   
                     if (entity.tag == "Player")  
                     {
+                        entity.gameObject.GetComponent<PlayerHealth>().hitByLich = true;
                         entity.GetComponent<PlayerHealth>().TakeDamage(spellDamage);
                         presence = true;
                     }else if (entity.tag == "Skeleton" || entity.tag == "TheOtherEnemy")
                     {
-                        entity.GetComponent<EnemyHealth>().TakeDamage(-spellHeal);
+                        if (entity.GetComponent<EnemyHealth>().health < entity.GetComponent<EnemyHealth>().maxHealth)
+                        {
+                            entity.GetComponent<EnemyHealth>().TakeDamage(-spellHeal);
+                        }
                         presence = true;
                     }
                 }
@@ -117,6 +123,7 @@ public class LicheBehaviour : MonoBehaviour
             Timer += Time.deltaTime;
             yield return null;
         }
+        Incantation.Stop();
 
         spellZone.SetActive(false);
 
