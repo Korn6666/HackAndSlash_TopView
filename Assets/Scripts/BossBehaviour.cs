@@ -296,7 +296,7 @@ public class BossBehaviour : EnemyAttack
         groundAttackAnimationName = "violentGroundAttack";
         knockupPower = 5;
 
-        if (distanceToPlayer < 10 && !isCharging && chargeAttackTimer < 0 && !groundAttacking)
+        if (distanceToPlayer < 10 && !isCharging && chargeAttackTimer < 0 && !groundAttacking && distanceToPlayer < 10)
         {
             StartCoroutine(groundAttack());
         }
