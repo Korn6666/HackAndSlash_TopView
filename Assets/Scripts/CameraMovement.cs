@@ -19,7 +19,6 @@ public class CameraMovement : MonoBehaviour
         //positionFromPlayer = player.transform.position - transform.position; // Enregistre la position de la caméra comparé à celle de player pour la conserver ensuite. 
 
         transform.position = player.transform.position + positionFromPlayer;
-        
     }
 
     void Update()
