@@ -19,6 +19,7 @@ public class PlayerWarriorAttack : PlayerAttack
 
     //SPELL 2
     // public Transform spell2AttackPoint; // on utilisera ici le spell3Attackpoint
+    [SerializeField] private AudioSource spell2Audio;
     public float spell2AttackRange = 5f;
     private bool isOnFloor; //Variable qui nous dit si le player est sur le sol ou non
     [SerializeField] private float animationJumpWait = 0.25f;
@@ -29,6 +30,7 @@ public class PlayerWarriorAttack : PlayerAttack
     public Transform spell3AttackPoint;
     public float spell3AttackRange = 3f; // AOE area range
     [SerializeField] public float jumpForwardForce = 10f;
+    [SerializeField] private AudioSource spell3Audio;
 
 
     // Start is called before the first frame update
@@ -114,7 +116,7 @@ public class PlayerWarriorAttack : PlayerAttack
         //lancer les animations A FAIRE!!!!!!
 
         playerAnimator.SetTrigger("JumpAttack");
-
+        spell2Audio.Play();
 
         gameObject.GetComponent<PlayerMovement>().enabled = false; // On désactive le mouvement
 
@@ -159,6 +161,7 @@ public class PlayerWarriorAttack : PlayerAttack
         attacking = true; //nous attaquons
         spell3CoolDownTimer = spell3CoolDown; //lancement du cooldown de l'attaque
         playerAnimator.SetTrigger("360Attack");
+        spell3Audio.Play();
         float global_timer = 0f;
         float timer = 1f;
         while (global_timer <= 3f)

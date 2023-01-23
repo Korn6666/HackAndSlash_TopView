@@ -285,11 +285,11 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: Ultra
+    - m_Text: Low
       m_Image: {fileID: 0}
     - m_Text: Medium
       m_Image: {fileID: 0}
-    - m_Text: Low
+    - m_Text: Ultra
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -10276,6 +10276,10 @@ MonoBehaviour:
   volumeText: {fileID: 1435553544}
   musicText: {fileID: 1502659444}
   effectText: {fileID: 1690014616}
+  volumeSlider: {fileID: 953836199}
+  musicSlider: {fileID: 1518565670}
+  effectSlider: {fileID: 891778256}
+  qualityDropdown: {fileID: 13437516}
 --- !u!1001 &2146882909
 PrefabInstance:
   m_ObjectHideFlags: 0
