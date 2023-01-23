@@ -38,7 +38,7 @@ public class PlayerFalling : MonoBehaviour
     private void ThePlayerFalls()
     {
         Debug.Log("Le player tombe");
-        Destroy(player);
+        player.GetComponent<PlayerHealth>().TakeDamage(1000);
     }
 }
 

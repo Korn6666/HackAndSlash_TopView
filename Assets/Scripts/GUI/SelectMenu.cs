@@ -47,4 +47,9 @@ public class SelectMenu : MonoBehaviour
     {
         SceneManager.LoadScene(arenaIndex);
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }

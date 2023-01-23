@@ -47,7 +47,7 @@ public class PlayerUpgrade : MonoBehaviour
         allUpgrades.Add(new Upgrade("PLayerSpell1CoolDownUpgrade", "Reduce skill 1 cooldown", playerAttack.spell1CoolDown, 1f, -0.20f, GameManager.instance.playerSpell1Sprite));
         allUpgrades.Add(new Upgrade("PLayerSpell2CoolDownUpgrade", "Reduce skill 2 cooldown", playerAttack.spell2CoolDown, 1f, -0.20f, GameManager.instance.playerSpell2Sprite));
         allUpgrades.Add(new Upgrade("PLayerSpell3CoolDownUpgrade", "Reduce skill 3 cooldown", playerAttack.spell3CoolDown, 1f, -0.20f, GameManager.instance.playerSpell3Sprite));
-        allUpgrades.Add(new Upgrade("PLayerHealthPointUpgrade", "Increase your health by 20% and regen it", playerHealth.playerMaxHealth, 1f, 0.20f, healthPointUpgradeSprite));
+        allUpgrades.Add(new Upgrade("PLayerHealthPointUpgrade", "Increase your health by 20% and regen it", playerHealth.maxHealth, 1f, 0.20f, healthPointUpgradeSprite));
 
 
         //warrior upgrade
@@ -205,7 +205,7 @@ public class PlayerUpgrade : MonoBehaviour
             case "PLayerHealthPointUpgrade":
                 up.level += 1;
                 up.upgrade += up.value;
-                playerHealth.playerMaxHealth = up.baseValue * up.upgrade;
+                playerHealth.maxHealth = up.baseValue * up.upgrade;
                 player.GetComponent<PlayerHealth>().SetMaxHealthUpgrade();
                 break;
 

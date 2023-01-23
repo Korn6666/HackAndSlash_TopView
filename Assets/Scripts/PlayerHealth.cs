@@ -5,20 +5,19 @@ using UnityEngine;
 public class PlayerHealth : Health
 {
 
-    public float playerMaxHealth;
+    //public float playerMaxHealth;
 
     private void Start()
     {
         healthBar = GameObject.FindGameObjectWithTag("Player HealthBar").GetComponent<HealthBar>();
         health = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
-        playerMaxHealth = maxHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
-        maxHealth = playerMaxHealth;
+        //maxHealth = playerMaxHealth;
 
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -33,8 +32,8 @@ public class PlayerHealth : Health
 
     public void SetMaxHealthUpgrade() //Fonction à appeler lors d'une upgrade de point de vie
     {
-        health = playerMaxHealth;
-        healthBar.SetMaxHealth(playerMaxHealth);
+        health = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
     }
 
 }

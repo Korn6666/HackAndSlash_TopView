@@ -8,6 +8,8 @@ public class FireBall : Projectiles
     [SerializeField] private ParticleSystem fireTail;
     [SerializeField] private ParticleSystem explosion;
 
+    private Vector3 firballDirection;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,11 +17,12 @@ public class FireBall : Projectiles
         //RB.velocity = playerMageAttack.transform.forward * speed * Time.deltaTime; // use translate for bugs
         fireParticules.Play();
         fireTail.Play();
+        firballDirection = playerMageAttack.transform.forward;
     }
 
     private void Update()
     {
-        transform.position += speed * Time.deltaTime * playerMageAttack.transform.forward;
+        transform.position += speed * Time.deltaTime * firballDirection;
     }
 
     void OnCollisionEnter(Collision collision) //Permet de savoir si le joueur a ramassé l'xp
