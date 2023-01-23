@@ -15,7 +15,7 @@ public class SpawnEnemy: MonoBehaviour
     void Start()
     {
 
-        EnemyList = new GameObject[] { Skeleton , Liche};
+        EnemyList = new GameObject[] { Skeleton , Skeleton, Liche}; // 2/3 chances d'avoir un squelette et 1/3 Liche.
     }
 
     private IEnumerator SpawnanEnemy()
@@ -24,6 +24,12 @@ public class SpawnEnemy: MonoBehaviour
         GameObject EnemyToSpawn = EnemyList[index];
         yield return new WaitForSeconds(0f);
         Instantiate(EnemyToSpawn, EnemySpawn, Quaternion.identity);
+    }
+
+    public IEnumerator SpawnTheBoss()
+    {
+        yield return new WaitForSeconds(0f);
+        Instantiate(Boss, EnemySpawn, Quaternion.identity);
     }
 
     public void StartSpawnEnemy(bool Boss)
@@ -42,11 +48,5 @@ public class SpawnEnemy: MonoBehaviour
         {
             StartCoroutine(SpawnanEnemy());
         }
-    }
-
-    public IEnumerator SpawnTheBoss()
-    {
-        yield return new WaitForSeconds(0f);
-        Instantiate(Boss, EnemySpawn, Quaternion.identity);
     }
 }

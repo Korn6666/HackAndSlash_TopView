@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class BossBehaviour : EnemyAttack
 {
     [SerializeField] private float standardBossSpeed;
-    [SerializeField] private float standardBossDamages = 5;
+    [SerializeField] private float standardBossDamages = 10;
 
 
     // GroundAttack
@@ -67,6 +67,7 @@ public class BossBehaviour : EnemyAttack
         halfHealth = gameObject.GetComponent<EnemyHealth>().maxHealth / 2;
         quarterHealth = gameObject.GetComponent<EnemyHealth>().maxHealth / 4;
         BattleCryCoolDownTimer = BattleCryCoolDown;
+        swordAttackCoolDown = 2;
     }
 
     void Update()
@@ -74,7 +75,7 @@ public class BossBehaviour : EnemyAttack
         health = gameObject.GetComponent<EnemyHealth>().health;
         distanceToPlayer = (player.transform.position - transform.position).magnitude;
         
-        //comportement 1
+        //Gestion des comportements
         if (health > halfHealth)
         {
             FirstBehaviour();
@@ -97,7 +98,7 @@ public class BossBehaviour : EnemyAttack
         if (isCharging)
         {
             knockbackPower = -11;
-            swordAttackAnimationTime = 0;
+            attackAnimationTime = 0;
             gameObject.GetComponent<EnemyMovement>().standardSpeed = speedCharge;
             swordAttackDamages = chargeDamages;
         }
@@ -107,7 +108,7 @@ public class BossBehaviour : EnemyAttack
             if (chargeAttackTimer <= 0)
             {
                 knockbackPower = 0;
-                swordAttackAnimationTime = 1.3f;
+                attackAnimationTime = 0.7f;
                 Animator.SetBool("isCharging", false);
                 //Animator.SetFloat("SpeedRun", 1);
                 gameObject.GetComponent<EnemyMovement>().standardSpeed = standardBossSpeed;
@@ -274,9 +275,10 @@ public class BossBehaviour : EnemyAttack
         waitForBattleCryAnimation = 1;
         chargeDamages = 25;
         BattleCryCoolDown = 5; 
-
+        Debug.Log(BattleCryCoolDownTimer);
         if (BattleCryCoolDownTimer <= 0 && !canAttack)
         {
+            
             StartCoroutine(BattleCry());
         }
         else if (speedCryCoolDownTimer <= 0 && !isCharging && chargeAttackTimer < 0 && WaveManager.activeEnemyCount > 0)
@@ -294,7 +296,7 @@ public class BossBehaviour : EnemyAttack
         groundAttackAnimationName = "violentGroundAttack";
         knockupPower = 5;
 
-        if (distanceToPlayer < 10 && !isCharging && chargeAttackTimer < 0 && !groundAttacking)
+        if (distanceToPlayer < 10 && !isCharging && chargeAttackTimer < 0 && !groundAttacking && distanceToPlayer < 10)
         {
             StartCoroutine(groundAttack());
         }

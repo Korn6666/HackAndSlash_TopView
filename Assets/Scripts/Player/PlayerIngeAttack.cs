@@ -11,6 +11,7 @@ public class PlayerIngeAttack : PlayerAttack
     private GameObject electrode1;
     private GameObject electrode2;
     IEnumerator linkCoroutine;
+    [SerializeField] private float waitForSpell1Animation = 0.5f;
 
 
     //SPELL 2
@@ -85,6 +86,7 @@ public class PlayerIngeAttack : PlayerAttack
 
         StopCoroutine(linkCoroutine);
 
+        yield return new WaitForSeconds(waitForSpell1Animation);
         Destroy(electrode2);
         electrode2 = electrode1;
         electrode1  = Instantiate(electrode, transform.position + Vector3.up, Quaternion.identity);
@@ -126,7 +128,7 @@ public class PlayerIngeAttack : PlayerAttack
         attacking = true; //nous attaquons
         spell2CoolDownTimer = spell2CoolDown; //lancement du cooldown de l'attaque 
 
-        playerAnimator.SetTrigger("WallSpell");
+        playerAnimator.SetTrigger("Freeze");
         spell2Audio.Play();
 
         if (electrode1 != null)
@@ -162,14 +164,15 @@ public class PlayerIngeAttack : PlayerAttack
     IEnumerator Spell3Attack()
     {
         spell3CoolDownTimer = spell3CoolDown; //lancement du cooldown de l'attaque
-        playerAnimator.SetTrigger("WallSpell");
         float bonusSpeed = spell3MoveSpeed;
+        playerAnimator.speed += 0.5f;
         PlayerMovement.speed += bonusSpeed;
 
         spell3AudioBuff.Play();
 
         yield return new WaitForSeconds(spell3BuffDuration); //temps du buff
 
+        playerAnimator.speed -= 0.5f;
         PlayerMovement.speed -= bonusSpeed;
 
         spell3AudioDebuff.Play();
