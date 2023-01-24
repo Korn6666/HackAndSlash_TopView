@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4591590762708584402}
   - component: {fileID: 4580944346357036636}
   - component: {fileID: 4491703117158493810}
+  - component: {fileID: -3946879864339595769}
   m_Layer: 0
   m_Name: RiverQuadSolo
   m_TagString: Untagged
@@ -94,3 +95,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollSpeed: 1
   rend: {fileID: 0}
+--- !u!65 &-3946879864339595769
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4595422979344179004}
+  m_Material: {fileID: 13400000, guid: c9bdd26df0530c44fb1f1782e3f350b7, type: 2}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.97281766, y: 1.1057107, z: 2.151834}
+  m_Center: {x: -0.01359117, y: -0.052855253, z: 1.503784}

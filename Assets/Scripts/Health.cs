@@ -25,6 +25,7 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+
         health -= damage;
         healthBar.SetHealth(health);
 

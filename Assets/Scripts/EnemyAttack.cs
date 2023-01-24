@@ -15,6 +15,9 @@ public class EnemyAttack : MonoBehaviour
     public Animator Animator;
     public float knockbackPower = 0;
 
+    [SerializeField] private AudioSource swordAttackSound;
+
+
     //private bool firstAttack = true;
 
 
@@ -64,6 +67,11 @@ public class EnemyAttack : MonoBehaviour
                 Animator.SetTrigger("Attack");
                 yield return new WaitForSeconds(attackAnimationTime); //Histoire d'attendre de faire les degats quand l'épée touche le joueur
                 canAttack = gameObject.GetComponent<EnemyMovement>().canAttack;
+                if (gameObject.tag == "Skeleton")
+                {
+                    swordAttackSound.Play();
+                } 
+
                 if (canAttack)
                 {
                     SwordAttack();

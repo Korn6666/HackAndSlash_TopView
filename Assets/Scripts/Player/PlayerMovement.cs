@@ -8,6 +8,10 @@ public class PlayerMovement : MonoBehaviour
 
     public static float speed = 1.5f;
 
+    private float sensX;
+    private float sensZ;
+
+
     private Rigidbody Rbd;
     private float translationForce = 20;
     private Camera cam;
@@ -15,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask layerMaskRayCast;
 
     private Animator playerAnimator;
+
+    [SerializeField] private AudioSource stepSound;
 
     
     Vector3 pos = new Vector3(200, 200, 0);
@@ -28,14 +34,15 @@ public class PlayerMovement : MonoBehaviour
         playerAnimator = gameObject.GetComponent<Animator>();
         playerAnimator.applyRootMotion = false;
         translationForce = 5;
+        StartCoroutine(StepSound());
     }
 
     // Update is called once per frame
     void Update()
     {
         //Système de déplacement avec le RigidBody
-        float sensX = Input.GetAxis("Horizontal");
-        float sensZ = Input.GetAxis("Vertical");
+        sensX = Input.GetAxis("Horizontal");
+        sensZ = Input.GetAxis("Vertical");
         Vector3 directionInput = new Vector3(translationForce * sensX, 0, translationForce * sensZ);
 
         // Check si il bouge ou pas pour l'animation de mouvement
@@ -73,4 +80,24 @@ public class PlayerMovement : MonoBehaviour
          }
          return Vector3.zero;
      }
+
+    public IEnumerator StepSound ()
+    {
+        while (true)
+        {
+            if (sensX != 0 || sensZ != 0)
+            {
+                stepSound.Play();
+                if (gameObject.name == "Druide (Clone)")
+                {
+                    yield return new WaitForSeconds(0.23f);
+                }
+                else
+                {
+                    yield return new WaitForSeconds(0.3f);
+                }
+            }
+            yield return null;
+        }        
+    }
 }

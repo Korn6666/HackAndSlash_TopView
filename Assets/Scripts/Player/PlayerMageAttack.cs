@@ -10,7 +10,7 @@ public class PlayerMageAttack : PlayerAttack
     [SerializeField] private GameObject  fireBall;
     [SerializeField] private GameObject fireBallSpawnPoint;
     public float spell1Range = 5f;
-    private float waitForAnimationSpellAttack = 0.9f;
+    private float waitForAnimationSpellAttack = 0.4f;
 
 
 

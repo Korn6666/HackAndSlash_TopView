@@ -9,10 +9,11 @@ public class EnemyHealth : Health
     public GameObject lootXp; //Notre object pour donner 1 d'xp
     [SerializeField] private GameObject damageText;
     private Animator enemyAnimator;
-
+    [SerializeField] private AudioSource CoupRecu;
 
     new public void TakeDamage(float damage)
     {
+        CoupRecu.Play();
         health -= damage;
         healthBar.SetHealth(health);
         if(damage > 0)
