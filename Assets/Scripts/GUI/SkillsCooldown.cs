@@ -31,7 +31,6 @@ public class SkillsCooldown : MonoBehaviour
         spell1Timer.text = "";
         spell2Timer.text = "";
         spell3Timer.text = "";
-        Debug.Log(GameManager.instance.playerSpell1Sprite);
         spell1Image.sprite = GameManager.instance.playerSpell1Sprite; // on recup les sprites des images grace au game manager
         spell2Image.sprite = GameManager.instance.playerSpell2Sprite;
         spell3Image.sprite = GameManager.instance.playerSpell3Sprite;

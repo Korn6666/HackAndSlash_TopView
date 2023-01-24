@@ -80,8 +80,6 @@ public class PlayerIngeAttack : PlayerAttack
         attacking = true; //nous attaquons
         spell1CoolDownTimer = spell1CoolDown; //lancement du cooldown de l'attaque 
 
-        playerAnimator.SetTrigger("Trigger");
-        playerAnimator.SetFloat("Trigger Number", 2);
         playerAnimator.SetTrigger("BasicAttack");
 
         StopCoroutine(linkCoroutine);

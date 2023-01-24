@@ -21,7 +21,13 @@ public class WaterFosse : MonoBehaviour
     {
         if (entity != null)
         {
-            entity.gameObject.GetComponent<EnemyHealth>().TakeDamage(1000);
+            if (entity.gameObject.layer == 9)
+            {
+                entity.gameObject.GetComponent<EnemyHealth>().TakeDamage(1000);
+            } else if (entity.gameObject.tag == "Player")
+            {
+                entity.gameObject.GetComponent<PlayerHealth>().TakeDamage(1000);
+            }
         }
     }
 }

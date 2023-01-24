@@ -18,7 +18,6 @@ public class SettingsMenu : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("yes volume");
         SetVolumeInit(GameManager.volumeValue);
         SetMusicInit(GameManager.musicValue);
         SetEffectInit(GameManager.effectValue);

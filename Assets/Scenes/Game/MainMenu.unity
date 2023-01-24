@@ -457,6 +457,7 @@ MonoBehaviour:
   playerSpell1Sprite: {fileID: 0}
   playerSpell2Sprite: {fileID: 0}
   playerSpell3Sprite: {fileID: 0}
+  isPaused: 0
 --- !u!4 &84890920
 Transform:
   m_ObjectHideFlags: 0
@@ -9066,7 +9067,8 @@ AudioSource:
   m_GameObject: {fileID: 1345648620}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -8687857038737559622, guid: 79ff0105172ef264faf14922ee3979e5,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: e4c75e159c7cd674287f4cf1223f5b37, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.29

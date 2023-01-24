@@ -13,7 +13,10 @@ public class EnemyHealth : Health
 
     new public void TakeDamage(float damage)
     {
-        CoupRecu.Play();
+        if (damage>0)
+        {
+            CoupRecu.Play();
+        }
         health -= damage;
         healthBar.SetHealth(health);
         if(damage > 0)
