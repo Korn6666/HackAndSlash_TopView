@@ -1668,11 +1668,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ac303395200b4239999c2411c69ecac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 7
   distanceSeuil: 3
   canAttack: 0
   speedUpgrade: 0
-  standardSpeed: 5
+  standardSpeed: 7
   distanceToPlayer2D: 0
 --- !u!114 &8490535447483337084
 MonoBehaviour:

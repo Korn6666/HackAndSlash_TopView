@@ -941,7 +941,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swordAttackCoolDown: 2
-  swordAttackAnimationTime: 0.8
+  attackAnimationTime: 1.3
   swordAttackDamages: 5
   canAttack: 0
   player: {fileID: 0}
@@ -959,11 +959,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ac303395200b4239999c2411c69ecac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 6
   distanceSeuil: 2
   canAttack: 0
   speedUpgrade: 0
-  standardSpeed: 2.5
+  standardSpeed: 6
   distanceToPlayer2D: 0
 --- !u!114 &3027600074571955685
 MonoBehaviour:

@@ -43,10 +43,12 @@ public class GameManager : MonoBehaviour
 
 
     // pour les settings
-    public float volumeValue;
-    public float effectValue;
-    public float musicValue;
-    public int qualityIndex;
+    public static float volumeValue; // j'ai dû les mettre static pour éviter le reset quand l'on reviens dans le menu principal, je n'ai aucune idée de pourquoi le game manager reset ici.
+    public static float effectValue;
+    public static float musicValue;
+    public static int qualityIndex;
+
+    public bool isPaused;
 
     public void GetSprite() //met à jour les sprites au lancement du jeu
     {

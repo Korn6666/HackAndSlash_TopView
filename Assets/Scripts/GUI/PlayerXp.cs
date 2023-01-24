@@ -9,11 +9,13 @@ public class PlayerXp : MonoBehaviour
     [SerializeField] TMPro.TextMeshProUGUI textPlayerLevel;
     [SerializeField] TMPro.TextMeshProUGUI xpText;
 
+    //[SerializeField] private GameObject levelUpUpgrade;
+
 
     public float currentXp;
     public float levelUpXp;
 
-    public int playerLevel;
+    public static int playerLevel;
 
 
 
@@ -51,7 +53,7 @@ public class PlayerXp : MonoBehaviour
     {
         playerLevel += 1;
         textPlayerLevel.text = playerLevel.ToString(); // on change l'affichage du level 
-        levelUpXp = playerLevel * playerLevel;
+        levelUpXp = playerLevel ;
 
         currentXp = 0;
         SetXpToLevelUp(levelUpXp);

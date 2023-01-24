@@ -45,19 +45,19 @@ public class PlayerWarriorAttack : PlayerAttack
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && spell1CoolDownTimer <= 0 && !attacking) //premiere attaque(spell 1), clic gauche
+        if (Input.GetMouseButtonDown(0) && spell1CoolDownTimer <= 0 && !attacking && !GameManager.instance.isPaused) //premiere attaque(spell 1), clic gauche
         {
             StartCoroutine(SkillsCooldown.Spell1Cooldown(spell1CoolDown));
             StartCoroutine(Spell1Attack());
         }
 
-        if (Input.GetMouseButtonDown(1) && spell2CoolDownTimer <= 0 && !attacking) //deuxieme attaque(spell 2), clique droit
+        if (Input.GetMouseButtonDown(1) && spell2CoolDownTimer <= 0 && !attacking && !GameManager.instance.isPaused) //deuxieme attaque(spell 2), clique droit
         {
             StartCoroutine(SkillsCooldown.Spell2Cooldown(spell2CoolDown));
             StartCoroutine(Spell2Attack());
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && spell3CoolDownTimer <= 0 && !attacking) //deuxieme attaque(spell 3), sur espace
+        if (Input.GetKeyDown(KeyCode.Space) && spell3CoolDownTimer <= 0 && !attacking && !GameManager.instance.isPaused) //deuxieme attaque(spell 3), sur espace
         {
             StartCoroutine(SkillsCooldown.Spell3Cooldown(spell3CoolDown));
             StartCoroutine(Spell3Attack());

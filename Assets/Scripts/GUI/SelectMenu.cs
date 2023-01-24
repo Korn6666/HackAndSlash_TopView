@@ -14,8 +14,8 @@ public class SelectMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        warrior.SetActive(true);
-        mage.SetActive(false);
+        Time.timeScale = 1;
+        GameManager.instance.isPaused = false;
         SetArena(1);
         SetClasses("warrior");
     }

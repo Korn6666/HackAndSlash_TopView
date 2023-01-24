@@ -34,6 +34,7 @@ public class PauseMenu : MonoBehaviour
     {
         isPaused = true;
         Time.timeScale = 0;
+        GameManager.instance.isPaused = true;
         pauseMenuCanvas.SetActive(true);
         backgroundCanvas.SetActive(true);
 
@@ -43,6 +44,7 @@ public class PauseMenu : MonoBehaviour
     {
         isPaused = false;
         Time.timeScale = 1;
+        GameManager.instance.isPaused = false;
         pauseMenuCanvas.SetActive(false);
         backgroundCanvas.SetActive(false);
     }
@@ -50,6 +52,7 @@ public class PauseMenu : MonoBehaviour
     public void Mainmenu()
     {
         Time.timeScale = 1;
+        GameManager.instance.isPaused = false;
         SceneManager.LoadScene(0);
     }
 }

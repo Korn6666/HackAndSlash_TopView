@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 2528695701919172859}
   - component: {fileID: 2537288360589251627}
   - component: {fileID: 2202835870772517754}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ForestTreeDShort 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2554285526012398783
 Transform:

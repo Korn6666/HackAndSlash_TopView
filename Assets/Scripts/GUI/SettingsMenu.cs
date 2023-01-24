@@ -18,29 +18,30 @@ public class SettingsMenu : MonoBehaviour
 
     private void Start()
     {
-        SetVolumeInit(GameManager.instance.volumeValue);
-        SetMusicInit(GameManager.instance.musicValue);
-        SetEffectInit(GameManager.instance.effectValue);
-        SetQualityIneit(GameManager.instance.qualityIndex);
+        Debug.Log("yes volume");
+        SetVolumeInit(GameManager.volumeValue);
+        SetMusicInit(GameManager.musicValue);
+        SetEffectInit(GameManager.effectValue);
+        SetQualityIneit(GameManager.qualityIndex);
     }
 
     public void SetVolume(float volume)
     {
-        GameManager.instance.volumeValue = volume;
+        GameManager.volumeValue = volume;
         audioMixer.SetFloat("volume", volume);
         volumeText.text = (((volume + 80)/80)*100).ToString("F0");
     }
 
     public void SetMusic(float volume)
     {
-        GameManager.instance.musicValue = volume;
+        GameManager.musicValue = volume;
         audioMixer.SetFloat("music", volume);
         musicText.text = (((volume + 80) / 80) * 100).ToString("F0");
     }
 
     public void SetEffect(float volume)
     {
-        GameManager.instance.effectValue = volume;
+        GameManager.effectValue = volume;
         audioMixer.SetFloat("effect", volume);
         effectText.text = (((volume + 80) / 80) * 100).ToString("F0");
     }
@@ -48,7 +49,7 @@ public class SettingsMenu : MonoBehaviour
 
     public void SetQuality(int qualityIndex)
     {
-        GameManager.instance.qualityIndex = qualityIndex;
+        GameManager.qualityIndex = qualityIndex;
         QualitySettings.SetQualityLevel(qualityIndex);
     }
 

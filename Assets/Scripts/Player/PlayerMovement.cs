@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public static float speed = 2f;
+    public static float speed = 1.5f;
 
     private Rigidbody Rbd;
     private float translationForce = 20;

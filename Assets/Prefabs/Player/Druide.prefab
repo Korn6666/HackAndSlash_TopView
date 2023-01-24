@@ -685,7 +685,7 @@ MonoBehaviour:
   spell1Damage: 2
   spell1CoolDown: 2
   spell1CoolDownTimer: 0
-  spell2Damage: 5
+  spell2Damage: 2
   spell2CoolDown: 5
   spell2CoolDownTimer: 0
   spell3Damage: 10
@@ -695,11 +695,11 @@ MonoBehaviour:
     type: 3}
   waitForSpell1Animation: 0.4
   spell2Audio: {fileID: 7403908721121304077}
-  spell2Range: 5
+  spell2Range: 3
   spell2StunTime: 2
   spell3AudioBuff: {fileID: -9181390837810416736}
   spell3AudioDebuff: {fileID: -8332909608565008589}
-  spell3MoveSpeed: 5
+  spell3MoveSpeed: 1
   spell3BuffDuration: 5
 --- !u!82 &7403908721121304077
 AudioSource:

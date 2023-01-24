@@ -13,12 +13,12 @@ GameObject:
   - component: {fileID: 9046765457342215697}
   - component: {fileID: 9016032072390730371}
   - component: {fileID: 8952235866118036629}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ForestCannonBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 0
 --- !u!4 &9065358320987271821
 Transform:
@@ -122,12 +122,12 @@ GameObject:
   - component: {fileID: 9054598217708912293}
   - component: {fileID: 9046951634346458229}
   - component: {fileID: 8956335738563235673}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ForestCatapultWheelFR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &9065212339497896753
 Transform:
@@ -217,12 +217,12 @@ GameObject:
   - component: {fileID: 9054912525424948109}
   - component: {fileID: 9047094171280521941}
   - component: {fileID: 8956317535603557075}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ForestCatapultWheelRR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &9065515885504354149
 Transform:
@@ -310,12 +310,12 @@ GameObject:
   m_Component:
   - component: {fileID: 9066073029955748551}
   - component: {fileID: 7379717090236975005}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ForestCatapult_Red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &9066073029955748551
 Transform:
@@ -357,12 +357,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9066097966494759645}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ForestCatapultWheels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &9066097966494759645
 Transform:
@@ -394,12 +394,12 @@ GameObject:
   - component: {fileID: 9055376910015900939}
   - component: {fileID: 9047576564603190049}
   - component: {fileID: 8955892197864755085}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ForestCatapultWheelFL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &9065327427668940367
 Transform:
@@ -488,12 +488,12 @@ GameObject:
   - component: {fileID: 9065492084103234479}
   - component: {fileID: 9054157470747557599}
   - component: {fileID: 9046305898633525653}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ForestCatapultBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &9065492084103234479
 Transform:
@@ -568,12 +568,12 @@ GameObject:
   - component: {fileID: 9054819935726417345}
   - component: {fileID: 9046688067689581469}
   - component: {fileID: 8952869283860870069}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ForestCatapultArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &9065841794076486015
 Transform:
@@ -662,12 +662,12 @@ GameObject:
   - component: {fileID: 9055010862309986729}
   - component: {fileID: 9046231679133154955}
   - component: {fileID: 8955850141719172393}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ForestCatapultWheelRL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &9065971516744606625
 Transform:
@@ -758,12 +758,12 @@ GameObject:
   - component: {fileID: 9046051762379601677}
   - component: {fileID: 9015110067745288659}
   - component: {fileID: 9023011021021998175}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ForestCatapultArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &9066105130053155723
 Transform:

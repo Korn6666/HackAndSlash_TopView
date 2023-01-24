@@ -35,7 +35,7 @@ public class FireBall : Projectiles
             foreach (Collider enemy in hitEnemies)
             {
                 enemy.GetComponent<EnemyHealth>().TakeDamage(playerMageAttack.spell1Damage);
-                enemy.GetComponent<EnemyHealth>().TakeKnockBack(transform.position, -15f);
+                enemy.GetComponent<EnemyHealth>().TakeKnockBack(transform.position, -8f);
             }
             fireParticules.Stop();
             fireTail.Stop();
