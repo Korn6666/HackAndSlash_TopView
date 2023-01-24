@@ -110,8 +110,8 @@ public class LicheBehaviour : MonoBehaviour
                         if (entity.GetComponent<EnemyHealth>().health < entity.GetComponent<EnemyHealth>().maxHealth)
                         {
                             entity.GetComponent<EnemyHealth>().TakeDamage(-spellHeal);
+                            presence = true;
                         }
-                        presence = true;
                     }
                 }
                 Timer = 0;

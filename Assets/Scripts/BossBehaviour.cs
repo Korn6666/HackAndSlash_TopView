@@ -153,7 +153,6 @@ public class BossBehaviour : EnemyAttack
     {
         if (!isCrying && collision.gameObject.layer != layerEnemy)
         {
-            Debug.Log("Collision mgl");
             chargeAttackTimer = 0.2f;
             isCharging = false;
         }
@@ -287,7 +286,6 @@ public class BossBehaviour : EnemyAttack
         waitForBattleCryAnimation = 1;
         chargeDamages = 25;
         BattleCryCoolDown = 5; 
-        Debug.Log(BattleCryCoolDownTimer);
         if (BattleCryCoolDownTimer <= 0 && !canAttack)
         {
             

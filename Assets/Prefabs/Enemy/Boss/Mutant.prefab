@@ -1741,7 +1741,8 @@ MonoBehaviour:
   speedCryCoolDownTime: 15
   speedUpgradeCryTime: 10
   waitForSpeedCryAnimation: 2
-  WaveManager: {fileID: 0}
+  WaveManager: {fileID: 1496780721326212572, guid: 9ad2714d28e1acd4ca12ec7264dc02c7,
+    type: 3}
   waitForAnimationTimer: 0
   playerLayer:
     serializedVersion: 2
@@ -2172,7 +2173,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 7147366649061825797, guid: 79ff0105172ef264faf14922ee3979e5,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 686e7124df6857e4b950bce531b898f3, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.479
   m_Pitch: 1
   Loop: 0

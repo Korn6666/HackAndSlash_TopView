@@ -22,7 +22,6 @@ public class PlayerWarriorAttack : PlayerAttack
     [SerializeField] private AudioSource spell2Audio;
     public float spell2AttackRange = 5f;
     private bool isOnFloor; //Variable qui nous dit si le player est sur le sol ou non
-    [SerializeField] private float animationJumpWait = 0.25f;
     [SerializeField] private AudioSource groundJump;
 
 
