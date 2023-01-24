@@ -8,7 +8,7 @@ public class WaveManager : MonoBehaviour
     private float waitnextwave=5f;
     private float waitnextspawn = 0.7f;
     public int activeEnemyCount = 0;
-    public int currentWave; // Numéro de la vague
+    public static int currentWave; // Numéro de la vague
 
     void Start()
     {

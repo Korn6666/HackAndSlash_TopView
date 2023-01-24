@@ -9,10 +9,11 @@ public class GameLoad : MonoBehaviour
     [SerializeField] private GameObject inge;
 
     private Vector3 spawnPosition;
+    [SerializeField] private GameObject spawnObject;
     // Start is called before the first frame update
     void Start()
     {
-        spawnPosition = new Vector3(0f, 0.5f, 0f);
+        spawnPosition = spawnObject.transform.position;
         GameManager.instance.GetSprite();
         if (GameManager.instance.playerClasse == "warrior")
         {

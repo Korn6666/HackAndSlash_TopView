@@ -9,12 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 624825395624366004}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bone.002_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &624825395624366004
 Transform:
@@ -41,12 +41,12 @@ GameObject:
   m_Component:
   - component: {fileID: 624601297858483402}
   - component: {fileID: 670195729325907950}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ForestFlag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &624601297858483402
 Transform:
@@ -127,12 +127,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 624752162407288292}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bone.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &624752162407288292
 Transform:
@@ -158,12 +158,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 627650498423469884}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &627650498423469884
 Transform:
@@ -189,12 +189,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 624343547116972644}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ForestBanner.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &624343547116972644
 Transform:
@@ -220,12 +220,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 624628543415298174}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bone.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &624628543415298174
 Transform:
@@ -251,12 +251,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 624660253956809738}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bone.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &624660253956809738
 Transform:
@@ -283,12 +283,12 @@ GameObject:
   m_Component:
   - component: {fileID: 624635874948091866}
   - component: {fileID: 718131571258218236}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ForestBanner (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &624635874948091866
 Transform:
@@ -336,12 +336,12 @@ GameObject:
   - component: {fileID: 627350994297810604}
   - component: {fileID: 635852795830301472}
   - component: {fileID: 645744387209421474}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ForestCastleWindow (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &627350994297810604
 Transform:
@@ -413,12 +413,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 627173704536418248}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bone.002_end_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &627173704536418248
 Transform:
@@ -443,12 +443,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 627534406860120228}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bone.002_end_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &627534406860120228
 Transform:
@@ -473,12 +473,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 624669227786573050}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bone.003_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &624669227786573050
 Transform:
@@ -508,12 +508,12 @@ GameObject:
   - component: {fileID: 635833939769419558}
   - component: {fileID: 644040840522305280}
   - component: {fileID: 8509598367486699942}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ForestTower_Red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &624812647149129126
 Transform:
@@ -606,12 +606,12 @@ GameObject:
   m_Component:
   - component: {fileID: 624612147330133314}
   - component: {fileID: 667507765152330408}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ForestBanner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &624612147330133314
 Transform:
@@ -691,12 +691,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 624475836701866062}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bone.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &624475836701866062
 Transform:
@@ -725,12 +725,12 @@ GameObject:
   - component: {fileID: 624486363634872348}
   - component: {fileID: 635647118906251320}
   - component: {fileID: 644541273764166266}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ForestCastleWindow (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &624486363634872348
 Transform:
@@ -802,12 +802,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 627515133483609956}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &627515133483609956
 Transform:
@@ -834,12 +834,12 @@ GameObject:
   m_Component:
   - component: {fileID: 624691780496541480}
   - component: {fileID: 718032036262389370}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ForestFlag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &624691780496541480
 Transform:
@@ -885,12 +885,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 624838756854416078}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &624838756854416078
 Transform:
@@ -916,12 +916,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 624376082492481284}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bone.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &624376082492481284
 Transform:
@@ -947,12 +947,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 627342589390559954}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: FlagArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &627342589390559954
 Transform:
@@ -978,12 +978,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 624424932689725960}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bone.003_end_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &624424932689725960
 Transform:
@@ -1009,12 +1009,12 @@ GameObject:
   m_Component:
   - component: {fileID: 624630313888079790}
   - component: {fileID: 667612756609225402}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ForestBanner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &624630313888079790
 Transform:
@@ -1095,12 +1095,12 @@ GameObject:
   m_Component:
   - component: {fileID: 627543143334156168}
   - component: {fileID: 716303215226114690}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ForestBanner (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &627543143334156168
 Transform:
@@ -1148,12 +1148,12 @@ GameObject:
   - component: {fileID: 624690726877188278}
   - component: {fileID: 638545527121783472}
   - component: {fileID: 644128370981778476}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ForestCastleWindow (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &624690726877188278
 Transform:
@@ -1225,12 +1225,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 627546966596966852}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bone.002_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &627546966596966852
 Transform:
@@ -1256,12 +1256,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 627503318493858882}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bone.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &627503318493858882
 Transform:
@@ -1287,12 +1287,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 627648323460157962}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bone.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &627648323460157962
 Transform:
@@ -1318,12 +1318,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 624472193668180332}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ForestBanner.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &624472193668180332
 Transform:
@@ -1351,12 +1351,12 @@ GameObject:
   - component: {fileID: 624870913570802012}
   - component: {fileID: 638580709797253942}
   - component: {fileID: 645903095578655230}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ForestCastleWindow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &624870913570802012
 Transform:

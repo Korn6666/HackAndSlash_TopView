@@ -428,7 +428,7 @@ GameObject:
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &84890919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -441,7 +441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 390619fab678cc044bb495cc4f1f235f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerClasse: mage
+  playerClasse: 
   warriorSpell1Sprite: {fileID: 21300000, guid: 3a88d46ed00b9214a8cc55ba6e67ab09,
     type: 3}
   warriorSpell2Sprite: {fileID: 21300000, guid: 4637953d65a24364aab3372a525b9ed2,
@@ -451,16 +451,12 @@ MonoBehaviour:
   mageSpell1Sprite: {fileID: 21300000, guid: 9f69b220176e6964fbd87f5f158d45e3, type: 3}
   mageSpell2Sprite: {fileID: 21300000, guid: 8a5f9829a049c704fa992203bfc451f2, type: 3}
   mageSpell3Sprite: {fileID: 21300000, guid: 6f98b3e70c3ad8a48a0396785dad48e8, type: 3}
-  ingeSpell1Sprite: {fileID: 0}
-  ingeSpell2Sprite: {fileID: 0}
-  ingeSpell3Sprite: {fileID: 0}
+  ingeSpell1Sprite: {fileID: 21300000, guid: 62ce59ce09148c847b198159a3abc9f6, type: 3}
+  ingeSpell2Sprite: {fileID: 21300000, guid: 00fbb4588136cde4fbf9001df788bcfb, type: 3}
+  ingeSpell3Sprite: {fileID: 21300000, guid: f3372779de276dc48accf9af14b380d9, type: 3}
   playerSpell1Sprite: {fileID: 0}
   playerSpell2Sprite: {fileID: 0}
   playerSpell3Sprite: {fileID: 0}
-  volumeValue: 0
-  effectValue: 0
-  musicValue: 0
-  qualityIndex: 0
 --- !u!4 &84890920
 Transform:
   m_ObjectHideFlags: 0

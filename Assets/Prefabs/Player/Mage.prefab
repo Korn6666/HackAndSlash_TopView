@@ -2524,10 +2524,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   attacking: 0
-  spell1Damage: 5
+  spell1Damage: 4
   spell1CoolDown: 2
   spell1CoolDownTimer: 0
-  spell2Damage: 2
+  spell2Damage: 5
   spell2CoolDown: 10
   spell2CoolDownTimer: 0
   spell3Damage: 0

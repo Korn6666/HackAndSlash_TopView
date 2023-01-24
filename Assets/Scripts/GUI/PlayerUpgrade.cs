@@ -35,6 +35,7 @@ public class PlayerUpgrade : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        levelcheck = PlayerXp.playerLevel;
         canvasUpgrade.SetActive(false);
         canvasBlackBackground.SetActive(false);
         player = GameObject.FindGameObjectWithTag("Player");
@@ -115,7 +116,7 @@ public class PlayerUpgrade : MonoBehaviour
         }
     }
 
-
+    private int levelcheck;
     // Update is called once per frame
     void Update()
     {
@@ -137,12 +138,19 @@ public class PlayerUpgrade : MonoBehaviour
             Debug.Log("triger");
 
         }
-    }
 
+        if(levelcheck != PlayerXp.playerLevel) //Détecte le level up. Très très moche, mais seul option avant l'oral du a de gros bug
+        {
+            StartCoroutine(LevelUpUpgrade());
+        }
+
+        levelcheck = PlayerXp.playerLevel;
+    }
 
     public IEnumerator LevelUpUpgrade()
     {
         Time.timeScale = 0;
+        GameManager.instance.isPaused = true;
         canvasUpgrade.SetActive(true);
         canvasBlackBackground.SetActive(true);
 
@@ -170,6 +178,7 @@ public class PlayerUpgrade : MonoBehaviour
         canvasBlackBackground.SetActive(false);
 
         Time.timeScale = 1;
+        GameManager.instance.isPaused = false;
         yield return null;
     }
 

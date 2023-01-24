@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 818883254776223066}
   - component: {fileID: 827624770718887526}
   - component: {fileID: -6952881827436212689}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ForestBlock01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &803493789269603578
 Transform:

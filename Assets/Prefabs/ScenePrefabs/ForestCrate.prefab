@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 6605227151146504084}
   - component: {fileID: 6597497064270907252}
   - component: {fileID: 1485466335058753556}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ForestCrate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &6614668822387364060
 Transform:

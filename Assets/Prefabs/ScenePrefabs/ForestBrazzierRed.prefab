@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 2753820005086528715}
   - component: {fileID: 2664404171592090269}
   - component: {fileID: 2666026290186443405}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2753820005086528715
 Transform:
@@ -4766,12 +4766,12 @@ GameObject:
   - component: {fileID: 2756620432917079827}
   - component: {fileID: 2768082631032649265}
   - component: {fileID: 880612603258961004}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ForestBrazzierRed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2753645531511849263
 Transform:
@@ -4860,12 +4860,12 @@ GameObject:
   - component: {fileID: 2749804427233946361}
   - component: {fileID: 2664127758898571885}
   - component: {fileID: 2664594857307763513}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2749804427233946361
 Transform:
