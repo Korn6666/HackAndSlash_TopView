@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MaterialMover : MonoBehaviour
+public class WaterFosse : MonoBehaviour
 {
 
     public float scrollSpeed = 0.5F;
@@ -15,5 +15,13 @@ public class MaterialMover : MonoBehaviour
     {
         float offset = Time.time * scrollSpeed;
         rend.material.SetTextureOffset("_MainTex", new Vector2(0, offset));
+    }
+
+    private void OnTriggerEnter(Collider entity)
+    {
+        if (entity != null)
+        {
+            entity.gameObject.GetComponent<EnemyHealth>().TakeDamage(1000);
+        }
     }
 }

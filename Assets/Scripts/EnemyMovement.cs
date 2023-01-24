@@ -21,7 +21,6 @@ public class EnemyMovement : MonoBehaviour
     public float distanceToPlayer2D;
 
     private NavMeshAgent EnemyAgent;
-
     public void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
