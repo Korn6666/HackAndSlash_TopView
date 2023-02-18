@@ -45,7 +45,7 @@ public class WaveManager : MonoBehaviour
             yield return new WaitForSeconds(waitnextwave);
             for (int i=1; i<=currentWaveNbEnemy; i++)
             {
-                if (currentWave != 5)
+                if (currentWave != 1)
                 {
                     FindObjectOfType<SpawnEnemy>().StartSpawnEnemy(false);  // false == on ne fait pas spawn le boss
                     activeEnemyCount += 1;
@@ -60,7 +60,7 @@ public class WaveManager : MonoBehaviour
 
             // Pour le boss
 
-            if (currentWave == 10 || currentWave == 5)
+            if (currentWave == 10 || currentWave == 1)
             {
                 FindObjectOfType<SpawnEnemy>().StartSpawnEnemy(true); // true = on fait spawn le boss
                 activeEnemyCount += 1;

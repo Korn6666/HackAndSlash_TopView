@@ -846,10 +846,7 @@ MonoBehaviour:
   playerSpell1Sprite: {fileID: 0}
   playerSpell2Sprite: {fileID: 0}
   playerSpell3Sprite: {fileID: 0}
-  volumeValue: 0
-  effectValue: 0
-  musicValue: 0
-  qualityIndex: 0
+  isPaused: 0
 --- !u!4 &332080418
 Transform:
   m_ObjectHideFlags: 0
@@ -1099,7 +1096,6 @@ MonoBehaviour:
   xpText: {fileID: 747030874}
   currentXp: 0
   levelUpXp: 0
-  playerLevel: 0
 --- !u!114 &369016051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2772,6 +2768,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lich
       objectReference: {fileID: 0}
+    - target: {fileID: 7073369754275880646, guid: b1a42e08a168a824dbf66e131eb33b83,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7593764946134647932, guid: b1a42e08a168a824dbf66e131eb33b83,
         type: 3}
       propertyPath: m_RootOrder
@@ -2830,12 +2831,12 @@ PrefabInstance:
     - target: {fileID: 7991850299382956272, guid: b1a42e08a168a824dbf66e131eb33b83,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.785
       objectReference: {fileID: 0}
     - target: {fileID: 7991850299382956272, guid: b1a42e08a168a824dbf66e131eb33b83,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1a42e08a168a824dbf66e131eb33b83, type: 3}
@@ -3204,12 +3205,12 @@ PrefabInstance:
     - target: {fileID: 3027600075641621494, guid: 8823807650b8ab84cb709e8c03029838,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.785
       objectReference: {fileID: 0}
     - target: {fileID: 3027600075641621494, guid: 8823807650b8ab84cb709e8c03029838,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6577598361271050786, guid: 8823807650b8ab84cb709e8c03029838,
         type: 3}
@@ -3270,6 +3271,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SKELETON
+      objectReference: {fileID: 0}
+    - target: {fileID: 6583154367367009182, guid: 8823807650b8ab84cb709e8c03029838,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8823807650b8ab84cb709e8c03029838, type: 3}
@@ -4852,6 +4858,16 @@ PrefabInstance:
     - target: {fileID: 8241244804288491155, guid: 734d3e6171709454c86964181c36570b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8490535446840655424, guid: 734d3e6171709454c86964181c36570b,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8490535446840655424, guid: 734d3e6171709454c86964181c36570b,
+        type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8490535447483336960, guid: 734d3e6171709454c86964181c36570b,

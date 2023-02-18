@@ -966,7 +966,7 @@ MonoBehaviour:
   distanceSeuil: 3
   canAttack: 0
   speedUpgrade: 0
-  standardSpeed: 5
+  standardSpeed: 3
   distanceToPlayer2D: 0
 --- !u!114 &7991850299983012782
 MonoBehaviour:

@@ -650,6 +650,8 @@ MonoBehaviour:
   health: 0
   healthBar: {fileID: 0}
   spawnEnemy: {fileID: 0}
+  CoupRecu: {fileID: 0}
+  hitByLich: 0
 --- !u!114 &4993894264781412370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1007,7 +1009,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 5fee083743014f0429f801c6b7e4ba02, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.456
   m_Pitch: 1
   Loop: 0
   Mute: 0
